@@ -4,8 +4,11 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+ice_floe:
+  vendor: polar_queen
+  price: 1800
+  inventory: 4
+  name: "Dinner on an Ice Floe with a Polar Bear"
+  description: "This voluptuous feast of sea lion flipper with braised lichen will be served with extraordinary company in a sublime setting."
+  photo_url: "http://i.telegraph.co.uk/multimedia/archive/03339/polar-bear-global-_3339474b.jpg"
+  lifecycle: "available"
