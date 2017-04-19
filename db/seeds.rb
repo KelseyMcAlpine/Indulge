@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-vendors = Vendor.create([
+vendors = [
   { username: "Dwight Schrute", email: "schrutefarms@gmail.com"},
   { username: "Jim Halpert", email: "jim@athlead.com"},
   { username: "Pam Beasley", email: "Pam@prattinstitute.com"},
@@ -17,5 +17,9 @@ vendors = Vendor.create([
   { username: "Angela Martin", email: "msmartin@lipton4PA.com"},
   { username: "Toby Flenderson", email: "chadflenderson@flendersonfiles.com"},
   { username: "Creed Bratton", email: "notcreedbratton@creedthoughts.gov"},
-  { username: "David Wallace", email: "dwallace@suckit.com"},
-  ])
+  { username: "David Wallace", email: "dwallace@suckit.com"}
+  ]
+
+vendors.each do | vendor |
+  vendor = Vendor.new
+end
