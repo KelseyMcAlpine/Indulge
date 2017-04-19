@@ -1,0 +1,19 @@
+<h1><%= @vendor.username %> </h1>
+
+<h3> Vendor email:<%= @vendor.email %> </h3>
+<table>
+  <th>Product</th>
+  <th>Product Image</th>
+  <th>Product Inventory</th>
+  <th>Product Description  </th> <!-- add in rating eventually -->
+
+<% @vendor.products.each do |product| %>
+<tr>
+
+<td> <%= product.name %></td>
+<td> <%= image_tag product.photo_url %> </td>
+<td> <%= product.inventory %> </td>
+<td> <%= product.description %> </td>
+<% end %>
+</tr>
+</table>
