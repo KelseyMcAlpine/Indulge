@@ -1,6 +1,6 @@
 <h1>All Products</h1>
   <% @products.each do |product| %>
-    <img src="<%product.photo_url%>" alt="<%product.name%>">
+    <%= image_tag product.photo_url %>
       <%= link_to product.name, product_path(product.id) %>
       <%= product.price %>
   <% end %>
