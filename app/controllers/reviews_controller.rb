@@ -1,9 +1,12 @@
 class ReviewsController < ApplicationController
-  def index; end
+  def index
+    @reviews = Review.all
+  end
 
   def new
-    @product = Product.find(params[:product_id])
-    @review = @product.reviews.new
+    @review = Review.new
+    # @product = Product.find(params[:product_id])
+    # @review = @product.reviews.new
 
     # if session[:user_id] == @product.user.id
     # flash to ensure vendors cannot review own products
@@ -11,13 +14,13 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
-    @review = @product.reviews.new(review_params)
+    @product = Product.find(params[:product_id]) #need to link review to product somehow
+    @review = @product.reviews.new(review_params) #this will link product to review method, is this the best way??
 
     if @review.save
       #redirect_to specific product page
     else
-      # render :new 
+      # render :new
     end
   end
 
