@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+  before_action :find_product, only: [:show]
+
   def new
     @product = Product.new
   end
@@ -16,9 +18,25 @@ class ProductsController < ApplicationController
     end
   end
 
+  def index
+    @products = Product.all
+  end
+
+  def show
+    if !@product
+      render_404
+    end
+  end
+  
   private
 
   def product_params
     params.require(:product).permit(:vendor_id, :price, :inventory, :name, :description, :photo_url, :lifecycle)
+  end
+
+
+
+  def find_product
+    @product = Product.find_by_id params[:id]
   end
 end

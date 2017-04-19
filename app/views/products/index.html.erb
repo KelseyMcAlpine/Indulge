@@ -1,0 +1,6 @@
+<h1>All Products</h1>
+  <% @products.each do |product| %>
+    <img src="placeholder url customizes to each asset".git alt="Product Name">
+      <%= link_to product.name, product_path(product.id) %>
+      <%= product.price %>
+  <% end %>

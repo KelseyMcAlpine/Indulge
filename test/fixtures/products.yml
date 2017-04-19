@@ -4,7 +4,14 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+my_product:
+  name: "squatty potty"
+  description: "helps you poop like a cave man"
+  photo_url: "example 123"
+  price: 25
+  inventory: 1000
+  lifecycle: "new"
+
 # column: value
 #
 two: {}
