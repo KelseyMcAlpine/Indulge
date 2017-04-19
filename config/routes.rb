@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :products
 
+  resources :vendors, only: [:index, :show]
+
 end
