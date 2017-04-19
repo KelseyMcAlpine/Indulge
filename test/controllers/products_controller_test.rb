@@ -16,7 +16,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       end
 
       it "should show 404 when product not found" do
-        get product_path(5000) # need to edit controller to show 404
+        get product_path(0) # need to edit controller to show 404
         must_respond_with :missing
       end
     end
