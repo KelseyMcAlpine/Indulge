@@ -1,0 +1,8 @@
+<h1>Reviews</h1>
+<h3>Please rate this product</h3>
+
+<%= form_for @review do |f| %>
+<%= f.label :rating %>
+<%= f.radio_button(:rating, 1) %>
+<%= f.submit %>
+<% end %>
