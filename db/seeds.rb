@@ -9,22 +9,23 @@
 
 categories = Category.create([{ name: 'Spa' }, { name: 'Romantic Dinner' }, { name: 'Rock Climbing' }, { name: 'Dinner Cruise' }, { name: 'Shopping Excursion' }, { name: 'Night at the Museum' }, { name: 'Cupcake Night' }])
 
-# Category.create()
 
-# reviews = [
-#   { rating: 1,
-#     comment: "A great experience"
-#   },
-#   {
-#     rating: 4,
-#     comment: "Highly recommend"
-#   },
-#   {
-#     rating: 5,
-#     comment: "A new favorite"
-#   }
-# ]
 
-# reviews.each do |review|
-  Review.create({ rating: 1, comment: "A great Experience" })
-# end
+reviews =  [
+  { rating: 1,
+    comment: "A great experience"
+  },
+  {
+    rating: 4,
+    comment: "Highly recommend"
+  },
+  {
+    rating: 5,
+    comment: "A new favorite"
+  }
+]
+#
+ reviews.each do |review|
+#
+review = Review.new
+end

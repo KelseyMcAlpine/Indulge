@@ -14,11 +14,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id]) #need to link review to product somehow
-    @review = @product.reviews.new(review_params) #this will link product to review method, is this the best way??
+  #need to link review to product somehow
+    @review = Review.new(review_params) #this will link product to review method, is this the best way??
 
     if @review.save
-      #redirect_to specific product page
+      redirect_to products_path
     else
       # render :new
     end
