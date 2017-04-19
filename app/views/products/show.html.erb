@@ -1,0 +1,8 @@
+<h1>Product Detail Page</h1>
+<p>
+  <%= @book.title %>: <%= @book.author.name %>
+  <h2><%= link_to "make an edit", edit_book_path %></h2>
+  <h2><%= link_to "delete", book_path(@book.id), data: { confirm: "sure?" }, method: :delete %></h2>
+  <h2><%= link_to "Home", books_path %></h2>
+
+</p>
