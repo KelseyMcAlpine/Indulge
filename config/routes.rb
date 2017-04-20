@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
   resources :vendors, only: [:index, :show]
+  resources :categories, only: [:index, :new, :create]
 
 end
