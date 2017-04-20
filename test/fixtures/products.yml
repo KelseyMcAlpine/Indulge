@@ -14,7 +14,9 @@ ice_floe:
   photo_url: "http://i.telegraph.co.uk/multimedia/archive/03339/polar-bear-global-_3339474b.jpg"
   lifecycle: "available"
 
+#broken fixture, no vendor
 my_product:
+  # vendor: polar_queen
   name: "squatty potty"
   description: "helps you poop like a cave man"
   photo_url: "example 123"

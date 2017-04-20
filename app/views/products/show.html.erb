@@ -7,3 +7,5 @@
   sold by: <%= @product.vendor.username %>
 
 </p>
+<%= link_to "Delete", product_path(@product.id), data: { confirm: "Are you sure you want to delete this product?"
+}, method: :delete %>

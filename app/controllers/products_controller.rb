@@ -46,6 +46,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    Product.destroy(params[:id])
+    redirect_to products_path
   end
 
   def update_availability
