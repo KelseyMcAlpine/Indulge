@@ -1,7 +1,10 @@
 require "test_helper"
 
 describe CategoriesController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+
+  it "should get index" do
+    get categories_path
+    must_respond_with :success
+  end
+  
 end
