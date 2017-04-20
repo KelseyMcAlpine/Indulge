@@ -5,7 +5,12 @@
   <th>Product</th>
   <th>Product Image</th>
   <th>Product Inventory</th>
-  <th>Product Description  </th> <!-- add in rating eventually -->
+  <th>Product Description  </th>
+  <th>Product Lifecycle </th>
+  <th>Update Lifecycle </th>
+
+
+  <!-- add in rating eventually -->
 
 <% @vendor.products.each do |product| %>
 <tr>
@@ -14,6 +19,15 @@
 <td> <%= image_tag product.photo_url %> </td>
 <td> <%= product.inventory %> </td>
 <td> <%= product.description %> </td>
+<td> <%= product.lifecycle %> </td>
+<td>
+  <% if product.lifecycle == "available" %>
+    <%= link_to "Retire", update_availability_path(product.id), data: { confirm: "Are you sure you want to retire this product?" }, method: :update_availability %>
+  <% else %>
+    <%= link_to "ReList", update_availability_path(product.id), data: { confirm: "Are you sure you want to re-list this product?" }, method: :update_availability %>
+</td>
+  <% end %>
+
 <% end %>
 </tr>
 </table>
