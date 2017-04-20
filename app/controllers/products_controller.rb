@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :find_product, only: [:show, :edit, :update]
+  before_action :find_product, only: [:show, :edit, :update, :update_availability]
 
   def new
     @product = Product.new
@@ -43,6 +43,15 @@ class ProductsController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def update_availability
+    if @product.lifecycle == "available"
+      @product.lifecycle == "unavailable"
+    else
+      @product.lifecycle == available
+    end
+    redirect_to vendor_path(product.vendor.id)
   end
 
   private
