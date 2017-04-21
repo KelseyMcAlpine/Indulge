@@ -25,17 +25,8 @@
 
   <!-- Since vendor is creating new product, should be able to use their id from the URL -->
   <%= f.hidden_field :vendor_id, value: 1 %>
-  <%= select_tag(:category_id, options_for_select(@product)) %>
 
-
-  <!-- <div class="tag-wrapper">
-  <% @categories.each do | category | %>
-    <div class="tag">
-      <%= f.label category.name %>
-      <%= f.check_box :category_ids, @product.categories = category.id %>
-    </div>
-  <% end %>
-  </div> -->
+  <%= f.collection_select :category_ids, Category.all, :id, :name, :prompt => "Category", :multiple => true %>
 
   <%= f.submit %>
 <% end %>

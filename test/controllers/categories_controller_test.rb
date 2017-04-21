@@ -13,15 +13,6 @@ describe CategoriesController do
     must_respond_with :success
   end
 
-  it "should require a name to create a new category" do
-    spa.name = nil
-
-  end
-
-  it "should require that the category name is unique" do
-
-  end
-
   it "should affect the model when a new category is added" do
     proc { post categories_path, params:
       { category: { name: "spicy" } }}.must_change 'Category.count', 1

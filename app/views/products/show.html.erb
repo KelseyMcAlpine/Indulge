@@ -6,6 +6,10 @@
   <%= @product.price %>
   sold by: <%= @product.vendor.username %>
   Categories:
-  <%= @product.categories.each do |category| print category end%>
+  <ul>
+  <% @product.categories.each do |category| %>
+    <li> <%= category.name %> </li>
+  <% end %>
+  </ul>
 
 </p>
