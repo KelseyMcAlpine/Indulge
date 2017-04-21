@@ -5,5 +5,7 @@
   <%= @product.description %>
   <%= @product.price %>
   sold by: <%= @product.vendor.username %>
+  Categories:
+  <%= @product.categories.each do |category| print category end%>
 
 </p>
