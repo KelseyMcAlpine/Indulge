@@ -26,7 +26,8 @@
   <!-- Since vendor is creating new product, should be able to use their id from the URL -->
   <%= f.hidden_field :vendor_id, value: 1 %>
 
-  <%= f.collection_select :category_ids, Category.all, :id, :name, :prompt => "Category", :multiple => true %>
+  <%= f.label :categories %>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
 
   <%= f.submit %>
 <% end %>

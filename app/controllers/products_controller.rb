@@ -8,9 +8,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create product_params
+    @product = Product.new(product_params)
 
-    if @product.id != nil
+    if @product.save
       flash[:success] = "New product successfull added"
       redirect_to product_path(@product.id)
     else
@@ -74,12 +74,11 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:vendor_id, :price, :inventory, :name, :description, :photo_url, :lifecycle)
+    params.require(:product).permit(:vendor_id, :price, :inventory, :name, :description, :photo_url, category_ids: [])
   end
-
-
 
   def find_product
     @product = Product.find_by_id params[:id]
+    # should return 404 if not found
   end
 end
