@@ -3,4 +3,7 @@
     <%= image_tag product.photo_url %>
       <%= link_to product.name, product_path(product.id) %>
       <%= product.price %>
+      <% product.categories.each do | category |  %>
+        <%= category.name %>
+      <% end %>
   <% end %>
