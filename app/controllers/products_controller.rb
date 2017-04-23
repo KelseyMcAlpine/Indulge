@@ -21,7 +21,9 @@ class ProductsController < ApplicationController
 
   def index
     if params[:category_id]
-      @products = Product.includes(:categories).where(categories: { id: params{:category_id}} )
+      category = Category.find_by(id: params[:category_id])
+      @products = category.products
+      # @products = Product.includes(:categories).where(categories: { id: params{:category_id}} )
     else
       @products = Product.all
     end
