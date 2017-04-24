@@ -4,6 +4,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   describe ProductsController do
     let(:product) {products(:ice_floe)}
+    # let(:product) {products(:my_product)}
+    let(:sample_category) {categories(:exotic)}
 
     it "should get index" do
       get products_path
@@ -15,10 +17,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       must_respond_with :success
     end
 
-    it "should get show" do skip
-      get product_path(product.id)
-      must_respond_with :success
-    end
+      it "should filter by category" do
+        get category_products_path(sample_category.id)
+        must_respond_with :success
+      end
+
+      it "should get show" do skip
+        get product_path(product.id)
+        must_respond_with :success
+      end
 
     it "should show 404 when product not found" do
       get product_path(0)

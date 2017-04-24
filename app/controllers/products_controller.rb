@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
 
 
     if @product.id != nil
-
       if @product.save
         flash[:success] = "New product successfully added"
         redirect_to product_path(@product.id)
@@ -20,6 +19,12 @@ class ProductsController < ApplicationController
         flash.now[:error] = "Hmm.. something went wrong."
         render "root_"
       end
+    # resolving merge conflict but not sure which is correct version
+    #   flash[:success] = "New product successfully added"
+    #   redirect_to product_path(@product.id)
+    # else
+    #   flash.now[:error] = "Hmm.. something went wrong."
+    #   render "new"
     end
   end
 

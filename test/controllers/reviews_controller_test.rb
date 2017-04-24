@@ -11,9 +11,10 @@ describe ReviewsController do
     value(response).must_be :success?
   end
 
-  it "should get create" do skip 
+  it "should get create" do skip
     get reviews_create_url
     value(response).must_be :success?
   end
+
 
 end

@@ -1,12 +1,18 @@
 require "test_helper"
 
 describe Category do
+
   let(:category) { Category.new(name: "sweet") }
   let(:category2) { Category.new }
+  let(:new_category) { Category.new }
+
 
   it "must be valid" do
-    value(category).must_be :valid?
+    new_category.name = "happiness-inducing"
+    new_category.save
+    value(new_category).must_be :valid?
   end
+
 
   it "should require a name to create a new category" do
     category2.valid?.must_equal false
@@ -19,4 +25,9 @@ describe Category do
     category2.save.must_equal false
     category2.errors.messages.must_include :name
   end
+
+  # it "can be assigned to a product" do
+  #
+  # end
+
 end

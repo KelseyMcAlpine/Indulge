@@ -2,8 +2,9 @@ require "test_helper"
 
 describe Product do
   let(:product) { Product.new }
-  let(:existing_product) { products(:ice_floe) }
+  let(:existing_product) { products(:twinkies) }
   let(:vendor) { vendors(:polar_queen)}
+  let(:sample_category) { categories(:healthy)}
 
   it "must require a name" do
     product.valid?.must_equal false
@@ -51,9 +52,11 @@ describe Product do
   #
   # end
   #
-  # it "belongs to zero or more categories" do
-  #
-  # end
+  
+  it "has a category" do
+      existing_product.categories.must_include sample_category
+
+  end
 
 
 end

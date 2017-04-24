@@ -6,9 +6,12 @@
 #
 spa:
  name: spa
+ products: twinkies
 #
 exotic:
   name: exotic
+  products: ice_floe
 
 healthy:
   name: healthy
+  products: my_product, twinkies

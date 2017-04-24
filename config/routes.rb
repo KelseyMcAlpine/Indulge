@@ -13,15 +13,13 @@ Rails.application.routes.draw do
 
   resources :vendors, only: [:index, :show]
 
-  # do
-  #   get 'vendors/account/:id/products'
-  # end
+
   get "vendors/account/:id", to: "vendors#account", as: "vendor_account"
 
-  resources :categories, only: [:index, :new, :create] do
-    resources :products, only: [:index]
-  end
+
+  resources :categories, only: [:index, :new, :create]
 
 
+  get '/categories/:category_id/products', to: "categories#product_list", as: "category_products"
 
 end
