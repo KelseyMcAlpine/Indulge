@@ -6,8 +6,6 @@
 
 <%= form_for @product do | f | %>
 
-  <!-- Since vendor is creating new product, should be able to use their id from the URL -->
-
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -25,14 +23,11 @@
 
   <%= f.hidden_field :lifecycle, value: "available" %>
 
+  <!-- Since vendor is creating new product, should be able to use their id from the URL -->
+  <%= f.hidden_field :vendor_id, value: 1 %>
 
-  <!-- since this is a brand new item, it should be assumed that it is in the 'available' part of the lifecycle
-
-  <%= radio_button_tag(:lifecycle, "available") %>
-  <%= label_tag(:lifecycle, "avilable") %>
-  <%= radio_button_tag(:lifecycle, "unavailable") %>
-  <%= label_tag(:lifecycle, "unavailable") %> -->
+  <%= f.label :categories %>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
 
   <%= f.submit %>
-
 <% end %>

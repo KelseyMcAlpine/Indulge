@@ -4,22 +4,33 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   def create
-    @product = Product.create product_params
+    @product = Product.new(product_params)
+
 
     if @product.id != nil
-      flash[:success] = "New product successfully added"
-      redirect_to product_path(@product.id)
-    else
-      flash.now[:error] = "Hmm.. something went wrong."
-      render "new"
+
+      if @product.save
+        flash[:success] = "New product successfully added"
+        redirect_to product_path(@product.id)
+      else
+        flash.now[:error] = "Hmm.. something went wrong."
+        render "new"
+      end
     end
   end
 
   def index
-    @products = Product.all
+    if params[:category_id]
+      category = Category.find_by(id: params[:category_id])
+      @products = category.products
+      # @products = Product.includes(:categories).where(categories: { id: params{:category_id}} )
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -75,12 +86,11 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:vendor_id, :price, :inventory, :name, :description, :photo_url, :lifecycle)
+    params.require(:product).permit(:vendor_id, :price, :inventory, :name, :description, :photo_url, category_ids: [])
   end
-
-
 
   def find_product
     @product = Product.find_by_id params[:id]
+    # should return 404 if not found
   end
 end

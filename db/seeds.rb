@@ -6,9 +6,79 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Order.create ([
+  {
+    purchase_date: DateTime.new(2009,9,1,17),
+    status: "pending",
+    cust_email: "acb@sample.com",
+    cust_address: "123 happy lane, road road, WA 98123",
+    credit_card: 1111,
+    cc_expire: DateTime.new(2020, 6, 22)
+  },
+  {
+    purchase_date: DateTime.new(2010,9,1,17),
+    status: "cancelled",
+    cust_email: "dce@sample.com",
+    cust_address: "123 happy lane, road road, WA 98123",
+    credit_card: 4321,
+    cc_expire: DateTime.new(2019, 6, 22)
+  },
+  {
+    purchase_date: DateTime.new(2010,9,1,17),
+    status: "completed",
+    cust_email: "acb@sample.com",
+    cust_address: "123 happy lane, road road, WA 98123",
+    credit_card: 1234,
+    cc_expire: DateTime.new(2019, 6, 22)
+  },
+  {
+    purchase_date: DateTime.new(2010,9,1,17),
+    status: "completed",
+    cust_email: "acb@sample.com",
+    cust_address: "123 happy lane, road road, WA 98123",
+    credit_card: 1234,
+    cc_expire: DateTime.new(2019, 6, 22)
+  }
+  ])
+
+
+  # Order_products.create ([
+  #   {
+  #     product_id: Product.first,
+  #     order_id: Order.first,
+  #     quantity: 3
+  #   },
+  #   {
+  #     product_id: Product.last,
+  #     order_id: Order.first,
+  #     quantity: 2
+  #   },
+  #   {
+  #     product_id: Product.find(3),
+  #     order_id: Order.first,
+  #     quantity: 1
+  #   }
+  #
+  #   ])
+
+
+
+
 vendors = Vendor.create ([
   { username: "Polar Queen", email: "queen@seriouslyfreezing.com" },
-  { username: "Ranger Rick", email: "rr@raccoonspace.net"}
+  { username: "Ranger Rick", email: "rr@raccoonspace.net"},
+  { username: "Dwight Schrute", email: "schrutefarms@gmail.com"},
+  { username: "Jim Halpert", email: "jim@athlead.com"},
+  { username: "Pam Beasley", email: "Pam@prattinstitute.com"},
+  { username: "Michael Scott", email: "mscott@greatscottproductions.com"},
+  { username: "Kelly Kapoor", email: "kkapoor@businessbitch.com"},
+  { username: "Ryan Howard", email: "rhoward@gwhuf.edu"},
+  { username: "Andy Bernard", email: "narddog@cornell.edu"},
+  { username: "Kevin Malone", email: "bigbog69@fanduel.com"},
+  { username: "Angela Martin", email: "msmartin@lipton4PA.com"},
+  { username: "Toby Flenderson", email: "chadflenderson@flendersonfiles.com"},
+  { username: "Creed Bratton", email: "notcreedbratton@creedthoughts.gov"},
+  { username: "David Wallace", email: "dwallace@suckit.com"}
   ])
 
   Product.create ([
@@ -59,6 +129,7 @@ vendors = Vendor.create ([
     }
     ])
 
+
     vendors = [
       { username: "Dwight Schrute", email: "schrutefarms@gmail.com"},
       { username: "Jim Halpert", email: "jim@athlead.com"},
@@ -80,6 +151,17 @@ vendors = Vendor.create ([
 
     categories = Category.create([{ name: 'Spa' }, { name: 'Romantic Dinner' }, { name: 'Rock Climbing' }, { name: 'Dinner Cruise' }, { name: 'Shopping Excursion' }, { name: 'Night at the Museum' }, { name: 'Cupcake Night' }])
 
+
+
+     Category.create ([
+      { name: 'Spa' },
+      { name: 'Romantic Dinner' },
+      { name: 'Rock Climbing' },
+      { name: 'Dinner Cruise' },
+      { name: 'Shopping Excursion' },
+      { name: 'Night at the Museum' },
+      { name: 'Cupcake Night' }
+      ])
 
 
     reviews =  [
