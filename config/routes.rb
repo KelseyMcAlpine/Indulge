@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/cart', to: "orders#new", as: "cart"
+
   get 'reviews/index'
 
   get 'reviews/new'
