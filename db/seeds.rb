@@ -43,7 +43,6 @@ Order.create ([
 
 
 
-
 vendors = Vendor.create ([
   { username: "Polar Queen", email: "queen@seriouslyfreezing.com" },
   { username: "Ranger Rick", email: "rr@raccoonspace.net"},
