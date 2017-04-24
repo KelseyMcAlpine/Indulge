@@ -3,7 +3,7 @@ require "test_helper"
 class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   describe ProductsController do
-    let(:product) {products(:ice_floe)}
+    let(:product) {products(:my_product)}
     # let(:product) {products(:my_product)}
     let(:sample_category) {categories(:exotic)}
 
@@ -25,7 +25,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         must_respond_with :success
       end
 
-      it "should get show" do skip
+      it "should get show" do
         get product_path(product.id)
         must_respond_with :success
       end
