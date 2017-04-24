@@ -1,0 +1,9 @@
+<%= form_for @vendor do |f| %>
+<%= f.hidden_field :uid, value: @vendor.uid %>
+<%= f.hidden_field :provider, value: @vendor.provider %>
+<%= f.label :username %>
+<%= f.text_field :username %>
+<%= f.label :email %>
+<%= f.text_field :email %>
+<%= f.submit %>
+<% end %> 

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
 
-  resources :vendors, only: [:index, :show] do
+  resources :vendors, except: [:destroy] do
     get '/products', to: 'vendors#show'
   end
 
