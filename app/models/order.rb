@@ -9,16 +9,14 @@ class Order < ApplicationRecord
   #also that it is a valid address
   validates :credit_card, presence: true
   validates :cc_expire, presence: true
+  validate :expired?
 
-  private
 
-  def cc_expired? cc_expire
-    if cc_expire < Date.today
+  def expired?
+    if cc_expire <= Date.today
       return true
     else
-      false
+      return false
     end
   end
-
-
 end

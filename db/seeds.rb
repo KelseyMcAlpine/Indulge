@@ -30,6 +30,14 @@ Order.create ([
     cust_address: "123 happy lane, road road, WA 98123",
     credit_card: 1234,
     cc_expire: DateTime.new(2019, 6, 22)
+  },
+  {
+    purchase_date: DateTime.new(2010,9,1,17),
+    status: "completed",
+    cust_email: "acb@sample.com",
+    cust_address: "123 happy lane, road road, WA 98123",
+    credit_card: 1234,
+    cc_expire: DateTime.new(2019, 6, 22)
   }
   ])
 
@@ -101,7 +109,7 @@ vendors = Vendor.create ([
     }
     ])
 
-    categories = Category.create ([
+     Category.create ([
       { name: 'Spa' },
       { name: 'Romantic Dinner' },
       { name: 'Rock Climbing' },
