@@ -17,7 +17,7 @@ class VendorsController < ApplicationController
     params.require(:vendor).permit(:username, :email)
   end
 
-  def find_book
+  def find_vendor
     @vendor = Vendor.find_by_id params[:id]
   end
 

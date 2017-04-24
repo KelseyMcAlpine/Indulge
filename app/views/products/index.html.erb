@@ -1,9 +1,19 @@
 <h1>All Products</h1>
-  <% @products.each do |product| %>
-    <%= image_tag product.photo_url %>
-      <%= link_to product.name, product_path(product.id) %>
-      <%= product.price %>
-      <% product.categories.each do | category |  %>
-        <%= category.name %>
-      <% end %>
-  <% end %>
+  <ul>
+    <% @products.each do |product| %>
+      <%= image_tag product.photo_url %>
+      <li>
+         <%= link_to product.name, product_path(product.id) %>
+      </li>
+      <li>
+        <%= product.price %>
+      </li>
+      <li>
+        <% product.categories.each do | category |  %>
+          <%= category.name %>
+        <% end %>
+      </li>
+
+    <% end %>
+
+  </ul>
