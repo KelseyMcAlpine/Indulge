@@ -14,7 +14,13 @@ class VendorsController < ApplicationController
 
   end
 
-  def new
+  def new (auth_hash)
+    @vendor = Vendor.new
+    vendor.uid = auth_hash["uid"]
+    vendor.provider = auth_hash["provider"]
+    vendor.username = auth_hash[:info][:name]
+    vendor.email = auth_hash[:info][:email]
+    
   end
 
   private
