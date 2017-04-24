@@ -11,6 +11,9 @@ class Order < ApplicationRecord
   validates :cc_expire, presence: true
   validate :expired?
 
+  def subtotal
+    order_products.collect { | product | product.valid? ? (product.quantity * product.price) : 0 }.sum
+  end
 
   def expired?
     if cc_expire <= Date.today
