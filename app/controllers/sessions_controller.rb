@@ -14,5 +14,9 @@ class SessionsController < ApplicationController
         redirect_back(fallback_location: root_path)
       end
     end
+
+    session[:vendor_id] = vendor.id
+    flash[:success] = "Logged in successfully!"
+    redirect_to vendor_account_path(session[:vendor_id])
   end
-end 
+end
