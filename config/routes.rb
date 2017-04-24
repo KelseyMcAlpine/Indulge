@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   get 'reviews/create'
 
+  resources :products do
+    resources :reviews, only: [:new, :create]
+  end 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :products
   root 'products#index'

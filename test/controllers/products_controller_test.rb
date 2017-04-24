@@ -4,6 +4,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   describe ProductsController do
     let(:product) {products(:ice_floe)}
+    let(:vendor) {vendors(:polar_queen)}
 
     it "should get index" do
       get products_path
@@ -15,7 +16,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       must_respond_with :success
     end
 
-    it "should get show" do skip
+    it "should get show" do
       get product_path(product.id)
       must_respond_with :success
     end
@@ -38,12 +39,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           description:product.description,
           photo_url: product.photo_url,
           lifecycle: product.lifecycle,
-          vendor_id: product.vendor_id
+          vendor_id: vendor.id
           } }
           must_redirect_to products_path
         end
 
-        it "should affect the model when creating a product" do skip
+        it "should affect the model when creating a product" do
           proc {
             post products_path, params:  { product:
               { name: "Ski trip",
@@ -51,7 +52,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
                 inventory: "2",
                 description: "hehe",
                 photo_url: products(:ice_floe).photo_url,
-                lifecycle: "2",
+                lifecycle: "available",
                 vendor_id: products(:ice_floe).vendor_id
                 } }
               }.must_change 'Product.count', 1
