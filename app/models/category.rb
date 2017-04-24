@@ -1,4 +1,7 @@
 class Category < ApplicationRecord
   has_and_belongs_to_many :products
-  #validates :category, uniqueness: true, presence: true, format: {with: /\A[ a-zA-Z]+\z/, message: "only allows letters" }
+  # has_many :categories_products
+  # has_many :products, through: :categories_products
+
+  validates_presence_of :name
 end

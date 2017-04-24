@@ -4,6 +4,7 @@ describe Product do
   let(:product) { Product.new }
   let(:existing_product) { products(:ice_floe) }
   let(:vendor) { vendors(:polar_queen)}
+  let(:sample_category) { categories(:exotic)}
 
   it "must require a name" do
     product.valid?.must_equal false
@@ -51,8 +52,9 @@ describe Product do
   #
   # end
   #
-  # it "belongs to zero or more categories" do
-  #
+  # it "can be assigned to a category" do 
+  #   product.category = sample_category
+  #   product.category.must_equal "exotic"
   # end
 
 
