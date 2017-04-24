@@ -1,15 +1,18 @@
 class VendorsController < ApplicationController
 
-  before_action :find_vendor, only: [:show, :account]
-
-
   def index
     @vendors = Vendor.all
   end
 
-  def show; end
+  def show
+    @vendor = Vendor.find_by_id params[:vendor_id]
 
-  def account; end
+  end
+
+  def account
+    @vendor = Vendor.find_by_id params[:id]
+
+  end
 
   private
 
@@ -17,9 +20,6 @@ class VendorsController < ApplicationController
     params.require(:vendor).permit(:username, :email)
   end
 
-  def find_vendor
-    @vendor = Vendor.find_by_id params[:vendor_id]
-  end
 
 
 
