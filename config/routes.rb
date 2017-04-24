@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   resources :vendors, only: [:index, :show]
 
-  resources :categories, only: [:index, :new, :create] do
-    resources :products, only: [:index]
-  end
+  resources :categories, only: [:index, :new, :create]
+
+
+  get '/categories/:category_id/products', to: "categories#product_list", as: "category_products"
 
 
 

@@ -1,0 +1,5 @@
+<% @products.each do |product| %>
+  <%= image_tag product.photo_url %>
+    <%= link_to product.name, product_path(product.id) %>
+    <%= product.price %>
+<% end %>
