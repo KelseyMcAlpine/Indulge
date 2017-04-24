@@ -1,9 +1,15 @@
 require "test_helper"
 
 describe Category do
-  let(:category) { Category.new }
+  let(:new_category) { Category.new }
+  let(:product) { products(:ice_floe) }
+  let(:category) { categories(:exotic) }
 
   it "must be valid" do
-    value(category).must_be :valid?
+    value(new_category).must_be :valid?
+  end
+
+  it "can be assigned to a product" do
+    
   end
 end
