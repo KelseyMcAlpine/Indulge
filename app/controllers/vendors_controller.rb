@@ -14,28 +14,29 @@ class VendorsController < ApplicationController
 
   end
 
-  def new (auth_hash)
-    @vendor = Vendor.new
-    vendor.uid = auth_hash["uid"]
-    vendor.provider = auth_hash["provider"]
-    vendor.username = auth_hash[:info][:name]
-    vendor.email = auth_hash[:info][:email]
-
-  end
-
-  def create
-    @vendor = Vendor.create vendor_params
-
-    if @vendor.id != nil
-      flash[:success] = "vendor added"
-    end 
-  end
-
-  def edit
-  end
-
-  def update
-  end
+  # will revisit these controller actions
+  # def new (auth_hash)
+  #   @vendor = Vendor.new
+  #   @vendor.uid = auth_hash["uid"]
+  #   @vendor.provider = auth_hash["provider"]
+  #   @vendor.username = auth_hash[:info][:name]
+  #   @vendor.email = auth_hash[:info][:email]
+  #
+  # end
+  #
+  # def create
+  #   @vendor = Vendor.create vendor_params
+  #
+  #   if @vendor.id != nil
+  #     flash[:success] = "vendor added"
+  #   end
+  # end
+  #
+  # def edit
+  # end
+  #
+  # def update
+  # end
 
   private
 
