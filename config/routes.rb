@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :products
-  root 'products#index'
+  root 'home#index'
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
 
@@ -23,3 +23,5 @@ Rails.application.routes.draw do
 
 
   get '/categories/:category_id/products', to: "categories#product_list", as: "category_products"
+
+end
