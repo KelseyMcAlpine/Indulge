@@ -76,27 +76,67 @@ vendors = Vendor.create ([
 
     vendors.each do | vendor |
       vendor = Vendor.new
-    end 
+    end
 
-      categories = Category.create([{ name: 'Spa' }, { name: 'Romantic Dinner' }, { name: 'Rock Climbing' }, { name: 'Dinner Cruise' }, { name: 'Shopping Excursion' }, { name: 'Night at the Museum' }, { name: 'Cupcake Night' }])
+    categories = Category.create([{ name: 'Spa' }, { name: 'Romantic Dinner' }, { name: 'Rock Climbing' }, { name: 'Dinner Cruise' }, { name: 'Shopping Excursion' }, { name: 'Night at the Museum' }, { name: 'Cupcake Night' }])
 
 
 
-      reviews =  [
-        { rating: 1,
-          comment: "A great experience"
-        },
-        {
-          rating: 4,
-          comment: "Highly recommend"
-        },
-        {
-          rating: 5,
-          comment: "A new favorite"
-        }
-      ]
-      #
-      reviews.each do |review|
+    reviews =  [
+      { rating: 1,
+        product_id: 1,
+        comment: "A great experience"
+      },
+      {
+        product_id: 1,
+        rating: 4,
+        comment: "Highly recommend"
+      },
+      {
+        product_id: 1,
+        rating: 5,
+        comment: "A new favorite"
+      },
+      {
+        product_id: 1,
+        rating: 3,
+        comment: "Wow. Will cherish forever"
+      },
+      {
+        product_id: 1,
+        rating: 2,
+        comment: "Unforgettable experience"
+      },
+      {
+        product_id: 1,
+        rating: 5,
+        comment: "So indulgent"
+      },
+      {
+        product_id: 1,
+        rating: 4,
+        comment: "Can I go back now"
+      },
+      {
+        product_id: 1,
+        rating: 2,
+        comment: "Meh"
+      }
+    ]
+    #
+    reviews.each do |review|
 
-        review = Review.new
+      review = Review.new
+    end
+
+    success_count = 0
+    reviews.each do |review|
+      new_review = Review.create(review)
+
+      if new_review.id
+        success_count += 1
+        puts "#{new_review.comment} successfully added"
       end
+    end
+
+    puts "#{success_count} out of #{reviews.length} successfully added"

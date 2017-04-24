@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     @product = Product.create product_params
 
     if @product.id != nil
-      flash[:success] = "New product successfull added"
+      flash[:success] = "New product successfully added"
       redirect_to product_path(@product.id)
     else
       flash.now[:error] = "Hmm.. something went wrong."
@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
         flash[:success] = "Successfully updated #{@product.name}."
         redirect_to vendor_path(@product.vendor.id)
       else
-        flash[:error] = "Did not successfully updated #{@product.name}."
+        flash[:error] = "Did not successfully update #{@product.name}."
         render "show"
       end
     else
@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
         flash[:success] = "Successfully updated #{@product.name}."
         redirect_to vendor_path(@product.vendor.id)
       else
-        flash[:error] = "Did not successfully updated #{@product.name}."
+        flash[:error] = "Did not successfully update #{@product.name}."
         render "show"
       end
     end
