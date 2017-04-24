@@ -28,6 +28,9 @@ class ProductsController < ApplicationController
       category = Category.find_by(id: params[:category_id])
       @products = category.products
       # @products = Product.includes(:categories).where(categories: { id: params{:category_id}} )
+    elsif params[:vendor_id]
+      vendor = Vendor.find_by(id: params[:vendor_id])
+      @products = vendor.products
     else
       @products = Product.all
     end
