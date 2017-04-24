@@ -42,6 +42,27 @@ Order.create ([
   ])
 
 
+  # Order_products.create ([
+  #   {
+  #     product_id: Product.first,
+  #     order_id: Order.first,
+  #     quantity: 3
+  #   },
+  #   {
+  #     product_id: Product.last,
+  #     order_id: Order.first,
+  #     quantity: 2
+  #   },
+  #   {
+  #     product_id: Product.find(3),
+  #     order_id: Order.first,
+  #     quantity: 1
+  #   }
+  #
+  #   ])
+
+
+
 
 vendors = Vendor.create ([
   { username: "Polar Queen", email: "queen@seriouslyfreezing.com" },
