@@ -22,6 +22,8 @@
   <%= f.url_field :photo_url %>
 
   <%= f.hidden_field :lifecycle, value: "available" %>
+  <!-- <%= f.hidden_field :vendor_id, value: the id of the person who is logged in %> -->
+
 
   <!-- Since vendor is creating new product, should be able to use their id from the URL -->
   <%= f.hidden_field :vendor_id, value: 1 %>
