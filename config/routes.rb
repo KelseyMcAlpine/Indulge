@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   # get 'reviews/create'
 
+   get "/auth/github/callback", to: "sessions#create"
+
+
   resources :products do
     resources :reviews, only: [:new, :create]
   end
