@@ -18,7 +18,7 @@ class VendorsController < ApplicationController
   end
 
   def find_vendor
-    @vendor = Vendor.find_by_id params[:id]
+    @vendor = Vendor.find_by_id params[:vendor_id]
   end
 
 

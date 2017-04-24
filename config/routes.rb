@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 
   resources :vendors, only: [:index, :show] do
-    get '/products', to: 'products#index'
+    get '/products', to: 'vendors#show'
   end
 
 
