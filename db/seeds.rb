@@ -6,6 +6,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Order.create ([
+  {
+    purchase_date: DateTime.new(2009,9,1,17),
+    status: "pending",
+    cust_email: "acb@sample.com",
+    cust_address: "123 happy lane, road road, WA 98123",
+    credit_card: 1111,
+    cc_expire: DateTime.new(2020, 6, 22)
+  },
+  {
+    purchase_date: DateTime.new(2010,9,1,17),
+    status: "cancelled",
+    cust_email: "dce@sample.com",
+    cust_address: "123 happy lane, road road, WA 98123",
+    credit_card: 4321,
+    cc_expire: DateTime.new(2019, 6, 22)
+  },
+  {
+    purchase_date: DateTime.new(2010,9,1,17),
+    status: "completed",
+    cust_email: "acb@sample.com",
+    cust_address: "123 happy lane, road road, WA 98123",
+    credit_card: 1234,
+    cc_expire: DateTime.new(2019, 6, 22)
+  }
+  ])
+
+
+
+
 vendors = Vendor.create ([
   { username: "Polar Queen", email: "queen@seriouslyfreezing.com" },
   { username: "Ranger Rick", email: "rr@raccoonspace.net"},
