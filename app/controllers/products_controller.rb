@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = Product.create(product_params)
 
 
     if @product.id != nil
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
         redirect_to product_path(@product.id)
       else
         flash.now[:error] = "Hmm.. something went wrong."
-        render "new"
+        render "root_"
       end
     end
   end
