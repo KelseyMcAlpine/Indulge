@@ -20,15 +20,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       must_respond_with :success
     end
 
-      it "should filter by category" do
-        get category_products_path(sample_category.id)
-        must_respond_with :success
-      end
+    it "should filter by category" do
+      get category_products_path(sample_category.id)
+      must_respond_with :success
+    end
 
-      it "should get show" do
-        get product_path(product.id)
-        must_respond_with :success
-      end
+    it "should get show" do
+      get product_path(product.id)
+      must_respond_with :success
+    end
 
 
     it "should show 404 when product not found" do
