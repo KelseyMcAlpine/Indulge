@@ -52,10 +52,14 @@ describe Product do
   #
   # end
   #
-  # it "can be assigned to a category" do 
-  #   product.category = sample_category
-  #   product.category.must_equal "exotic"
+  # it "can be assigned to a category" do
+  #   product.categories = [sample_category]
+  #   product.categories.must_equal ["exotic"]
   # end
+  it "has a category" do
+      product.categories.must_equal ["exotic"]
+
+  end
 
 
 end

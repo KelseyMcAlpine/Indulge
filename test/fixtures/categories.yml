@@ -6,6 +6,7 @@
 #
 spa:
  name: spa
+ products: twinkies
 #
 exotic:
   name: exotic
@@ -13,4 +14,4 @@ exotic:
 
 healthy:
   name: healthy
-  products: my_product
+  products: my_product, twinkies
