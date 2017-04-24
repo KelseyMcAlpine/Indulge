@@ -16,10 +16,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         must_respond_with :success
       end
 
-      it "should show 404 when category not found" do
-        get category_products_path(0)
-        must_respond_with :missing
-      end
 
       it "should get show" do skip
         get product_path(product.id)

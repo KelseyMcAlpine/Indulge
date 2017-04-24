@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     @product = Product.create product_params
 
     if @product.id != nil
-      flash[:success] = "New product successfull added"
+      flash[:success] = "New product successfully added"
       redirect_to product_path(@product.id)
     else
       flash.now[:error] = "Hmm.. something went wrong."
@@ -19,7 +19,14 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+      if params[:category_id]
+        @products = Product.includes(:categories).where(categories: { id: params[:category_id]} )
+        if @products = []
+          flash[:error] = "There are no products in that category."
+        end
+      else
+        @products = Product.all
+      end
   end
 
   def show
@@ -55,7 +62,7 @@ class ProductsController < ApplicationController
         flash[:success] = "Successfully updated #{@product.name}."
         redirect_to vendor_path(@product.vendor.id)
       else
-        flash[:error] = "Did not successfully updated #{@product.name}."
+        flash[:error] = "Did not successfully update #{@product.name}."
         render "show"
       end
     else
@@ -64,7 +71,7 @@ class ProductsController < ApplicationController
         flash[:success] = "Successfully updated #{@product.name}."
         redirect_to vendor_path(@product.vendor.id)
       else
-        flash[:error] = "Did not successfully updated #{@product.name}."
+        flash[:error] = "Did not successfully update #{@product.name}."
         render "show"
       end
     end
