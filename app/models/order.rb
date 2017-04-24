@@ -15,6 +15,9 @@ class Order < ApplicationRecord
     order_products.collect { | product | product.valid? ? (product.quantity * product.price) : 0 }.sum
   end
 
+  # def change_order_status
+  # end
+
   def expired?
     if cc_expire <= Date.today
       return true
