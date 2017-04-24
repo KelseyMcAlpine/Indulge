@@ -14,6 +14,9 @@ class VendorsController < ApplicationController
 
   end
 
+  def new
+  end
+
   private
 
   def vendor_params
