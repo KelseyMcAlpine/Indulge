@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   def index
       if params[:category_id]
         @products = Product.includes(:categories).where(categories: { id: params[:category_id]} )
-        if @products = []
+        if @products == []
           flash[:error] = "There are no products in that category."
         end
       else
