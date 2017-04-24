@@ -24,6 +24,18 @@
   <% end %>
   </ul>
 
+  <h3>Reviews:</h3>
+  <% if @product.reviews.empty? %>
+  <p>There are no reviews yet. <%= link_to "Please be the first to review this product", new_product_review_path(@product.id) %>
+    <% else %>
+    <% @product.reviews.each do |review| %>
+    <%= review.rating %>
+    <%= review.comment %>
+    <% end %>
+    <% end %>
+  </p>
+
 </p>
+<%= link_to "Review this product!", new_product_review_path(@product.id) %>
 <%= link_to "Delete", product_path(@product.id), data: { confirm: "Are you sure you want to delete this product?"
 }, method: :delete %>

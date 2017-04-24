@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
 
   def create
   #need to link review to product somehow
-    @review = Review.new(review_params)
+    @review = Review.new(reviews_params)
     @product = Product.find(params[:product_id])
     @review.product_id = @product.id
      #this will link product to review method, is this the best way??
