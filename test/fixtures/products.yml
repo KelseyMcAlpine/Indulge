@@ -6,7 +6,7 @@
 #
 
 ice_floe:
-  vendor_id: 1
+  vendor: polar_queen
   price: 1800
   inventory: 4
   name: "Dinner on an Ice Floe with a Polar Bear"
