@@ -130,26 +130,26 @@ vendors = Vendor.create ([
     ])
 
 
-    vendors = [
-      { username: "Dwight Schrute", email: "schrutefarms@gmail.com"},
-      { username: "Jim Halpert", email: "jim@athlead.com"},
-      { username: "Pam Beasley", email: "Pam@prattinstitute.com"},
-      { username: "Michael Scott", email: "mscott@greatscottproductions.com"},
-      { username: "Kelly Kapoor", email: "kkapoor@businessbitch.com"},
-      { username: "Ryan Howard", email: "rhoward@gwhuf.edu"},
-      { username: "Andy Bernard", email: "narddog@cornell.edu"},
-      { username: "Kevin Malone", email: "bigbog69@fanduel.com"},
-      { username: "Angela Martin", email: "msmartin@lipton4PA.com"},
-      { username: "Toby Flenderson", email: "chadflenderson@flendersonfiles.com"},
-      { username: "Creed Bratton", email: "notcreedbratton@creedthoughts.gov"},
-      { username: "David Wallace", email: "dwallace@suckit.com"}
-    ]
+    # vendors = [
+    #   { username: "Dwight Schrute", email: "schrutefarms@gmail.com"},
+    #   { username: "Jim Halpert", email: "jim@athlead.com"},
+    #   { username: "Pam Beasley", email: "Pam@prattinstitute.com"},
+    #   { username: "Michael Scott", email: "mscott@greatscottproductions.com"},
+    #   { username: "Kelly Kapoor", email: "kkapoor@businessbitch.com"},
+    #   { username: "Ryan Howard", email: "rhoward@gwhuf.edu"},
+    #   { username: "Andy Bernard", email: "narddog@cornell.edu"},
+    #   { username: "Kevin Malone", email: "bigbog69@fanduel.com"},
+    #   { username: "Angela Martin", email: "msmartin@lipton4PA.com"},
+    #   { username: "Toby Flenderson", email: "chadflenderson@flendersonfiles.com"},
+    #   { username: "Creed Bratton", email: "notcreedbratton@creedthoughts.gov"},
+    #   { username: "David Wallace", email: "dwallace@suckit.com"}
+    # ]
+    #
+    # vendors.each do | vendor |
+    #   vendor = Vendor.new
+    # end
 
-    vendors.each do | vendor |
-      vendor = Vendor.new
-    end
-
-    categories = Category.create([{ name: 'Spa' }, { name: 'Romantic Dinner' }, { name: 'Rock Climbing' }, { name: 'Dinner Cruise' }, { name: 'Shopping Excursion' }, { name: 'Night at the Museum' }, { name: 'Cupcake Night' }])
+    # categories = Category.create([{ name: 'Spa' }, { name: 'Romantic Dinner' }, { name: 'Rock Climbing' }, { name: 'Dinner Cruise' }, { name: 'Shopping Excursion' }, { name: 'Night at the Museum' }, { name: 'Cupcake Night' }])
 
 
 
