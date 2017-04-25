@@ -1,11 +1,14 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: [:add_product_order, :remove_product_order]
+  before_action :find_order, only: [:add_product_order, :remove_product_order, :show]
 
   def index
     params[:vendor_id]
     vendor = Vendor.find_by(id: params[:vendor_id])
     @orders = vendor.orders
   end
+
+  def show
+  end 
 
   def add_product_order
     if check_avail

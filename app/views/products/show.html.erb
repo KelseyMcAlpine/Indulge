@@ -13,6 +13,9 @@
   <li>
     <%= @product.price %>
   </li>
+  <li>
+    quantity available: <%= @product.inventory %>
+  </li>
     <li>
       sold by: <%= link_to @product.vendor.username, vendor_path(@product.vendor.id) %>
     </li>
@@ -33,6 +36,7 @@
     <%= review.comment %>
     <% end %>
     <% end %>
+
   </p>
 
 </p>

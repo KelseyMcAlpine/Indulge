@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "vendors/account/:id", to: "vendors#account", as: "vendor_account"
 
   resources :categories, only: [:index, :new, :create]
+  resources :orders
 
 
   get '/categories/:category_id/products', to: "categories#product_list", as: "category_products"

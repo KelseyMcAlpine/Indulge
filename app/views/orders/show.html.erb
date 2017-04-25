@@ -1,0 +1,11 @@
+<h1>Cart</h1>
+
+<% @order.products.each do |product| %>
+  <% if product.status == "pending" %>
+  <%= product.name %>
+  <%else %>
+   <p>
+     "you have not added any items to your cart"
+   </p>
+  <% end %>
+<% end %>
