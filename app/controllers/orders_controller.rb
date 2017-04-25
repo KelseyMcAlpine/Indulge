@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: [:add_product_order, :remove_product_order, :show]
+  before_action :find_order_product, only: [:show, :change_cart_quantity]
 
   def index
     params[:vendor_id]
@@ -9,6 +10,7 @@ class OrdersController < ApplicationController
 
   def show
     find_order
+    @op = @order.order_products.where(product_id: params[:product_id], order_id: @order.id).first
   end
 
   def add_product_order
@@ -29,16 +31,21 @@ class OrdersController < ApplicationController
     end
   end
 
-  # def increase_quantity
-  # end
+  def change_cart_quantity
+    @op.quantity = params[:quantity]
+  end
 
   def remove_product_order
     op = @order.order_products.where(product_id: params[:product_id], order_id: @order.id).first
     op[:quantity] -= 1
-    op.save
-    add_product_inventory(params[:product_id])
-    flash[:success] = "Product removed from cart"
-    redirect_to root_path
+    if op.save
+      add_product_inventory(params[:product_id])
+      flash[:success] = "Product removed from cart"
+    else
+      flash.now[:error] = "unable to remove from cart"
+    end
+      redirect_to root_path
+
   end
 
   def clear_cart
@@ -84,9 +91,13 @@ class OrdersController < ApplicationController
 
   def find_order
     # if session[:order_id]
-    @order = Order.find(2)
+    @order = Order.find(1)
     # else
-    #   @order = Order.new
+      # @order = Order.new
     # end
+  end
+
+  def find_order_product
+    @op = @order.order_products.where(product_id: params[:product_id], order_id: @order.id).first
   end
 end
