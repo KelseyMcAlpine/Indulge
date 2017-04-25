@@ -8,11 +8,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-  end 
+    find_order
+  end
 
   def add_product_order
     if check_avail
-      @order.product_ids = params[:id]
+      @order.products << Product.find(params[:product_id])
       @order.save
       remove_product_inventory(params[:product_id])
       flash[:success] = "Item added to cart"
@@ -53,6 +54,9 @@ class OrdersController < ApplicationController
     end
   end
 
+  def checkout
+  end
+
   private
 
   def check_avail
@@ -66,10 +70,10 @@ class OrdersController < ApplicationController
   end
 
   def find_order
-    if session[:order_id]
-      @order = Order.find(session[:order_id])
-    else
-      @order = Order.new
-    end
+    # if session[:order_id]
+      @order = Order.find(9)
+    # else
+    #   @order = Order.new
+    # end
   end
 end
