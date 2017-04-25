@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
     session[:vendor_id] = vendor.id
     flash[:success] = "Logged in successfully!"
-    redirect_to vendor_account_path(session[:vendor_id])
+    redirect_to vendor_account_path
   end
 
   def logout

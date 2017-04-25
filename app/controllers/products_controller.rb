@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.vendor_id = session[:vendor_id]
-    raise
+
     if @product.save
       flash[:success] = "New product successfully added"
       redirect_to product_path(@product.id)
@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     @product.inventory = product_params[:inventory]
     @product.name = product_params[:name]
     @product.description = product_params[:description]
-    @product.photo_url = product_params [:photo_url]
+    @product.photo_url = product_params[:photo_url]
     @product.category_ids = product_params[:category_ids]
 
     if @product.save
