@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'reviews/index'
 
-  # get 'reviews/new'
 
-  # get 'reviews/create'
   get "/auth/github/callback", to: "sessions#create"
 
   delete "/login", to: "sessions#logout", as: "logout"
