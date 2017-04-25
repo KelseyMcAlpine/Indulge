@@ -95,6 +95,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       get edit_product_path(product.id)
       must_respond_with :success
     end
+
+    it "should "
   end
 
 
