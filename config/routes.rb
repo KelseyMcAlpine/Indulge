@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   get 'reviews/create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :products
+  resources :products do
+    resources :orders, only: [:index]
+    post "/cart", to: "orders#add_product_order", as: "add_to_cart"
+  end
+
   root 'products#index'
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
