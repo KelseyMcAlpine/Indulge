@@ -6,14 +6,15 @@ class VendorsController < ApplicationController
   end
 
   def show
-      @vendor = current_vendor
-      # @vendor = Vendor.find_by_id params[:vendor_id]
+    @vendor = current_vendor
+    # @vendor = Vendor.find_by_id params[:vendor_id]
 
-      # @vendor = Vendor.find_by_id session[:vendor_id]
-    end
+    # @vendor = Vendor.find_by_id session[:vendor_id]
+  end
 
   def account
-    @vendor = Vendor.find_by_id params[:id]
+    # @vendor = Vendor.find_by_id params[:id]
+    @vendor = current_vendor
 
   end
 

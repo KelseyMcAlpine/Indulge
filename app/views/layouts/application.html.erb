@@ -25,9 +25,11 @@
         <%= link_to "Sign out", logout_path, method: :delete %>
         <% end %>
       </li>
-
-        <li><%= link_to "[Your account]", vendor_account_path(Vendor.find(1).id)%></li> <!--eventually replaced by session id -->
+      <% if session[:vendor_id] %>
+        <li><%= link_to "Your account", vendor_account_path%></li>
+        <% end %>
         <li><%= link_to "[Cart]", order_path(Order.last.id) %></li>
+
 
       </ul>
     </nav>
