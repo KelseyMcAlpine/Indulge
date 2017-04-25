@@ -1,21 +1,13 @@
 Rails.application.routes.draw do
-
-  get '/cart', to: "orders#new", as: "cart"
-
+  root 'home#index'
   get 'reviews/index'
 
   # get 'reviews/new'
 
   # get 'reviews/create'
 
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'home#index'
-
   resources :products do
     resources :reviews, only: [:new, :create]
-
     resources :orders, only: [:index]
     post "/cart", to: "orders#add_product_order", as: "add_to_cart"
   end
@@ -24,17 +16,10 @@ Rails.application.routes.draw do
 
 
   resources :vendors, only: [:index, :show] do
-<<<<<<< HEAD
     get '/products', to: 'vendors#show'
   end
 
-=======
-    resources :orders, only: [:index]
-  end
->>>>>>> km-cart
-
   get "vendors/account/:id", to: "vendors#account", as: "vendor_account"
-
 
   resources :categories, only: [:index, :new, :create]
 
