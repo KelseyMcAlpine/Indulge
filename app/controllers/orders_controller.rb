@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: [:add_product_order, :remove_product_order, :show]
+  before_action :find_order, only: [:add_product_order, :remove_product_order, :show, :checkout, :update]
   before_action :find_order_product, only: [:show, :change_cart_quantity]
 
   def index
@@ -79,9 +79,37 @@ class OrdersController < ApplicationController
   end
 
   def checkout
+    raise
+    if @order.order_products.count < 1
+
+      flash[:error] = "No items in cart"
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @order.purchase_date = purchase_params[:purchase_date]
+    @order.status = purchase_params[:status]
+    @order.cust_email = purchase_params[:cust_email]
+    @order.cust_address = purchase_params[:cust_address]
+    @order.credit_card = purchase_params[:credit_card]
+    @order.cc_expire = purchase_params[:cc_expire]
+
+    if @order.save
+      flash[:success] = "Order Placed!"
+      redirect_to root_path
+      # change to confirmation page eventually
+    else
+      flash.now[:error] = "Something went wrong"
+      render "checkout"
+    end
   end
 
   private
+
+  def purchase_params
+    params.require(:order).permit(:purchase_date, :status, :cust_email, :cust_address, :credit_card, :cc_expire)
+  end
 
   def check_avail
     p = Product.find_by_id(params[:product_id])

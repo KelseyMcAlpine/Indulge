@@ -23,3 +23,6 @@
 <% if @order.status != "pending" %>
   <p>"you have not added any items to your cart"</p>
 <% end %>
+<% if @order.order_products != nil %>
+<%= link_to "Checkout", order_checkout_path(@order.id) %>
+<% end %>
