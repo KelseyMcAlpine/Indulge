@@ -8,24 +8,15 @@
   </tr>
   <% if @order.status == "pending"%>
   <% @order.order_products.each do | order_product | %>
-    <% if order_product.quantity >= 1 %>
   <tr>
     <td><%= Product.find(order_product.product_id).name %></td>
+
     <td>
-      <% @op = @order.order_products.first %>
-      <% form_for @op do |f| %>
-      <%= f.label :quantity %>
-      <%= f.select :quantity, (0..Product.find_by(@op.product_id).inventory) %>
-      <%= f.submit %>
-      <%end%>
-    </td>
-    <!-- <td>
       <%= link_to "+", product_add_to_cart_path(order_product.product_id), method: :post %>
       <%= order_product.quantity %>
       <%= link_to "-", product_remove_from_cart_path(order_product.product_id), method: :post %></td>
-    <td><%= Product.find(order_product.product_id).price * order_product.quantity %></td> -->
+    <td><%= Product.find(order_product.product_id).price * order_product.quantity %></td>
   </tr>
-      <% end %>
     <% end %>
   <% end %>
 </table>

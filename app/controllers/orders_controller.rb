@@ -14,20 +14,20 @@ class OrdersController < ApplicationController
   end
 
   def add_product_order
-    if check_avail
-      o = OrderProduct.create
-      o.product_id = params[:product_id]
-      o.order_id = @order.id
-      o.quantity = 1
-      o.save
-      @order.order_products << o
-      if @order.save
-        remove_product_inventory(params[:product_id])
-        flash[:success] = "Item added to cart"
+    if @order.order_products.find_by_product_id(params[:product_id]) != nil
+
+      if check_avail
+        find_order_product
+        @op.quantity += 1
+        @op.save
+        flash[:success] = "quantity increased"
+        redirect_to root_path
       else
-        flash.now[:error] = "Product not available"
+        flash[:error] = "not enough inventory"
+        redirect_to root_path
       end
-      redirect_to root_path
+    else
+      create_order_product
     end
   end
 
@@ -36,16 +36,20 @@ class OrdersController < ApplicationController
   end
 
   def remove_product_order
-    op = @order.order_products.where(product_id: params[:product_id], order_id: @order.id).first
-    op[:quantity] -= 1
-    if op.save
-      add_product_inventory(params[:product_id])
-      flash[:success] = "Product removed from cart"
+    op = @order.order_products.find_by_product_id(params[:product_id])
+    if op.quantity > 1
+      op.quantity -= 1
+      if op.save
+        add_product_inventory(params[:product_id])
+        flash[:success] = "Quantity 1 removed from cart"
+      else
+        flash[:error] = "Unable to remove from cart"
+      end
     else
-      flash.now[:error] = "unable to remove from cart"
+      op.destroy
+      flash[:success] = "Product removed from cart"
     end
-      redirect_to root_path
-
+    redirect_to root_path
   end
 
   def clear_cart
@@ -99,5 +103,21 @@ class OrdersController < ApplicationController
 
   def find_order_product
     @op = @order.order_products.where(product_id: params[:product_id], order_id: @order.id).first
+  end
+
+  def create_order_product
+    o = OrderProduct.create
+    o.product_id = params[:product_id]
+    o.order_id = @order.id
+    o.quantity = 1
+    o.save
+    @order.order_products << o
+    if @order.save
+      remove_product_inventory(params[:product_id])
+      flash[:success] = "Item added to cart"
+    else
+      flash[:error] = "Unable to add item to cart"
+    end
+    redirect_to root_path
   end
 end
