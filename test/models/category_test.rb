@@ -9,7 +9,7 @@ describe Category do
 
 
   it "must be valid" do
-    new_category.name = "happiness-inducing"
+    new_category.name = "spicy"
     new_category.save
     value(new_category).must_be :valid?
   end
