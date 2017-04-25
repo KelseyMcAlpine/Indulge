@@ -68,7 +68,15 @@ class OrdersController < ApplicationController
   end
 
   def manage_orders
-    @manage_orders = OrderProducts.find_by_vendor_id(params[:vendor_id])
+    @manage_orders = []
+    orders = Order.all
+    orders.each do | order |
+      order.order_products.each do | each_order_product |
+        raise
+      end
+      @manage_orders << each_order_product
+    end
+    return @manage_orders
   end
 
   def create
