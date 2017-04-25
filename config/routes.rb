@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
     resources :orders, only: [:index]
     post "/add", to: "orders#add_product_order", as: "add_to_cart"
-    post "/remove", to: "orders#removed_product_order", as: "remove_from_cart"
+    post "/remove", to: "orders#remove_product_order", as: "remove_from_cart"
   end
 
   post "/products/:id", to: "products#update_availability", as: "update_availability"

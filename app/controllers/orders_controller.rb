@@ -33,8 +33,12 @@ class OrdersController < ApplicationController
   # end
 
   def remove_product_order
-    @order.order_products.first.delete(params[:id])
-    add_product_inventory(params[:id])
+    op = @order.order_products.where(product_id: params[:product_id], order_id: @order.id).first
+    op[:quantity] -= 1
+    op.save
+    add_product_inventory(params[:product_id])
+    flash[:success] = "Product removed from cart"
+    redirect_to root_path
   end
 
   def clear_cart
@@ -70,7 +74,7 @@ class OrdersController < ApplicationController
 
   def check_avail
     p = Product.find_by_id(params[:product_id])
-    return true if p.inventory > 1
+    return true if p.inventory > 0
     return false
   end
 
@@ -80,7 +84,7 @@ class OrdersController < ApplicationController
 
   def find_order
     # if session[:order_id]
-    @order = Order.find(9)
+    @order = Order.find(2)
     # else
     #   @order = Order.new
     # end

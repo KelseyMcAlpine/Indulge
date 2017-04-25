@@ -17,7 +17,7 @@ Order.create ([
   },
   {
     purchase_date: DateTime.new(2010,9,1,17),
-    status: "cancelled",
+    status: "pending",
     cust_email: "dce@sample.com",
     cust_address: "123 happy lane, road road, WA 98123",
     credit_card: 4321,

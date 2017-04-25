@@ -7,7 +7,7 @@
     <th>Price</th>
   </tr>
   <% if @order.status == "pending" %>
-  <% @order.order_products.each do |order_product| %>
+  <% @order.order_products.each do | order_product | %>
   <tr>
     <td><%= Product.find(order_product.product_id).name %></td>
     <td>
