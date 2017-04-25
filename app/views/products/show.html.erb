@@ -17,7 +17,7 @@
     quantity available: <%= @product.inventory %>
   </li>
     <li>
-      sold by: <%= link_to @product.vendor.username, vendor_path(@product.vendor.id) %>
+      sold by: <%= link_to @product.vendor.username, vendor_products_path(@product.vendor.id) %>
     </li>
     Categories:
   </ul>
