@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: [:add_product_order, :remove_product_order, :show, :checkout, :update]
+  before_action :current_order, only: [:add_product_order, :remove_product_order, :show, :checkout, :update]
   before_action :find_order_product, only: [:show, :change_cart_quantity]
 
   def index
@@ -79,7 +79,7 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    raise
+
     if @order.order_products.count < 1
 
       flash[:error] = "No items in cart"
@@ -96,6 +96,7 @@ class OrdersController < ApplicationController
     @order.cc_expire = purchase_params[:cc_expire]
 
     if @order.save
+      session[:order_id] = nil
       flash[:success] = "Order Placed!"
       redirect_to root_path
       # change to confirmation page eventually
@@ -121,12 +122,8 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:purchase_date, :status, :cust_email, :cust_address, :credit_card, :cc_expire)
   end
 
-  def find_order
-    # if session[:order_id]
-    @order = Order.find(1)
-    # else
-      # @order = Order.new
-    # end
+  def current_order
+    @order = Order.find_by_id(session[:order_id])
   end
 
   def find_order_product
