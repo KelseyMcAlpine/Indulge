@@ -13,18 +13,27 @@ class OrdersController < ApplicationController
 
   def add_product_order
     if check_avail
-      @order.products << Product.find(params[:product_id])
-      @order.save
-      remove_product_inventory(params[:product_id])
-      flash[:success] = "Item added to cart"
-    else
-      flash.now[:error] = "Product not available"
+      o = OrderProduct.create
+      o.product_id = params[:product_id]
+      o.order_id = @order.id
+      o.quantity = 1
+      o.save
+      @order.order_products << o
+      if @order.save
+        remove_product_inventory(params[:product_id])
+        flash[:success] = "Item added to cart"
+      else
+        flash.now[:error] = "Product not available"
+      end
+      redirect_to root_path
     end
-    redirect_to :back
   end
 
+  # def increase_quantity
+  # end
+
   def remove_product_order
-    @order.product_ids.first.delete(params[:id])
+    @order.order_products.first.delete(params[:id])
     add_product_inventory(params[:id])
   end
 
@@ -71,7 +80,7 @@ class OrdersController < ApplicationController
 
   def find_order
     # if session[:order_id]
-      @order = Order.find(9)
+    @order = Order.find(9)
     # else
     #   @order = Order.new
     # end
