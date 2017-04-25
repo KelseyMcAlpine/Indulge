@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/auth/github/callback", to: "sessions#create"
 
   delete "/login", to: "sessions#logout", as: "logout"
-  
+
 
   resources :products do
     resources :reviews, only: [:new, :create]
@@ -18,8 +18,9 @@ Rails.application.routes.draw do
 
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
+  get '/vendor', to: 'vendors#show', as: 'vendor'
 
-  resources :vendors, only: [:index, :show] do
+  resources :vendors, only: [:index] do
     get '/products', to: 'vendors#show'
   end
 
