@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     @product.inventory = product_params[:inventory]
     @product.name = product_params[:name]
     @product.description = product_params[:description]
-    # @product.photo_url = product_params [:photo_url]
+    @product.photo_url = product_params [:photo_url]
     @product.category_ids = product_params[:category_ids]
 
     if @product.save
