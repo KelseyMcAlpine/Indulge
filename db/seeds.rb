@@ -140,6 +140,13 @@ vendors = Vendor.create ([
       { name: 'Cupcake Night' }
       ])
 
+      Product.all.each do |product|
+        (rand(3) + 1).times do
+          product.categories << Category.all.sample
+        end
+      end
+
+
 
     reviews =  [
       { rating: 1,
