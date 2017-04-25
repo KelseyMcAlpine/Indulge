@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :find_product, only: [:show, :edit, :update, :update_availability]
+  before_action :require_login, except: [:index, :show]#, :find_product]
 
   def new
     @product = Product.new
@@ -55,6 +56,7 @@ class ProductsController < ApplicationController
     @product.photo_url = product_params[:photo_url]
     @product.category_ids = product_params[:category_ids]
 
+
     if @product.save
       flash[:success] = "Successfully updated #{@product.name}."
       redirect_to product_path(@product.id) #this is the show page
@@ -93,7 +95,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:vendor_id, :price, :inventory, :name, :description, :photo_url, category_ids: [])
+    params.require(:product).permit(:vendor_id, :price, :inventory, :name, :description, :lifecycle, :photo_url, category_ids: [])
   end
 
   def find_product
