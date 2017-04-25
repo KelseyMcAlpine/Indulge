@@ -1,6 +1,8 @@
 <h1>Product Detail Page</h1>
 <p>
   <ul>
+    <%# if @product.lifecycle != "unavailable" %>
+    <%# raise %>
   <li>
     <%= image_tag @product.photo_url %>
   </li>
@@ -35,7 +37,7 @@
     <%= review.rating %>
     <%= review.comment %>
     <% end %>
-    <% end %>
+    <%# end %>
 
   </p>
 
@@ -44,3 +46,4 @@
 
 
 <%= link_to "Add to Cart", product_add_to_cart_path(params[:id]), method: :post%>
+<% end %>

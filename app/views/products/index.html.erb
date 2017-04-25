@@ -4,6 +4,8 @@
 
 <ul>
   <% @products.each do |product| %>
+  <%# raise %>
+    <% if product.lifecycle != "unavailable" %>
     <%= image_tag product.photo_url %>
     <li>
        <%= link_to product.name, product_path(product.id) %>
@@ -17,6 +19,7 @@
       <% end %>
     </li>
 
+  <% end %>
   <% end %>
 
 </ul>
