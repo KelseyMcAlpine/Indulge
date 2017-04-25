@@ -140,53 +140,56 @@ vendors = Vendor.create ([
       { name: 'Cupcake Night' }
       ])
 
+      Product.all.each do |product|
+        (rand(3) + 1).times do
+          product.categories << Category.all.sample
+        end
+      end
+
+
 
     reviews =  [
       { rating: 1,
-        product_id: 1,
+        product: Product.all.sample,
         comment: "A great experience"
       },
       {
-        product_id: 1,
+        product: Product.all.sample,
         rating: 4,
         comment: "Highly recommend"
       },
       {
-        product_id: 1,
+        product: Product.all.sample,
         rating: 5,
         comment: "A new favorite"
       },
       {
-        product_id: 1,
+        product: Product.all.sample,
         rating: 3,
         comment: "Wow. Will cherish forever"
       },
       {
-        product_id: 1,
+        product: Product.all.sample,
         rating: 2,
         comment: "Unforgettable experience"
       },
       {
-        product_id: 1,
+        product: Product.all.sample,
         rating: 5,
         comment: "So indulgent"
       },
       {
-        product_id: 1,
+        product: Product.all.sample,
         rating: 4,
         comment: "Can I go back now"
       },
       {
-        product_id: 1,
+        product: Product.all.sample,
         rating: 2,
         comment: "Meh"
       }
     ]
-    #
-    reviews.each do |review|
 
-      review = Review.new
-    end
 
     success_count = 0
     reviews.each do |review|

@@ -5,6 +5,7 @@ describe Product do
   let(:existing_product) { products(:twinkies) }
   let(:vendor) { vendors(:polar_queen)}
   let(:sample_category) { categories(:healthy)}
+  let(:new_category) { categories(:exotic)}
 
   it "must require a name" do
     product.valid?.must_equal false
@@ -52,10 +53,15 @@ describe Product do
   #
   # end
   #
-  
+
   it "has a category" do
       existing_product.categories.must_include sample_category
 
+  end
+
+  it "can be assigned a category" do
+    existing_product.categories << new_category
+    existing_product.categories.must_include new_category
   end
 
 
