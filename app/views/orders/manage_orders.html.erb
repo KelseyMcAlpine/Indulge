@@ -1,0 +1,28 @@
+<%= Vendor.name %>
+Total Revenue by status
+Total number of orders by status
+Filter orders displaed by status
+Link to each individual
+<% @manage_orders.each do | order | %>
+<%= order.id %>
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Date</th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <th>Order Status</th>
+    <th>Your Status</th>
+    <th>Edit Statuse</th>
+  </tr>
+  <tr>
+    <td><%= order.order_id %></td>
+    <td><%= order.created_at %></td>
+    <td><%=order.product_id %></td>
+    <td><%=order. %></td>
+    <td><%=order.order_id %></td>
+    <td><%=order.order_id %></td>
+  </tr>
+</table>

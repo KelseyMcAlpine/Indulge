@@ -67,6 +67,10 @@ class OrdersController < ApplicationController
     p.save
   end
 
+  def manage_orders
+    @manage_orders = OrderProducts.find_by_vendor_id(params[:vendor_id])
+  end
+
   def create
     @order = Order.create order_params
     unless @order.id == nil
