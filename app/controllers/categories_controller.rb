@@ -8,6 +8,12 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def show
+    if !@product
+      render_404
+    end
+  end
+
   def create
     @category = Category.create category_params
 
