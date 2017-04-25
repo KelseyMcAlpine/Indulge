@@ -22,11 +22,11 @@
   <%= f.url_field :photo_url %>
 
   <%= f.hidden_field :lifecycle, value: "available" %>
-  <!-- <%= f.hidden_field :vendor_id, value: the id of the person who is logged in %> -->
+  <%= f.hidden_field :vendor_id, value: session[:vendor_id] %>
 
 
   <!-- Since vendor is creating new product, should be able to use their id from the URL -->
-  <%= f.hidden_field :vendor_id, value: 1 %>
+  <!-- <%# f.hidden_field :vendor_id, value: 1 %> -->
 
   <%= f.label :categories %>
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
