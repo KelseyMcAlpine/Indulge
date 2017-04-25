@@ -7,6 +7,8 @@ class VendorsController < ApplicationController
 
   def show
     @vendor = Vendor.find_by_id params[:vendor_id]
+    # @vendor = @logged_in_vendor
+
 
   end
 

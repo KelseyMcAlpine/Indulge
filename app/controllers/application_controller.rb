@@ -1,13 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-   before_action :require_login
+  #  before_action :require_login
+  before_action :require_login, only: [:current_vendor]
   helper_method :current_vendor
 
   def require_login
     if !session[:vendor_id]
       flash[:warning] = "You must be logged in as a vendor to view this page"
-      redirect_to vendors_path
-      # redirect_back(fallback_location: root_path)
+      # redirect_to vendors_path
+      redirect_back(fallback_location: root_path)
     end
   end
 
