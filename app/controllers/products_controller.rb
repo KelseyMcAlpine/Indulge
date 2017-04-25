@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
 
   def destroy
     Product.destroy(params[:id])
-    redirect_to products_path
+    redirect_to vendor_path
   end
 
   def update_availability
