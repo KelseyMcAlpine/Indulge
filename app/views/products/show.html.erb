@@ -28,4 +28,4 @@
 <%= link_to "Delete", product_path(@product.id), data: { confirm: "Are you sure you want to delete this product?"
 }, method: :delete %>
 
-<%= link_to "Add to Cart", product_add_to_cart_path %>
+<%= link_to "Add to Cart", product_add_to_cart_path(params[:id]), method: :post%>

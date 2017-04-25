@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: [:add_product, :remove_product_order]
+  before_action :find_order, only: [:add_product_order, :remove_product_order]
 
   def index
     params[:vendor_id]
@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     if check_avail
       @order.product_ids = params[:id]
       @order.save
-      remove_product_inventory(params[:id])
+      remove_product_inventory(params[:product_id])
       flash[:success] = "Item added to cart"
     else
       flash.now[:error] = "Product not available"
@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
   private
 
   def check_avail
-    p = Product.find_by_id(params[:id])
+    p = Product.find_by_id(params[:product_id])
     return true if p.inventory > 1
     return false
   end
