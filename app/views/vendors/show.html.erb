@@ -2,24 +2,26 @@
 
 <h3> Vendor email:<%= @vendor.email %> </h3>
 <table>
-  <tr>
-    <th>Product</th>
-    <th>Product Image</th>
-    <th>Product Inventory</th>
-    <th>Product Description  </th>
-    <th>Product Lifecycle </th>
-    <th>Update Lifecycle </th>
-    <th>Update Product Details </th>
-    <th>Delete Product</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Product Image</th>
+      <th>Product Inventory</th>
+      <th>Product Description  </th>
+      <th>Product Lifecycle </th>
+      <th></th>
+      <th> </th>
+      <th></th>
+    </tr>
+  </thead>
 
-  <!-- add in rating eventually -->
 
   <% @vendor.products.each do |product| %>
   <tr>
-    <td> <%= product.name %></td>
+    <td> <%= link_to "#{product.name}", product_path(product.id) %></td>
     <td> <%= image_tag product.photo_url %> </td>
     <td> <%= product.inventory %> </td>
+    <!-- could be too long? -->
     <td> <%= product.description %> </td>
     <td> <%= product.lifecycle %> </td>
     <td>
