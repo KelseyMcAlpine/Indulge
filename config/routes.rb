@@ -15,18 +15,21 @@ Rails.application.routes.draw do
 
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
-  get '/vendor', to: 'vendors#show', as: 'vendor'
+
 
   resources :vendors, only: [:index] do
-    get '/products', to: 'vendors#show'
+    get '/products', to: 'products#index'
   end
+  get '/vendor', to: 'vendors#show', as: 'vendor'
 
   get "vendors/account/:id", to: "vendors#account", as: "vendor_account"
 
-  resources :categories, only: [:index, :new, :create]
+  resources :categories, only: [:index, :new, :create] do
+    get '/products', to: 'products#index'
+  end
+
   resources :orders
 
 
-  get '/categories/:category_id/products', to: "categories#product_list", as: "category_products"
 
 end
