@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
 
     if vendor.nil?
-      vendor = Vendor.create_from_github(auth_hash)
+      vendor = Vendor.new(auth_hash)
 
       if vendor.nil?
         flash[:error] = "Could not log you in"
@@ -18,11 +18,5 @@ class SessionsController < ApplicationController
     session[:vendor_id] = vendor.id
     flash[:success] = "Logged in successfully!"
     redirect_to vendor_account_path(session[:vendor_id])
-  end
-
-  def logout
-    session[:vendor_id] = nil
-    flash[:success] = "You are successfully logged out"
-    redirect_to root_path
   end
 end

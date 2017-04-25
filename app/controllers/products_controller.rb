@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     if @product.id != nil
       if @product.save
         flash[:success] = "New product successfully added"
-        redirect_to product_path(@product.id)
+        redirect_to products_path
       else
         flash.now[:error] = "Hmm.. something went wrong."
         render "new"
