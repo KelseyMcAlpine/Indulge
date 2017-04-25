@@ -19,15 +19,10 @@
   <%= f.text_area :description, size: "60x12" %>
 
   <%= f.label :photo_url %>
-  <!-- <%= f.url_field :photo_url %> -->
-  <%= f.text_field :photo_url %>
+  <%= f.url_field :photo_url %>
 
   <%= f.hidden_field :lifecycle, value: "available" %>
   <%= f.hidden_field :vendor_id, value: session[:vendor_id] %>
-
-
-  <!-- Since vendor is creating new product, should be able to use their id from the URL -->
-  <!-- <%# f.hidden_field :vendor_id, value: 1 %> -->
 
   <%= f.label :categories %>
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
