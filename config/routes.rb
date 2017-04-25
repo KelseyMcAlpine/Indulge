@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   # get 'reviews/new'
 
   # get 'reviews/create'
+  get "/auth/github/callback", to: "sessions#create"
+
+  delete "/login", to: "sessions#logout", as: "logout"
+  
 
   resources :products do
     resources :reviews, only: [:new, :create]
