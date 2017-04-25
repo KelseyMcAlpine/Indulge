@@ -5,6 +5,7 @@ describe Category do
   let(:category) { Category.new(name: "sweet") }
   let(:category2) { Category.new }
   let(:new_category) { Category.new }
+  let(:sample_product) { products(:twinkies) }
 
 
   it "must be valid" do
@@ -26,8 +27,12 @@ describe Category do
     category2.errors.messages.must_include :name
   end
 
-  # it "can be assigned to a product" do
-  #
-  # end
+
+  it "can be assigned to a product" do
+      category.products.must_equal []
+      category.products << sample_product
+      category.products.length.must_equal 1
+      category.products.first.name.must_equal sample_product.name
+  end
 
 end
