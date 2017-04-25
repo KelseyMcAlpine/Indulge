@@ -4,22 +4,21 @@
 
 <ul>
   <% @products.each do |product| %>
-  <%# raise %>
+
     <% if product.lifecycle != "unavailable" %>
-    <%= image_tag product.photo_url %>
-    <li>
-       <%= link_to product.name, product_path(product.id) %>
-    </li>
-    <li>
-      <%= product.price %>
-    </li>
-    <li>
-      <% product.categories.each do | category |  %>
-        <%= category.name %>
-      <% end %>
-    </li>
+      <%= image_tag product.photo_url %>
+      <li>
+         <%= link_to product.name, product_path(product.id) %>
+      </li>
+      <li>
+        <%= product.price %>
+      </li>
+      <li>
+        <% product.categories.each do | category |  %>
+          <%= category.name %>
+        <% end %>
+      </li>
 
+    <% end %>
   <% end %>
-  <% end %>
-
 </ul>

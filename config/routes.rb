@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-
   get "/auth/github/callback", to: "sessions#create"
-
   delete "/login", to: "sessions#logout", as: "logout"
 
 
@@ -16,13 +14,11 @@ Rails.application.routes.draw do
 
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
-
-
   resources :vendors, only: [:index] do
     get '/products', to: 'products#index'
   end
-  get '/vendor', to: 'vendors#show', as: 'vendor'
 
+  get '/vendor', to: 'vendors#show', as: 'vendor'
   get "vendors/account", to: "vendors#account", as: "vendor_account"
 
   resources :categories, only: [:index, :new, :create] do

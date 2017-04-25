@@ -1,32 +1,31 @@
 <h1>Product Detail Page</h1>
-<p>
+
   <ul>
-    <%# if @product.lifecycle != "unavailable" %>
-    <%# raise %>
-  <li>
-    <%= image_tag @product.photo_url %>
-  </li>
-  <li>
-    <%= @product.name %>
-  </li>
-  <li>
-    <%= @product.description %>
-  </li>
-  <li>
-    <%= @product.price %>
-  </li>
-  <li>
-    quantity available: <%= @product.inventory %>
-  </li>
     <li>
-      sold by: <%= link_to @product.vendor.username, vendor_products_path(@product.vendor.id) %>
+      <%= image_tag @product.photo_url %>
     </li>
-    Categories:
-  </ul>
+    <li>
+      <%= @product.name %>
+    </li>
+    <li>
+      <%= @product.description %>
+    </li>
+    <li>
+      <%= @product.price %>
+    </li>
+    <li>
+      quantity available: <%= @product.inventory %>
+    </li>
+      <li>
+        sold by: <%= link_to @product.vendor.username, vendor_products_path(@product.vendor.id) %>
+      </li>
+    </ul>
+
+  <h3>Categories:</h3>
   <ul>
-  <% @product.categories.each do |category| %>
-    <li> <%= category.name %> </li>
-  <% end %>
+    <% @product.categories.each do |category| %>
+      <li> <%= category.name %> </li>
+    <% end %>
   </ul>
 
   <h3>Reviews:</h3>
@@ -41,7 +40,7 @@
 
   </p>
 
-</p>
+
 <%= link_to "Review this product!", new_product_review_path(@product.id) %>
 
 
