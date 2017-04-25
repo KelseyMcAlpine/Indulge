@@ -8,24 +8,17 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(product_params)
+    @product = Product.new(product_params)
+    @product.vendor_id = session[:vendor_id]
 
-
-    if @product.id != nil
-      if @product.save
-        flash[:success] = "New product successfully added"
-        redirect_to product_path(@product.id)
-      else
-        flash.now[:error] = "Hmm.. something went wrong."
-        render "new"
-      end
-    # resolving merge conflict but not sure which is correct version
-    #   flash[:success] = "New product successfully added"
-    #   redirect_to product_path(@product.id)
-    # else
-    #   flash.now[:error] = "Hmm.. something went wrong."
-    #   render "new"
+    if @product.save
+      flash[:success] = "New product successfully added"
+      redirect_to product_path(@product.id)
+    else
+      flash.now[:error] = "Hmm.. something went wrong."
+      render "new"
     end
+
   end
 
   def index
