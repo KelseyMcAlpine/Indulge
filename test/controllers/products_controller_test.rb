@@ -31,13 +31,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     end
 
     it "should update a product" do
-      put product_path(products(:my_product).id), params: {product: {name: "nature break", description: "Relaxing"} }
+      put product_path(products(:my_product).id), params: {product: {name: "nature break", description: "Relaxing", price: 5} }
 
-      updated_product = Product(products(:my_product).id)
+      updated_product = Product.find(products(:my_product).id)
 
-      updated_product.name.must_equal
-     "nature break"
+      updated_product.name.must_equal"nature break"
      updated_product.description.must_equal "Relaxing"
+     updated_product.price.must_equal 5
 
       must_respond_with :redirect
     end
