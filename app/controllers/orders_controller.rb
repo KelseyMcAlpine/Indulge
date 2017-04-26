@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :current_order, only: [:add_product_order, :remove_product_order, :show, :checkout, :update]
   before_action :find_order_product, only: [:show, :change_cart_quantity]
+  before_action :require_login, only: [:manage_orders, :order_details, :update]
 
   def index
     params[:vendor_id]
@@ -74,15 +75,16 @@ class OrdersController < ApplicationController
 
   def manage_orders
     # vendor = Vendor.find_by_id(session[:vendor_id])
-    vendor = Vendor.find_by_id(params[:vendor_id])
-    @vendor_products = OrderProduct.where(product_id: vendor.product_ids)
+    @vendor = current_vendor
+    @vendor_products = OrderProduct.where(product_id: @vendor.product_ids)
     return @vendor_products
   end
 
   def order_details
     # vendor = Vendor.find_by_id(session[:vendor_id])
+    @vendor = current_vendor
     @order = Order.find_by_id(params[:id])
-    @vendor = Vendor.find_by_id(params[:vendor_id])
+    # @vendor = Vendor.find_by_id(params[:vendor_id])
   end
 
   def create

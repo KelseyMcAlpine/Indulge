@@ -15,14 +15,12 @@ Rails.application.routes.draw do
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
 
-  resources :vendors, only: [:index, :show] do
+  resources :vendors, only: [:index] do
     get '/products', to: 'products#index'
-    get '/orders', to: "orders#manage_orders", as: "manage_orders"
+  end
+
     get '/orders/:id', to: "orders#order_details", as: "order_details"
-  end 
-
-
-
+    get '/orders', to: "orders#manage_orders", as: "manage_orders"
     get '/vendor', to: 'vendors#show', as: 'vendor'
     get "vendors/account", to: "vendors#account", as: "vendor_account"
 
@@ -35,7 +33,6 @@ Rails.application.routes.draw do
       post '/purchase', to: "orders#update", as: "purchase"
     end
 
-    resources :orders
 
 
 
