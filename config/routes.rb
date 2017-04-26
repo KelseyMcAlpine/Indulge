@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     resources :orders do
       get '/checkout', to: "orders#checkout", as: "checkout"
       post '/purchase', to: "orders#update", as: "purchase"
+      get '/cart', to: "orders#show", as: "cart"
+
     end
 
 

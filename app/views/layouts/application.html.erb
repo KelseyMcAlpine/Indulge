@@ -27,13 +27,13 @@
         <% end %>
       </li>
 
-      <li><%= link_to "[Cart]", order_path(session[:order_id]) %></li>
+      <li><%= link_to "[Cart]", order_cart_path(session[:order_id]) %></li>
       <% if session[:vendor_id] %>
             <li><%= link_to "Your account", vendor_account_path%></li>
       <% end %>
     </ul>
   </nav>
-  
+
   <section class="flash">
     <% flash.each do |name, message| %>
     <div class="<%= name %>"><%= message %></div>
