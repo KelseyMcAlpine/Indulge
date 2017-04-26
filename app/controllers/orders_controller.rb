@@ -16,16 +16,20 @@ class OrdersController < ApplicationController
 
   def add_product_order
     if @order.order_products.find_by_product_id(params[:product_id]) != nil
-
       if check_avail
         find_order_product
         @op.quantity += 1
-        @op.save
-        flash[:success] = "quantity increased"
-        redirect_to :back
+        if @op.save
+          remove_product_inventory(params[:product_id])
+          flash[:success] = "Quantity increased"
+          redirect_to :back
+        else
+          flash[:error] = "Unable to add to cart"
+          redirect_to product_path(params[:product_id])
+        end
       else
-        flash[:error] = "not enough inventory"
-        render root_path
+        flash[:error] = "Not enough inventory"
+        redirect_to product_path(params[:product_id])
       end
     else
       create_order_product

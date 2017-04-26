@@ -36,13 +36,8 @@
     <%= review.rating %>
     <%= review.comment %>
     <% end %>
-    <%# end %>
-
+    <%= link_to "Review this product!", new_product_review_path(@product.id) %>
+    <% end %>
   </p>
 
-
-<%= link_to "Review this product!", new_product_review_path(@product.id) %>
-
-
 <%= link_to "Add to Cart", product_add_to_cart_path(params[:id]), method: :post%>
-<% end %>
