@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    find_order
     @op = @order.order_products.where(product_id: params[:product_id], order_id: @order.id).first
   end
 
@@ -31,9 +30,9 @@ class OrdersController < ApplicationController
     end
   end
 
-  def change_cart_quantity
-    @op.quantity = params[:quantity]
-  end
+  # def change_cart_quantity
+  #   @op.quantity = params[:quantity]
+  # end
 
   def remove_product_order
     op = @order.order_products.find_by_product_id(params[:product_id])
@@ -55,28 +54,28 @@ class OrdersController < ApplicationController
   def clear_cart
   end
 
-  def add_product_inventory(id)
-    p = Product.find_by_id(id)
-    p.inventory += 1
-    p.save
-  end
+  # def add_product_inventory(id)
+  #   p = Product.find_by_id(id)
+  #   p.inventory += 1
+  #   p.save
+  # end
+  #
+  # def remove_product_inventory(id)
+  #   p = Product.find_by_id(id)
+  #   p.inventory -= 1
+  #   p.save
+  # end
 
-  def remove_product_inventory(id)
-    p = Product.find_by_id(id)
-    p.inventory -= 1
-    p.save
-  end
-
-  def create
-    @order = Order.create order_params
-    unless @order.id == nil
-      flash[:sucess] = "Your order has been succesfully submitted"
-      redirect_to root_path
-    else
-      flash.now[:error] = "Error occured, try again".
-      render "new"
-    end
-  end
+  # def create
+  #   @order = Order.create order_params
+  #   unless @order.id == nil
+  #     flash[:sucess] = "Your order has been succesfully submitted"
+  #     redirect_to root_path
+  #   else
+  #     flash.now[:error] = "Error occured, try again".
+  #     render "new"
+  #   end
+  # end
 
   def checkout
 
@@ -87,7 +86,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
+  def update  # purchase
     @order.purchase_date = purchase_params[:purchase_date]
     @order.status = purchase_params[:status]
     @order.cust_email = purchase_params[:cust_email]

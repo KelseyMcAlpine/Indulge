@@ -86,7 +86,5 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
               must_respond_with :success
             end
           end
-
-
-
+        
         end
