@@ -8,7 +8,10 @@ class SessionsController < ApplicationController
 
 
     if vendor.nil?
+
+      logger.debug "Trying to create a vendor"
       vendor = Vendor.create_from_github(auth_hash)
+      logger.debug "Vendor Created: {vendor != nil}"
 
       if vendor.nil?
         flash[:error] = "Could not log you in"
@@ -27,5 +30,5 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  
+
 end
