@@ -1,5 +1,14 @@
 <!-- <h1>Welcome, <%= Vendor.find_by_id(session[:vendor_id])%>! </h1> -->
 <h1>Welcome, <%= Vendor.find_by_id(params[:vendor_id]).username%>! </h1>
+<h3>Total Revenue: <%= Vendor.find_by_id(params[:vendor_id]).total_rev %> </h3>
+<h3>View Orders By Status</h3>
+<ul>
+  <li>Pending</li>
+  <li>Paid</li>
+  <li>Completed</li>
+  <li>Cancelled</li>
+</ul>
+
 
 
 <table>
