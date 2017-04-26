@@ -96,7 +96,19 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       must_respond_with :success
     end
 
-    it "should "
+    it "product with no name should not affect the model" do
+
+    end
+
+    it "product with no price should not affect the model" do
+
+    end
+
+    it "product with no stock should not affect the model" do
+
+    end
+
+    it "Vendor cannot update attributes of another vendor's products"
   end
 
 
