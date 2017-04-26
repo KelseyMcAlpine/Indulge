@@ -75,9 +75,8 @@ class OrdersController < ApplicationController
   def manage_orders
     # vendor = Vendor.find_by_id(session[:vendor_id])
     vendor = Vendor.find_by_id(params[:vendor_id])
-    return OrderProduct.where(pro)
-
-
+    @vendor_products = OrderProduct.where(product_id: vendor.product_ids)
+    return @vendor_products
   end
 
   def create
