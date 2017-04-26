@@ -1,6 +1,6 @@
 <h1> Welcome! <%= @vendor.username %> </h1>
 <p>
-   <%= link_to "Manage Products", vendor_products_path(@vendor.id)%>
+   <%= link_to "Manage Products", vendor_path%>
 </p>
 <p>
    <%= link_to "Manage Orders", vendor_manage_orders(@vendor.id) %>

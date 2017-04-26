@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Betsy</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Betsy</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 
-  <body>
-    <nav>
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "All products", products_path %></li>
-        <li><%= link_to "Browse categories", categories_path %></li>
-        <li><%= link_to "Browse vendors", vendors_path %></li>
+<body>
+  <nav>
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "All products", products_path %></li>
+      <li><%= link_to "Browse categories", categories_path %></li>
+      <li><%= link_to "Browse vendors", vendors_path %></li>
 
       <li>
         <% unless session[:vendor_id] %>
         <%= link_to "Sign in", "/auth/github" %>
         <% else %>
         <%= link_to "Sign out", logout_path, method: :delete %>
-        <li><%= link_to "[Your account]", vendor_account_path(session[:vendor_id])%></li> <!--eventually replaced by session id -->
 
         <% end %>
       </li>
 
-        <li><%= link_to "[Cart]", order_path(session[:order_id]) %></li>
-
-      </ul>
-    </nav>
-    <section class="flash">
-      <% flash.each do |name, message| %>
-        <div class="<%= name %>"><%= message %></div>
+      <li><%= link_to "[Cart]", order_path(session[:order_id]) %></li>
+      <% if session[:vendor_id] %>
+            <li><%= link_to "Your account", vendor_account_path%></li>
       <% end %>
-    </section>
+    </ul>
+  </nav>
+  
+  <section class="flash">
+    <% flash.each do |name, message| %>
+    <div class="<%= name %>"><%= message %></div>
+    <% end %>
+  </section>
 
-    <%= yield %>
-  </body>
+  <%= yield %>
+</body>
 </html>

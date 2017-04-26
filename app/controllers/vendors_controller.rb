@@ -1,16 +1,21 @@
 class VendorsController < ApplicationController
+  before_action :require_login, except: [:index]
 
   def index
     @vendors = Vendor.all
   end
 
   def show
-    @vendor = Vendor.find_by_id params[:id]
 
+    @vendor = current_vendor
+    # @vendor = Vendor.find_by_id params[:vendor_id]
+
+    # @vendor = Vendor.find_by_id session[:vendor_id]
   end
 
   def account
-    @vendor = Vendor.find_by_id params[:id]
+    # @vendor = Vendor.find_by_id params[:id]
+    @vendor = current_vendor
 
   end
 

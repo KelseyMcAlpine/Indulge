@@ -1,30 +1,31 @@
 <h1>Product Detail Page</h1>
-<p>
+
   <ul>
-  <li>
-    <%= image_tag @product.photo_url %>
-  </li>
-  <li>
-    <%= @product.name %>
-  </li>
-  <li>
-    <%= @product.description %>
-  </li>
-  <li>
-    <%= @product.price %>
-  </li>
-  <li>
-    quantity available: <%= @product.inventory %>
-  </li>
     <li>
-      sold by: <%= link_to @product.vendor.username, vendor_path(@product.vendor.id) %>
+      <%= image_tag @product.photo_url %>
     </li>
-    Categories:
-  </ul>
+    <li>
+      <%= @product.name %>
+    </li>
+    <li>
+      <%= @product.description %>
+    </li>
+    <li>
+      <%= @product.price %>
+    </li>
+    <li>
+      quantity available: <%= @product.inventory %>
+    </li>
+      <li>
+        sold by: <%= link_to @product.vendor.username, vendor_products_path(@product.vendor.id) %>
+      </li>
+    </ul>
+
+  <h3>Categories:</h3>
   <ul>
-  <% @product.categories.each do |category| %>
-    <li> <%= category.name %> </li>
-  <% end %>
+    <% @product.categories.each do |category| %>
+      <li> <%= category.name %> </li>
+    <% end %>
   </ul>
 
   <h3>Reviews:</h3>
@@ -35,13 +36,13 @@
     <%= review.rating %>
     <%= review.comment %>
     <% end %>
-    <% end %>
+    <%# end %>
 
   </p>
 
-</p>
+
 <%= link_to "Review this product!", new_product_review_path(@product.id) %>
-<%= link_to "Delete", product_path(@product.id), data: { confirm: "Are you sure you want to delete this product?"
-}, method: :delete %>
+
 
 <%= link_to "Add to Cart", product_add_to_cart_path(params[:id]), method: :post%>
+<% end %>

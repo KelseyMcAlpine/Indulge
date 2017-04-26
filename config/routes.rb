@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'reviews/index'
 
-  # get 'reviews/new'
+  get "/auth/github/callback", to: "sessions#create"
+  delete "/login", to: "sessions#logout", as: "logout"
 
-  # get 'reviews/create'
 
   resources :products do
     resources :reviews, only: [:new, :create]
@@ -17,21 +16,27 @@ Rails.application.routes.draw do
 
 
   resources :vendors, only: [:index, :show] do
-    get '/products', to: 'vendors#show'
+    get '/products', to: 'products#index'
     get '/orders', to: "orders#manage_orders", as: "manage_orders"
     get '/orders/:id', to: "orders#order_details", as: "order_details"
+  end 
+
+
+
+    get '/vendor', to: 'vendors#show', as: 'vendor'
+    get "vendors/account", to: "vendors#account", as: "vendor_account"
+
+    resources :categories, only: [:index, :new, :create] do
+      get '/products', to: 'products#index'
+    end
+
+    resources :orders do
+      get '/checkout', to: "orders#checkout", as: "checkout"
+      post '/purchase', to: "orders#update", as: "purchase"
+    end
+
+    resources :orders
+
+
 
   end
-
-  get "vendors/account/:id", to: "vendors#account", as: "vendor_account"
-
-  resources :categories, only: [:index, :new, :create]
-  resources :orders do
-    get '/checkout', to: "orders#checkout", as: "checkout"
-    post '/purchase', to: "orders#update", as: "purchase"
-  end
-
-
-  get '/categories/:category_id/products', to: "categories#product_list", as: "category_products"
-
-end
