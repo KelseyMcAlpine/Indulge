@@ -79,6 +79,12 @@ class OrdersController < ApplicationController
     return @vendor_products
   end
 
+  def order_details
+    # vendor = Vendor.find_by_id(session[:vendor_id])
+    @order = Order.find_by_id(params[:id])
+    @vendor = Vendor.find_by_id(params[:vendor_id])
+  end
+
   def create
     @order = Order.create order_params
     unless @order.id == nil

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   resources :vendors, only: [:index, :show] do
     get '/products', to: 'vendors#show'
     get '/orders', to: "orders#manage_orders", as: "manage_orders"
+    get '/orders/:id', to: "orders#order_details", as: "order_details"
+
   end
 
   get "vendors/account/:id", to: "vendors#account", as: "vendor_account"
