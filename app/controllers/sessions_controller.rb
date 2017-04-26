@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
       logger.debug "Trying to create a vendor"
       vendor = Vendor.create_from_github(auth_hash)
-      logger.debug "Vendor Created: {vendor != nil}"
+      logger.debug "Vendor Created: #{vendor != nil}"
 
       if vendor.nil?
         flash[:error] = "Could not log you in"
@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
 
     session[:vendor_id] = vendor.id
     flash[:success] = "Logged in successfully!"
+    logger.debug "Session id = #{session[:vendor_id]}"
     redirect_to vendor_account_path
   end
 
