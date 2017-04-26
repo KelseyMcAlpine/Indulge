@@ -16,7 +16,7 @@
 <% @vendor.products.each do |product| %>
 <tr>
 
-<td> <%= product.name %></td>
+<td> <%= link_to product.name, product_path(product.id)%></td>
 <td> <%= image_tag product.photo_url %> </td>
 <td> <%= product.inventory %> </td>
 <td> <%= product.description %> </td>
@@ -34,4 +34,4 @@
 </tr>
 </table>
 
-<h3>link_to "Add new Product need session id" </h3>
+<h3><%= link_to "Add new Product", new_product_path(session[:vendor_id])%></h3>

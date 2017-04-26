@@ -21,10 +21,10 @@ class OrdersController < ApplicationController
         @op.quantity += 1
         @op.save
         flash[:success] = "quantity increased"
-        redirect_to root_path
+        redirect_to :back
       else
         flash[:error] = "not enough inventory"
-        redirect_to root_path
+        render root_path
       end
     else
       create_order_product
@@ -42,14 +42,19 @@ class OrdersController < ApplicationController
       if op.save
         add_product_inventory(params[:product_id])
         flash[:success] = "Quantity 1 removed from cart"
+        redirect_to :back
+
       else
         flash[:error] = "Unable to remove from cart"
+        render root_path
+
       end
     else
       op.destroy
       flash[:success] = "Product removed from cart"
+      redirect_to :back
+
     end
-    redirect_to root_path
   end
 
   def clear_cart
@@ -68,15 +73,11 @@ class OrdersController < ApplicationController
   end
 
   def manage_orders
-    @manage_orders = []
-    orders = Order.all
-    orders.each do | order |
-      order.order_products.each do | each_order_product |
-        raise
-      end
-      @manage_orders << each_order_product
-    end
-    return @manage_orders
+    # vendor = Vendor.find_by_id(session[:vendor_id])
+    vendor = Vendor.find_by_id(params[:vendor_id])
+    return OrderProduct.where(pro)
+
+
   end
 
   def create
