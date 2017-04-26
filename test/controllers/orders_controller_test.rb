@@ -2,16 +2,23 @@ require "test_helper"
 
 describe OrdersController do
 
-  describe "successfully gets all pages related to the orders controller" do
+  describe "actions for a logged in user (vendor)" do
 
-    it "must get index page" do
-      get orders_path
-      must_respond_with :success
+    it "a vendor can view the manage_orders page" do
+
     end
 
-    it "must get the current order's show page (cart)" do
-      get order_path
-      must_respond_with :success
+  end
+
+
+  describe "actions for logged out user (guest)" do
+
+    it "a guest user can" do
+
+    end
+
+    it "a guest user can not view the manage_orders page" do
+
     end
 
   end
@@ -19,7 +26,11 @@ describe OrdersController do
 
   describe "add_product_order" do
 
-    it "if there is not current order (cart), a new one will be created" do skip
+    it "reduces the number of inventory for each product" do
+
+    end
+
+    it "if there is no current order (cart), a new one will be created" do
 
     end
 
@@ -31,7 +42,7 @@ describe OrdersController do
 
     end
 
-    it "adding a product to a current order (cart) changes the product's inventory" do
+    it "adding a product to a current order (cart) changes the product's quantity " do
 
     end
 
@@ -57,6 +68,10 @@ describe OrdersController do
     end
 
     it "if the quantity of the order_product is less than one, destroy the order_product" do
+
+    end
+
+    it "increases vendor's product inventory" do
 
     end
 
@@ -93,13 +108,10 @@ describe OrdersController do
   end
 
 
-  describe "update" do
+  describe "update (purchase)" do
 
-    it "reduces the number of inventory for each product" do
 
-    end
-
-    it "changes the order state from pending to paid" do
+    it "changes the order status from pending to paid" do
 
     end
 
@@ -108,8 +120,13 @@ describe OrdersController do
     end
 
     it "starts a new cart" do
-      
+
     end
+
+    it "redirects to the confirmation page" do
+
+    end
+
   end
 
 end

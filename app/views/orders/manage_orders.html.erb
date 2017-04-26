@@ -1,0 +1,39 @@
+<!-- <h1>Welcome, <%= Vendor.find_by_id(session[:vendor_id])%>! </h1> -->
+<h1>Welcome, <%= @vendor.username%>! </h1>
+<h3>Total Revenue: <%= @vendor.total_rev %> </h3>
+<h3>View Orders By Status</h3>
+<ul>
+  <li>Pending</li>
+  <li>Paid</li>
+  <li>Completed</li>
+  <li>Cancelled</li>
+</ul>
+
+
+
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Date</th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <th>Order Status</th>
+    <th>Your Status</th>
+    <th>Edit Status</th>
+  </tr>
+  <% @vendor_products.each do | order_product | %>
+  <tr>
+    <td><%= link_to order_product.order_id, order_details_path(order_product.order_id)%></td>
+    <td><%= order_product.created_at%></td>
+    <td><%= Product.find_by_id(order_product.product_id).name%></td>
+    <td><%= Product.find_by_id(order_product.product_id).price%></td>
+    <td><%= order_product.quantity%></td>
+    <td><%= order_product.quantity * Product.find_by_id(order_product.product_id).price %></td>
+    <td><%= Order.find_by_id(order_product.order_id).status%></td>
+    <td>?</td>
+    <td>?</td>
+  </tr>
+  <% end %>
+</table>

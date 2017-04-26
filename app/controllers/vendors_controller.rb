@@ -6,6 +6,7 @@ class VendorsController < ApplicationController
   end
 
   def show
+
     @vendor = current_vendor
     # @vendor = Vendor.find_by_id params[:vendor_id]
 

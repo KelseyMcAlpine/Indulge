@@ -15,7 +15,6 @@
     </tr>
   </thead>
 
-
   <% @vendor.products.each do |product| %>
   <tr>
     <td> <%= link_to "#{product.name}", product_path(product.id) %></td>
@@ -37,5 +36,6 @@
   <% end %>
 
 </table>
+
 
 <h3><%= link_to "Add new product", new_product_path %></h3>

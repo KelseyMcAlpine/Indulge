@@ -18,6 +18,7 @@ class Order < ApplicationRecord
   # def change_order_status
   # end
 
+
   def expired?
     if cc_expire <= Date.today
       return true
