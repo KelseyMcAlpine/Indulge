@@ -1,11 +1,28 @@
 <h1>Cart</h1>
 
-<% @order.products.each do |product| %>
-  <% if product.status == "pending" %>
-  <%= product.name %>
-  <%else %>
-   <p>
-     "you have not added any items to your cart"
-   </p>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  <% if @order.status == "pending"%>
+  <% @order.order_products.each do | order_product | %>
+  <tr>
+    <td><%= Product.find(order_product.product_id).name %></td>
+
+    <td>
+      <%= link_to "+", product_add_to_cart_path(order_product.product_id), method: :post %>
+      <%= order_product.quantity %>
+      <%= link_to "-", product_remove_from_cart_path(order_product.product_id), method: :post %></td>
+    <td><%= Product.find(order_product.product_id).price * order_product.quantity %></td>
+  </tr>
+    <% end %>
   <% end %>
+</table>
+<% if @order.status != "pending" %>
+  <p>"you have not added any items to your cart"</p>
+<% end %>
+<% if @order.order_products != nil %>
+<%= link_to "Checkout", order_checkout_path(@order.id) %>
 <% end %>

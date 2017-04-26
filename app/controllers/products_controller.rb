@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :find_product, only: [:show, :edit, :update, :update_availability]
+  before_action :require_login, except: [:index, :show]#, :find_product]
 
   def new
     @product = Product.new
@@ -8,36 +9,34 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(product_params)
+    @product = Product.new(product_params)
+    @product.vendor_id = session[:vendor_id]
 
-
-    if @product.id != nil
-      if @product.save
-        flash[:success] = "New product successfully added"
-        redirect_to product_path(@product.id)
-      else
-        flash.now[:error] = "Hmm.. something went wrong."
-        render "new"
-      end
-    # resolving merge conflict but not sure which is correct version
-    #   flash[:success] = "New product successfully added"
-    #   redirect_to product_path(@product.id)
-    # else
-    #   flash.now[:error] = "Hmm.. something went wrong."
-    #   render "new"
+    if @product.save
+      flash[:success] = "New product successfully added"
+      redirect_to vendor_path
+    else
+      flash.now[:error] = "Hmm.. something went wrong."
+      render "new"
     end
+
   end
 
   def index
     if params[:category_id]
       category = Category.find_by(id: params[:category_id])
       @products = category.products
+      @header = "Products in #{category.name}"
       # @products = Product.includes(:categories).where(categories: { id: params{:category_id}} )
     elsif params[:vendor_id]
       vendor = Vendor.find_by(id: params[:vendor_id])
       @products = vendor.products
+      @header = "Products from #{vendor.username}"
+
     else
       @products = Product.all
+      @header = "All products"
+
     end
   end
 
@@ -54,7 +53,9 @@ class ProductsController < ApplicationController
     @product.inventory = product_params[:inventory]
     @product.name = product_params[:name]
     @product.description = product_params[:description]
-    @product.photo_url = product_params [:photo_url]
+    @product.photo_url = product_params[:photo_url]
+    @product.category_ids = product_params[:category_ids]
+
 
     if @product.save
       flash[:success] = "Successfully updated #{@product.name}."
@@ -66,7 +67,7 @@ class ProductsController < ApplicationController
 
   def destroy
     Product.destroy(params[:id])
-    redirect_to products_path
+    redirect_to vendor_path
   end
 
   def update_availability
@@ -94,7 +95,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:vendor_id, :price, :inventory, :name, :description, :photo_url, category_ids: [])
+    params.require(:product).permit(:vendor_id, :price, :inventory, :name, :description, :lifecycle, :photo_url, category_ids: [])
   end
 
   def find_product

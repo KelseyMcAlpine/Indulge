@@ -1,30 +1,37 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'reviews/index'
 
-  # get 'reviews/new'
+  get "/auth/github/callback", to: "sessions#create"
+  delete "/login", to: "sessions#logout", as: "logout"
 
-  # get 'reviews/create'
 
   resources :products do
     resources :reviews, only: [:new, :create]
     resources :orders, only: [:index]
-    post "/cart", to: "orders#add_product_order", as: "add_to_cart"
+    post "/add", to: "orders#add_product_order", as: "add_to_cart"
+    post "/remove", to: "orders#remove_product_order", as: "remove_from_cart"
   end
 
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
-
-  resources :vendors, only: [:index, :show] do
-    get '/products', to: 'vendors#show'
+  resources :vendors, only: [:index] do
+    get '/products', to: 'products#index'
   end
 
-  get "vendors/account/:id", to: "vendors#account", as: "vendor_account"
+  get '/vendor', to: 'vendors#show', as: 'vendor'
+  get "vendors/account", to: "vendors#account", as: "vendor_account"
 
-  resources :categories, only: [:index, :new, :create]
+  resources :categories, only: [:index, :new, :create] do
+    get '/products', to: 'products#index'
+  end
+
+  resources :orders do
+    get '/checkout', to: "orders#checkout", as: "checkout"
+    post '/purchase', to: "orders#update", as: "purchase"
+  end
+
   resources :orders
 
 
-  get '/categories/:category_id/products', to: "categories#product_list", as: "category_products"
 
 end

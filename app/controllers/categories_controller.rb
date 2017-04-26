@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :require_login, only: [:new, :create]
+
 
   def index
     @categories = Category.all
@@ -23,17 +25,6 @@ class CategoriesController < ApplicationController
     else
       flash.now[:error] = "Hmm.. something went wrong."
       render "new"
-    end
-  end
-
-  def product_list
-    @category = Category.find_by_id(params[:category_id])
-
-    if params[:category_id]
-      @products = Product.includes(:categories).where(categories: { id: params[:category_id]} )
-      # if @products == []
-      #   flash[:error] = "There are no products in that category."
-      # end
     end
   end
 
