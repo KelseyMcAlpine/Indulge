@@ -32,8 +32,8 @@
     <td><%= order_product.quantity%></td>
     <td><%= order_product.quantity * Product.find_by_id(order_product.product_id).price %></td>
     <td><%= Order.find_by_id(order_product.order_id).status%></td>
-    <td>?</td>
-    <td>?</td>
+    <td><%= order_product.ship_status %></td>
+    <td><%= link_to "Update Status"  %></td>
   </tr>
   <% end %>
 </table>
