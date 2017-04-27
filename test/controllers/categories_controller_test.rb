@@ -10,6 +10,13 @@ describe CategoriesController do
     must_respond_with :success
   end
 
+  it "should not get form to create a new category" do
+    get new_category_path
+    must_respond_with :redirect
+    must_redirect_to root_path
+    flash[:warning].must_equal "You must be logged in as a vendor to view this page"
+  end
+
   end
 
   describe "User/Vendor is logged in" do
