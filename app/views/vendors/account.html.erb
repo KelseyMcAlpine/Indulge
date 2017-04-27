@@ -1,10 +1,19 @@
-<h1> Welcome! <%= @vendor.username %> </h1>
-<p>
-   <%= link_to "Manage Products", vendor_path%>
-</p>
-<p>
-   <%= link_to "Manage Orders", manage_orders_path %>
-</p>
-<p>
-   <%= link_to "Create a new Category", new_category_path %>
-</p>
+<body>
+
+  <h1> Welcome, <%= @vendor.username%>! </h1>
+
+  <img class="top-image" src="http://www.jennycraig.com/statics/img/catalog/products/PI0405-045_fullwidth.jpg">
+
+  <p class="button expand">
+     <%= link_to "Manage Products", vendor_path%>
+  </p>
+
+  <p class="button expand">
+     <%= link_to "Manage Orders", manage_orders_path %>
+  </p>
+
+  <p class="button expand">
+     <%= link_to "Create a new Category", new_category_path %>
+  </p>
+
+</body>
