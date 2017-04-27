@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
 
     if vendor.nil?
+
       vendor = Vendor.create_from_github(auth_hash)
 
       if vendor.nil?
@@ -27,5 +28,5 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  
+
 end
