@@ -27,7 +27,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         must_respond_with :success
       end
 
-      it "should fail to update a product" do
+      it "should fail to update a product when vendor not logged in" do
         put product_path(products(:my_product).id), params: {product: {name: "nature break", description: "Relaxing", price: 5
         }
       }
@@ -38,7 +38,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       updated_product.description.must_equal "helps you poop like a cave man"
       updated_product.price.must_equal 25
 
-      assert_template :edit
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
 
     it "should show 404 when product not found" do
@@ -50,10 +51,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
       get new_product_path
       must_respond_with :redirect
+      must_redirect_to root_path
     end
 
-    it "should redirect to list after adding a product" do skip
-      post products_path, params: { product:
+    it "should not be add a product when not logged in" do
+      proc {
+        post products_path, params: { product:
         { name: "Ski trip",
           price: product.price,
           inventory: product.inventory,
@@ -63,8 +66,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           vendor_id: vendor.id
         }
       }
-      puts "{errors.messages}"
-      must_redirect_to vendor_path(vendor.id)
+    }.must_change 'Product.count', 0
+
+    must_respond_with :redirect
+    must_redirect_to root_path
 
     end
 
@@ -83,9 +88,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       }.must_change 'Product.count', 1
     end
 
-    it "should delete a product and redirect to product list" do skip
+    it "should not be able to delete a product when not logged in" do
       delete  product_path(products(:ice_floe).id)
-      must_redirect_to products_path
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
 
     it "should show one product" do
