@@ -48,44 +48,27 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     end
 
     it "should not show the new form when vendor not logged in" do
-
       get new_product_path
       must_respond_with :redirect
       must_redirect_to root_path
     end
 
-    it "should not be add a product when not logged in" do
+    it "should not be able to add a product when not logged in" do
       proc {
         post products_path, params: { product:
-        { name: "Ski trip",
-          price: product.price,
-          inventory: product.inventory,
-          description:product.description,
-          photo_url: product.photo_url,
-          lifecycle: product.lifecycle,
-          vendor_id: vendor.id
-        }
-      }
-    }.must_change 'Product.count', 0
-
-    must_respond_with :redirect
-    must_redirect_to root_path
-
-    end
-
-    it "should affect the model when creating a product" do skip
-      proc {
-        post products_path, params:  { product:
           { name: "Ski trip",
-            price: products(:ice_floe).price,
-            inventory: "2",
-            description: "hehe",
-            photo_url: products(:ice_floe).photo_url,
-            lifecycle: "available",
-            vendor_id: products(:ice_floe).vendor_id
+            price: product.price,
+            inventory: product.inventory,
+            description:product.description,
+            photo_url: product.photo_url,
+            lifecycle: product.lifecycle,
+            vendor_id: vendor.id
           }
         }
-      }.must_change 'Product.count', 1
+      }.must_change 'Product.count', 0
+
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
 
     it "should not be able to delete a product when not logged in" do
@@ -99,9 +82,34 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       must_respond_with :success
     end
 
-    it "should get edit" do skip
+    it "should not get edit when not logged in" do
       get edit_product_path(product.id)
-      must_respond_with :success
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+  end
+
+
+  describe "User/Vendor is logged in" do
+    before do
+      login_user(vendors(:polar_queen))
+    end
+
+    it "should affect the model when creating a product" do
+      proc {
+        post products_path, params:  { product:
+          { name: "Ski trip",
+            price: products(:ice_floe).price,
+            inventory: "2",
+            description: "hehe",
+            photo_url: products(:ice_floe).photo_url,
+            lifecycle: "available",
+            vendor_id: products(:ice_floe).vendor_id
+          }
+        }
+      }.must_change 'Product.count', 1
+      must_redirect_to vendor_path
+      flash.now[:success].must_equal "New product successfully added"
     end
 
     it "product with no name should not affect the model" do
@@ -165,78 +173,52 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     it "Relist will restore product as available" do skip
 
     end
-  end
 
+    it "should show the new form" do
+      get new_product_path
+      must_respond_with :success
+    end
 
-
-  it "should get show" do
-    get product_path(product.id)
-    must_respond_with :success
-  end
-
-  it "should show 404 when product not found" do
-    get product_path(0)
-    must_respond_with :missing
-  end
-
-  it "should show one product" do skip
-    get product_path(product.id)
-    must_respond_with :success
-  end
-
-end
-
-
-describe "User/Vendor is logged in" do
-  before do
-    login_user(vendors(:polar_queen))
-  end
-
-  it "should show the new form" do
-    get new_product_path
-    must_respond_with :success
-  end
-
-  it "should redirect to list after adding a product" do skip
-    post products_path, params: { product:
-      { name: "Ski trip",
-        price: product.price,
-        inventory: product.inventory,
-        description:product.description,
-        photo_url: product.photo_url,
-        lifecycle: product.lifecycle,
-        vendor_id: vendor.id
-        } }
-        must_redirect_to products_path
-      end
-
-      it "should affect the model when creating a product" do
-        proc {
-          post products_path, params:  { product:
-            { name: "Ski trip",
-              price: products(:ice_floe).price,
-              inventory: "2",
-              description: "hehe",
-              photo_url: products(:ice_floe).photo_url,
-              lifecycle: "available",
-              vendor_id: products(:ice_floe).vendor_id
-              } }
-            }.must_change 'Product.count', 1
-          end
-
-          it "should delete a product and redirect to product list" do skip
-            assert_difference 'Product.count', -1 do
-              delete :destroy, {id: products(:ice_floe).id }
-              # product_path(products(:ice_floe).id)
-              # must_redirect_to products_path
-            end
-          end
-
-          it "should get edit" do
-            get edit_product_path(product.id)
-            must_respond_with :success
-          end
+    it "should redirect to list after adding a product" do skip
+      post products_path, params: { product:
+        { name: "Ski trip",
+          price: product.price,
+          inventory: product.inventory,
+          description:product.description,
+          photo_url: product.photo_url,
+          lifecycle: product.lifecycle,
+          vendor_id: vendor.id
+          } }
+          must_redirect_to products_path
         end
 
+        it "should affect the model when creating a product" do
+          proc {
+            post products_path, params:  { product:
+              { name: "Ski trip",
+                price: products(:ice_floe).price,
+                inventory: "2",
+                description: "hehe",
+                photo_url: products(:ice_floe).photo_url,
+                lifecycle: "available",
+                vendor_id: products(:ice_floe).vendor_id
+                } }
+              }.must_change 'Product.count', 1
+            end
 
-      end
+            it "should delete a product and redirect to product list" do skip
+              assert_difference 'Product.count', -1 do
+                delete :destroy, {id: products(:ice_floe).id }
+                # product_path(products(:ice_floe).id)
+                # must_redirect_to products_path
+              end
+            end
+
+            it "should get edit" do skip
+              get edit_product_path(product.id)
+              must_respond_with :success
+            end
+
+          end
+        end
+end
