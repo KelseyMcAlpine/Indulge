@@ -130,6 +130,23 @@ class OrdersController < ApplicationController
     end
   end
 
+  def change_ship_status
+    @op = OrderProduct.find(params[:id])
+
+    if @op.ship_status == "Shipped"
+      @op.ship_status = "Not Shipped"
+    else
+      @op.ship_status = "Shipped"
+    end
+    if @op.save
+      flash[:success] = "Ship status updated"
+      redirect_to :back
+    else
+      flash[:error] = "Unable to update ship status"
+      render "manage_orders"
+    end
+  end
+
   private
 
   def purchase_params
@@ -169,4 +186,6 @@ class OrdersController < ApplicationController
     end
     redirect_to root_path
   end
+
+
 end

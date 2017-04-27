@@ -33,7 +33,7 @@
     <td><%= order_product.quantity * Product.find_by_id(order_product.product_id).price %></td>
     <td><%= Order.find_by_id(order_product.order_id).status%></td>
     <td><%= order_product.ship_status %></td>
-    <td><%= link_to "Update Status"  %></td>
+    <td><%= link_to "Update Status", update_ship_path(order_product.id), method: :post %></td>
   </tr>
   <% end %>
 </table>
