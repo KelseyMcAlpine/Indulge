@@ -30,7 +30,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       must_respond_with :success
     end
 
-    it "should update a product" do skip
+    it "should update a product" do
       put product_path(products(:my_product).id), params: {product: {name: "nature break", description: "Relaxing", price: 5}
     }
 
@@ -51,7 +51,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     must_respond_with :missing
   end
 
-  it "should show the new form" do skip
+  it "should show the new form" do 
     #Expected response to be a <2XX: success>, but was a <302: Found> redirect to <http://www.example.com/>
 
     get new_product_path
@@ -154,6 +154,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   it "Vendor cannot update attributes of another vendor's products" do skip
+
 
   end
 
