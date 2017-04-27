@@ -25,7 +25,7 @@ class VendorsController < ApplicationController
     @vendor = Vendor.create vendor_params
 
     if @vendor.id != nil
-      flash[:success] = "vendor added"
+      flash[:success] = "New vendor account successfully created!"
       session[:vendor_id] = @vendor.id
       redirect_to vendor_account_path
     end

@@ -12,20 +12,13 @@ class SessionsController < ApplicationController
       session[:provider] = auth_hash[:provider]
       session[:username] = auth_hash["info"]["name"]
       session[:email] = auth_hash["info"]["email"]
-      redirect_to new_vendor_path#, uid: auth_hash[:uid] #new_vendor_info: auth_hash
+      redirect_to new_vendor_path
     else
       session[:vendor_id] = vendor.id
      flash[:success] = "Logged in successfully!"
      redirect_to vendor_account_path
     end
 
-    #   if vendor.nil?
-    #     flash[:error] = "Could not log you in"
-    #     redirect_back(fallback_location: root_path)
-    #   end
-    # end
-    #
-    #
   end
 
   def logout
