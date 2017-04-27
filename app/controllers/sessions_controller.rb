@@ -6,18 +6,21 @@ class SessionsController < ApplicationController
 
     vendor = Vendor.find_by(uid: auth_hash["uid"], provider: auth_hash["provider"])
 
-    #send to new vendor form with details from auth hash
     if vendor.nil?
-      session[:uid] = auth_hash[:uid]
-      session[:provider] = auth_hash[:provider]
-      session[:username] = auth_hash["info"]["name"]
-      session[:email] = auth_hash["info"]["email"]
-      redirect_to new_vendor_path
+      vendor = Vendor.create_from_github(auth_hash)
+
+      if vendor.nil?
+        flash[:error] = "Could not log in."
+      else
+        session[:vendor_id] = vendor.id
+        flash[:success] = "Created new vendor account for #{vendor.username}"
     else
-      session[:vendor_id] = vendor.id
-     flash[:success] = "Logged in successfully!"
-     redirect_to vendor_account_path
+    session[:vendor_id] = vendor.id
+    flash[:success] = "Logged in successfully!"
     end
+
+    redirect_to vendor_account_path
+  end
 
   end
 
