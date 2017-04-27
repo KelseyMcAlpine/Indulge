@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get "/auth/github/callback", to: "sessions#create"
-  delete "/login", to: "sessions#logout", as: "logout"
+  delete "/logout", to: "sessions#logout", as: "logout"
 
 
   resources :products do

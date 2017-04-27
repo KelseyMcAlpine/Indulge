@@ -8,8 +8,7 @@ class ApplicationController < ActionController::Base
   def require_login
     if !session[:vendor_id]
       flash[:warning] = "You must be logged in as a vendor to view this page"
-      # redirect_to vendors_path
-      redirect_back(fallback_location: root_path)
+      redirect_to root_path
     end
   end
 
