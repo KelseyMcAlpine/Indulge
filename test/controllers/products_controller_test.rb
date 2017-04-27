@@ -135,7 +135,21 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   end
 
-  it "product with no stock should not affect the model" do skip
+  it "product with no stock should not affect the model when updated" do
+    proc {
+      post products_path, params:  { product:
+        { name: "Ski trip",
+          inventory: products(:no_stock).inventory,
+          description: products(:no_stock).description,
+          photo_url: products(:no_stock).photo_url,
+          lifecycle: products(:no_stock).lifecycle,
+          vendor_id: products(:no_stock).vendor_id
+        }
+      }
+    }.must_change 'Product.count', 0
+    puts "#{products(:no_stock).lifecycle}"
+    "#{products(:no_stock).errors.messages}"
+
 
   end
 
