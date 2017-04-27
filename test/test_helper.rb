@@ -33,8 +33,8 @@ class ActiveSupport::TestCase
 
   def mock_auth_hash(vendor)
     return {
-      provider: vendor.provider
-      uid: vendor.uid
+      provider: vendor.provider,
+      uid: vendor.uid,
       info: {
         email: vendor.email,
         username: vendor.username
