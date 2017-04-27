@@ -12,6 +12,15 @@ describe SessionsController do
     end
   end
 
+  describe "logging out" do
+    it "can log out a logged in vendor" do
+      login_user(vendors(:Michael))
+      delete logout_path
+      session[:vendor_id].must_be_nil
+      must_redirect_to root_path
+    end
+  end
+
 
 
 
