@@ -12,7 +12,7 @@ describe OrdersController do
     # end
 
     it "reduces the number of inventory for each product" do
-      order.add_product_order(product)
+      get add_to_cart_path(product.id)
       product.inventory.must_change
     end
 
@@ -113,6 +113,13 @@ describe OrdersController do
 
     end
 
+  end
+
+  describe "logged in user" do
+
+     before do
+       login_user(vnedors(:polar_queen))
+     end
   end
 
 end

@@ -65,20 +65,20 @@ Order.create ([
 
 
 vendors = Vendor.create ([
-  { username: "Polar Queen", email: "queen@seriouslyfreezing.com" },
-  { username: "Ranger Rick", email: "rr@raccoonspace.net"},
-  { username: "Dwight Schrute", email: "schrutefarms@gmail.com"},
-  { username: "Jim Halpert", email: "jim@athlead.com"},
-  { username: "Pam Beasley", email: "Pam@prattinstitute.com"},
-  { username: "Michael Scott", email: "mscott@greatscottproductions.com"},
-  { username: "Kelly Kapoor", email: "kkapoor@businessbitch.com"},
-  { username: "Ryan Howard", email: "rhoward@gwhuf.edu"},
-  { username: "Andy Bernard", email: "narddog@cornell.edu"},
-  { username: "Kevin Malone", email: "bigbog69@fanduel.com"},
-  { username: "Angela Martin", email: "msmartin@lipton4PA.com"},
-  { username: "Toby Flenderson", email: "chadflenderson@flendersonfiles.com"},
-  { username: "Creed Bratton", email: "notcreedbratton@creedthoughts.gov"},
-  { username: "David Wallace", email: "dwallace@suckit.com"}
+  { username: "Polar Queen", email: "queen@seriouslyfreezing.com", uid: "444", provider: "github" },
+  { username: "Ranger Rick", email: "rr@raccoonspace.net", uid: "333", provider: "github"},
+  { username: "Dwight Schrute", email: "schrutefarms@gmail.com", uid: "331", provider: "github"},
+  { username: "Jim Halpert", email: "jim@athlead.com", uid: "3312", provider: "github"},
+  { username: "Pam Beasley", email: "Pam@prattinstitute.com", uid: "334", provider: "github"},
+  { username: "Michael Scott", email: "mscott@greatscottproductions.com", uid: "335", provider: "github"},
+  { username: "Kelly Kapoor", email: "kkapoor@businessbitch.com", uid: "336", provider: "github"},
+  { username: "Ryan Howard", email: "rhoward@gwhuf.edu", uid: "337", provider: "github"},
+  { username: "Andy Bernard", email: "narddog@cornell.edu", uid: "338", provider: "github"},
+  { username: "Kevin Malone", email: "bigbog69@fanduel.com", uid: "339", provider: "github"},
+  { username: "Angela Martin", email: "msmartin@lipton4PA.com", uid: "3310", provider: "github"},
+  { username: "Toby Flenderson", email: "chadflenderson@flendersonfiles.com", uid: "3311", provider: "github"},
+  { username: "Creed Bratton", email: "notcreedbratton@creedthoughts.gov", uid: "3313", provider: "github"},
+  { username: "David Wallace", email: "dwallace@suckit.com", uid: "3314", provider: "github"}
   ])
 
   Product.create ([

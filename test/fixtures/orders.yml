@@ -5,9 +5,10 @@
 # below each fixture, per the syntax in the comments below
 #
 my_order:
-      purchase_date: 10/20/2017
-      status: "pending"
-      cust_email: "kelsey@gmail.com"
-      cust_address: "555 Somewhere Lane"
-      credit_card: 1234567890
-      cc_expire: 12/20/2017
+    purchase_date: 10/20/2017
+    status: "pending"
+    cust_email: "kelsey@gmail.com"
+    cust_address: "555 Somewhere Lane"
+    credit_card: 1234567890
+    cc_expire: 12/20/2017
+    products: ice_floe, my_product, twinkies

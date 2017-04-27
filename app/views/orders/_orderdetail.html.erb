@@ -3,3 +3,25 @@
 <p>Placed On: <%= @order.created_at%> </p>
 <p>Updates will be sent to: <%= @order.cust_email%> </p>
 <p>Shipping Address: <%= @order.cust_address%> </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <% total = [] %>
+  <tr>
+    <% @order.order_products.each do |product| %>
+    <td><%= Product.find_by_id(product.product_id).name %></td>
+    <td><%= product.quantity %></td>
+    <td><%= Product.find_by_id(product.product_id).price%></td>
+    <td><%= Product.find_by_id(product.product_id).price * product.quantity %></td>
+    <%total << Product.find_by_id(product.product_id).price * product.quantity %>
+  </tr>
+  <% end %>
+</table>
+Total: <%= total.inject(:+) %>

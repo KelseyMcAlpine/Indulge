@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get "/auth/github/callback", to: "sessions#create"
-  delete "/login", to: "sessions#logout", as: "logout"
+  delete "/logout", to: "sessions#logout", as: "logout"
 
 
   resources :products do
@@ -15,11 +15,17 @@ Rails.application.routes.draw do
   post "/products/:id", to: "products#update_availability", as: "update_availability"
 
 
-  resources :vendors, only: [:index] do
+  resources :vendors, only: [:index, :new, :create] do
     get '/products', to: 'products#index'
   end
 
     get '/orders/:id', to: "orders#order_details", as: "order_details"
+
+
+    post '/orders/:id/update', to: "orders#change_ship_status", as: "update_ship"
+    post '/orders/:id/cancel', to: "orders#cancel_order_product", as: "cancel_order_product"
+
+
     get '/orders', to: "orders#manage_orders", as: "manage_orders"
     get '/vendor', to: 'vendors#show', as: 'vendor'
     get "vendors/account", to: "vendors#account", as: "vendor_account"

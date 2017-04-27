@@ -83,6 +83,17 @@ class OrdersController < ApplicationController
     @order = Order.find_by_id(params[:id])
   end
 
+  def create
+    @order = Order.create order_params
+    unless @order.id == nil
+      flash[:sucess] = "Your order has been succesfully submitted"
+      redirect_to root_path
+    else
+      flash.now[:error] = "Error occured, try again".
+      render "new"
+    end
+  end
+
   def checkout
 
     if @order.order_products.count < 1
@@ -109,6 +120,46 @@ class OrdersController < ApplicationController
       render "checkout"
     end
   end
+
+  def change_ship_status
+    @op = OrderProduct.find(params[:id])
+    if @op.ship_status != "Cancelled"
+
+      if @op.ship_status == "Shipped"
+        @op.ship_status = "Not Shipped"
+      else
+        @op.ship_status = "Completed"
+      end
+      if @op.save
+        flash[:success] = "Ship status updated"
+        redirect_to :back
+      else
+        flash[:error] = "Unable to update ship status"
+        redirect_to :back
+      end
+    else
+      flash[:error] = "You can't update a cancelled order"
+      redirect_to :back
+    end
+  end
+
+  def cancel_order_product
+    @op = OrderProduct.find(params[:id])
+    if @op.ship_status != "Completed"
+      @op.ship_status = "Cancelled"
+      if @op.save
+        flash[:success] = "Order line cancelled"
+        redirect_to :back
+      else
+        flash[:error] = "Unable to cancel order line"
+        redirect_to :back
+      end
+    else
+      flash[:error] = "You can't cancel a completed order"
+      redirect_to :back
+    end
+  end
+
 
   private
 
@@ -161,5 +212,6 @@ class OrdersController < ApplicationController
     p.inventory -= 1
     p.save
   end
+
 
 end
