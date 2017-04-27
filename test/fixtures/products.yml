@@ -34,3 +34,25 @@ twinkies:
   inventory: 15
   lifecycle: "available"
   categories: healthy, spa
+
+# broken fixture, no name
+  # sightseeing:
+  #   vendor: Jim
+  #   name:
+  #   description: "The unforgettable getaway"
+  #   photo_url: "example 123"
+  #   price: 150
+  #   inventory: 15
+  #   lifecycle: "available"
+  #   categories: nature
+
+    # broken fixture, no price
+  # spa:
+  #   vendor: Jim
+  #   name: "The beautiful beaches of the Gulf"
+  #   description: "Oh yea!"
+  #   photo_url: "example 123"
+  #   price: 150
+  #   inventory: 15
+  #   lifecycle: "available"
+  #   categories: healthy, spa
