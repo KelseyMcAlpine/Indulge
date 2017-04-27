@@ -2,59 +2,45 @@ require "test_helper"
 
 describe OrdersController do
 
-  describe "actions for a logged in user (vendor)" do
-
-    it "a vendor can view the manage_orders page" do
-
-    end
-
-  end
-
-
-  describe "actions for logged out user (guest)" do
-
-    it "a guest user can" do
-
-    end
-
-    it "a guest user can not view the manage_orders page" do
-
-    end
-
-  end
-
 
   describe "add_product_order" do
+    let (:order) {orders(:my_order)}
+    let (:product) {products(:my_product)}
+
+    # before do
+    #   order.add_product_order(product)
+    # end
 
     it "reduces the number of inventory for each product" do
+      order.add_product_order(product)
+      product.inventory.must_change
+    end
+
+    it "if there is no current order (cart), a new one will be created" do skip
 
     end
 
-    it "if there is no current order (cart), a new one will be created" do
+    it "a product can be added to the current order (cart)" do skip
 
     end
 
-    it "a product can be added to the current order (cart)" do
+    it "a product must have enough inventory to be added to the current order (cart)" do skip
 
     end
 
-    it "a product must have enough inventory to be added to the current order (cart)" do
+    it "adding a product to a current order (cart) changes the product's quantity " do skip
 
     end
 
-    it "adding a product to a current order (cart) changes the product's quantity " do
+    it "adding a product to a current order (cart), creates an order_product" do skip
 
     end
 
-    it "adding a product to a current order (cart), creates an order_product" do
+    it "if a product is successfully added to a current order (cart), the user is redirected to the homepage" do skip
 
     end
 
-    it "if a product is successfully added to a current order (cart), the user is redirected to the homepage" do
-
-    end
-
-    it "if a product with the same product_id is added to a current order (cart), the order_product quantity is increased by 1" do
+    it "if a product with the same product_id is added to a current order (cart), the order_product quantity is increased by 1" do skip
 
     end
 
@@ -63,15 +49,15 @@ describe OrdersController do
 
   describe "remove_product_order" do
 
-    it "if the quantity of the order_product is greater than one, the quantity is decreased by 1" do
+    it "if the quantity of the order_product is greater than one, the quantity is decreased by 1" do skip
 
     end
 
-    it "if the quantity of the order_product is less than one, destroy the order_product" do
+    it "if the quantity of the order_product is less than one, destroy the order_product" do skip
 
     end
 
-    it "increases vendor's product inventory" do
+    it "increases vendor's product inventory" do skip
 
     end
 
@@ -80,15 +66,15 @@ describe OrdersController do
 
   describe "clear_cart" do
 
-    it "must remove all order_products associated with the current order (cart)" do
+    it "must remove all order_products associated with the current order (cart)" do skip
 
     end
 
-    it "must change the number of order_products" do
+    it "must change the number of order_products" do skip
 
     end
 
-    it "must render a new view of the current cart" do
+    it "must render a new view of the current cart" do skip
 
     end
 
@@ -97,11 +83,11 @@ describe OrdersController do
 
   describe "checkout" do
 
-    it "will get the checkout form if you have more than one order_products associated with the current cart" do
+    it "will get the checkout form if you have more than one order_products associated with the current cart" do skip
 
     end
 
-    it "will redirect to the homepage if you have no order_products associated with the current cart" do
+    it "will redirect to the homepage if you have no order_products associated with the current cart" do skip
 
     end
 
@@ -111,19 +97,19 @@ describe OrdersController do
   describe "update (purchase)" do
 
 
-    it "changes the order status from pending to paid" do
+    it "changes the order status from pending to paid" do skip
 
     end
 
-    it "clears the current cart" do
+    it "clears the current cart" do skip
 
     end
 
-    it "starts a new cart" do
+    it "starts a new cart" do skip
 
     end
 
-    it "redirects to the confirmation page" do
+    it "redirects to the confirmation page" do skip
 
     end
 

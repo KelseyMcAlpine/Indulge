@@ -15,15 +15,19 @@ describe CategoriesController do
   end
 
   it "should affect the model when a new category is added" do
-    proc { post categories_path, params:
-      { category: { name: "spicy" } }}.must_change 'Category.count', 1
+    proc {
+      post categories_path {
+      params:
+        category: {
+          name: "spicy"
+        }
+      }
+  }.must_change 'Category.count', 1
   end
 
   it "should redirect to category index page after adding a new category" do
-    post products_path, params: { categories:
-      { name: "yummy"}
-    }
-    must_redirect_to category_show_path
-    # will need to double check that this is the correct paht once it's been created
+    proc {
+      post categories_path, params: { categories: spa }
+    }.must_redirect_to category_show_path
   end
 end
