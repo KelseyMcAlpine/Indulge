@@ -104,11 +104,34 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     must_respond_with :success
   end
 
-  it "product with no name should not affect the model" do skip
+  it "product with no name should not affect the model" do
+    proc {
+      post products_path, params:  { product:
+        {
+          price: products(:ice_floe).price,
+          inventory: "2",
+          description: "hehe",
+          photo_url: products(:ice_floe).photo_url,
+          lifecycle: "available",
+          vendor_id: products(:ice_floe).vendor_id
+        }
+      }
+    }.must_change 'Product.count', 0
 
   end
 
-  it "product with no price should not affect the model" do skip
+  it "product with no price should not affect the model" do
+    proc {
+      post products_path, params:  { product:
+        { name: "Ski trip",
+          inventory: "2",
+          description: "hehe",
+          photo_url: products(:ice_floe).photo_url,
+          lifecycle: "available",
+          vendor_id: products(:ice_floe).vendor_id
+        }
+      }
+    }.must_change 'Product.count', 0
 
   end
 
