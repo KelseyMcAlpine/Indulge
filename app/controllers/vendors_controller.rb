@@ -1,5 +1,5 @@
 class VendorsController < ApplicationController
-  before_action :require_login, except: [:index]
+  before_action :require_login, except: [:index, :new, :create]
 
   def index
     @vendors = Vendor.all
@@ -8,40 +8,30 @@ class VendorsController < ApplicationController
   def show
 
     @vendor = current_vendor
-    # @vendor = Vendor.find_by_id params[:vendor_id]
-
-    # @vendor = Vendor.find_by_id session[:vendor_id]
   end
 
   def account
-    # @vendor = Vendor.find_by_id params[:id]
     @vendor = current_vendor
-
   end
 
-  # will revisit these controller actions
-  # def new (auth_hash)
-  #   @vendor = Vendor.new
-  #   @vendor.uid = auth_hash["uid"]
-  #   @vendor.provider = auth_hash["provider"]
-  #   @vendor.username = auth_hash[:info][:name]
-  #   @vendor.email = auth_hash[:info][:email]
+  def new
+    @vendor = Vendor.new
+    @vendor.uid = session[:uid]
+    @vendor.provider = session[:provider]
+    @vendor.username = session[:username]
+    @vendor.email = session[:email]
+  end
   #
-  # end
-  #
-  # def create
-  #   @vendor = Vendor.create vendor_params
-  #
-  #   if @vendor.id != nil
-  #     flash[:success] = "vendor added"
-  #   end
-  # end
-  #
-  # def edit
-  # end
-  #
-  # def update
-  # end
+  def create
+    @vendor = Vendor.create vendor_params
+
+    if @vendor.id != nil
+      flash[:success] = "New vendor account successfully created!"
+      session[:vendor_id] = @vendor.id
+      redirect_to vendor_account_path
+    end
+  end
+
 
   private
 
