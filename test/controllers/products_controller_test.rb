@@ -125,6 +125,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           }
         }
       }.must_change 'Product.count', 0
+      assert_template :new
+      flash.now[:error].must_equal "Hmm.. something went wrong."
 
     end
 
@@ -140,6 +142,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           }
         }
       }.must_change 'Product.count', 0
+      assert_template :new
+      flash.now[:error].must_equal "Hmm.. something went wrong."
 
     end
 
@@ -155,9 +159,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           }
         }
       }.must_change 'Product.count', 0
-      puts "#{products(:no_stock).lifecycle}"
-      "#{products(:no_stock).errors.messages}"
-
 
     end
 
@@ -179,7 +180,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       must_respond_with :success
     end
 
-    it "should redirect to list after adding a product" do skip
+    it "should redirect to list after adding a product" do
       post products_path, params: { product:
         { name: "Ski trip",
           price: product.price,
@@ -188,37 +189,37 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           photo_url: product.photo_url,
           lifecycle: product.lifecycle,
           vendor_id: vendor.id
-          } }
-          must_redirect_to products_path
-        end
+        }
+      }
+      must_redirect_to vendor_path
+    end
 
-        it "should affect the model when creating a product" do
-          proc {
-            post products_path, params:  { product:
-              { name: "Ski trip",
-                price: products(:ice_floe).price,
-                inventory: "2",
-                description: "hehe",
-                photo_url: products(:ice_floe).photo_url,
-                lifecycle: "available",
-                vendor_id: products(:ice_floe).vendor_id
-                } }
-              }.must_change 'Product.count', 1
-            end
+    it "should affect the model when creating a product" do
+      proc {
+        post products_path, params:  { product:
+          { name: "Ski trip",
+            price: products(:ice_floe).price,
+            inventory: "2",
+            description: "hehe",
+            photo_url: products(:ice_floe).photo_url,
+            lifecycle: "available",
+            vendor_id: products(:ice_floe).vendor_id
+          }
+        }
+      }.must_change 'Product.count', 1
+    end
 
-            it "should delete a product and redirect to product list" do skip
-              assert_difference 'Product.count', -1 do
-                delete :destroy, {id: products(:ice_floe).id }
-                # product_path(products(:ice_floe).id)
-                # must_redirect_to products_path
-              end
-            end
+    it "should delete a product and redirect to product list" do
+      delete product_path(product.id)
+      # product_path(products(:ice_floe).id)
+      must_redirect_to vendor_path
+    end
 
-            it "should get edit" do skip
-              get edit_product_path(product.id)
-              must_respond_with :success
-            end
+    it "should get edit" do
+      get edit_product_path(product.id)
+      must_respond_with :success
+    end
 
-          end
-        end
+  end
+end
 end
