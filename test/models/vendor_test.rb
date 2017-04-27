@@ -19,19 +19,19 @@ describe Vendor do
       michael.must_be :valid?
     end
 
-    it "vendor cannot be created without a username" do skip
+    it "vendor cannot be created without a username" do
       jim.username = nil
       jim.valid?.must_equal false
       jim.errors.messages.must_include :username
     end
 
-    it "vendor cannot be created without an email" do skip
+    it "vendor cannot be created without an email" do
       jim.email = nil
       jim.valid?.must_equal false
       jim.errors.messages.must_include :email
     end
 
-    it "vendor requires a unique username" do skip
+    it "vendor requires a unique username" do
       jim.username = 'notunique'
       jim.save!
 
@@ -40,7 +40,7 @@ describe Vendor do
       dwight.errors.messages.must_include :username
     end
 
-    it "vendor requires a unique email" do skip
+    it "vendor requires a unique email" do 
       jim.email = 'notunique'
       jim.save!
 
