@@ -1,0 +1,27 @@
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Date</th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <th>Order Status</th>
+    <th>Your Order Status</th>
+    <th>Edit Ship Status</th>
+    <th>Cancel Order</th>
+  </tr>
+
+  <tr>
+    <td><%= link_to order_product.order_id, order_details_path(order_product.order_id)%></td>
+    <td><%= order_product.created_at%></td>
+    <td><%= link_to Product.find_by_id(order_product.product_id).name, product_path(order_product.product_id)%></td>
+    <td><%= Product.find_by_id(order_product.product_id).price%></td>
+    <td><%= order_product.quantity%></td>
+    <td><%= order_product.quantity * Product.find_by_id(order_product.product_id).price %></td>
+    <td><%= Order.find_by_id(order_product.order_id).status%></td>
+    <td><%= order_product.ship_status %></td>
+    <td><%= link_to "Update Status", update_ship_path(order_product.id), method: :post %></td>
+    <td><%= link_to "Cancel Order", cancel_order_product_path(order_product.id), method: :post %></td>
+  </tr>
+</table>

@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   end
 
     get '/orders/:id', to: "orders#order_details", as: "order_details"
+
+
     post '/orders/:id/update', to: "orders#change_ship_status", as: "update_ship"
+    post '/orders/:id/cancel', to: "orders#cancel_order_product", as: "cancel_order_product"
+
 
     get '/orders', to: "orders#manage_orders", as: "manage_orders"
     get '/vendor', to: 'vendors#show', as: 'vendor'

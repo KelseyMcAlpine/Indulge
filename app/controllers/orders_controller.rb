@@ -132,20 +132,43 @@ class OrdersController < ApplicationController
 
   def change_ship_status
     @op = OrderProduct.find(params[:id])
+    if @op.ship_status != "Cancelled"
 
-    if @op.ship_status == "Shipped"
-      @op.ship_status = "Not Shipped"
+      if @op.ship_status == "Shipped"
+        @op.ship_status = "Not Shipped"
+      else
+        @op.ship_status = "Completed"
+      end
+      if @op.save
+        flash[:success] = "Ship status updated"
+        redirect_to :back
+      else
+        flash[:error] = "Unable to update ship status"
+        redirect_to :back
+      end
     else
-      @op.ship_status = "Shipped"
-    end
-    if @op.save
-      flash[:success] = "Ship status updated"
+      flash[:error] = "You can't update a cancelled order"
       redirect_to :back
-    else
-      flash[:error] = "Unable to update ship status"
-      render "manage_orders"
     end
   end
+
+  def cancel_order_product
+    @op = OrderProduct.find(params[:id])
+    if @op.ship_status != "Completed"
+      @op.ship_status = "Cancelled"
+      if @op.save
+        flash[:success] = "Order line cancelled"
+        redirect_to :back
+      else
+        flash[:error] = "Unable to cancel order line"
+        redirect_to :back
+      end
+    else
+      flash[:error] = "You can't cancel a completed order"
+      redirect_to :back
+    end
+  end
+
 
   private
 
