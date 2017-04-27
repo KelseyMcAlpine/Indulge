@@ -20,3 +20,57 @@ img {
   height: 50px;
   width: 50px;
 }
+
+.prod-img-list {
+  height: 200px;
+  width: 200px;
+}
+
+
+img.top-image {
+  height: 350px;
+  width: 100%
+}
+
+a {
+  color: gray
+}
+
+.manage {
+  position: relative;
+  display: block;
+  width: 80%;
+  left: 9%;
+  background-color: white
+
+}
+
+.welcome {
+  position: absolute;
+  top: 35%;
+  left: 20%;
+  font-size: 100px;
+  color: #E9B000;
+  font-family: 'Pacifico', cursive;
+}
+
+.block {
+  /*display: block;*/
+  left: 10%
+}
+
+table.center {
+  margin-left:auto;
+  margin-right:auto;
+  width: 80%;
+}
+
+#header {
+  margin-left:auto;
+  margin-right:auto;
+  width: 80%;
+}
+
+#add-prod {
+  border: #E9B000
+}
