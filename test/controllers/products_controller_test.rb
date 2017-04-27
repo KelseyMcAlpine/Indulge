@@ -64,30 +64,31 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
             lifecycle: product.lifecycle,
             vendor_id: vendor.id
             } }
-        must_redirect_to products_path
-      end
+            must_redirect_to products_path
+          end
 
-      it "should affect the model when creating a product" do
-        proc {
-          post products_path, params:  { product:
-            { name: "Ski trip",
-              price: products(:ice_floe).price,
-              inventory: "2",
-              description: "hehe",
-              photo_url: products(:ice_floe).photo_url,
-              lifecycle: "available",
-              vendor_id: products(:ice_floe).vendor_id
-              } }
-            }.must_change 'Product.count', 1
-      end
+          it "should affect the model when creating a product" do
+            proc {
+              post products_path, params:  { product:
+                { name: "Ski trip",
+                  price: products(:ice_floe).price,
+                  inventory: "2",
+                  description: "hehe",
+                  photo_url: products(:ice_floe).photo_url,
+                  lifecycle: "available",
+                  vendor_id: products(:ice_floe).vendor_id
+                  } }
+                }.must_change 'Product.count', 1
+              end
 
-      it "should delete a product and redirect to product list" do skip
-        assert_difference 'Product.count', -1 do
-          delete :destroy, {id: products(:ice_floe).id }
-          # product_path(products(:ice_floe).id)
-          # must_redirect_to products_path
+              it "should delete a product and redirect to product list" do skip
+                assert_difference 'Product.count', -1 do
+                  delete :destroy, {id: products(:ice_floe).id }
+                  # product_path(products(:ice_floe).id)
+                  # must_redirect_to products_path
+                end
+
+            end
+          end
         end
       end
-
-
-        end

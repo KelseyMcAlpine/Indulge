@@ -21,10 +21,10 @@ describe CategoriesController do
   end
 
   describe "User/Vendor is logged in" do
+
     before do
       login_user(vendors(:Jim))
     end
-
 
     it "should get form to create a new category" do
       get new_category_path
