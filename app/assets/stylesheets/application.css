@@ -39,8 +39,10 @@ footer {
   padding: 15px, 0px, 0px, 45px;
 }
 
+/* WIDE IMAGES
+====================================== */
+
 .hero-image {
-  background: linear-gradient(#004092, #020202, transparent);
   position: relative;
   display: flex;
   align-items: center;
@@ -64,7 +66,12 @@ footer {
   z-index: 10000;
 }
 
+.category-index-images, .vendor-index-images {
+  padding-top: 5px;
+}
 
+/* HOMEPAGE SLIDER
+====================================== */
 
 .fullscreen-image-slider .orbit-image {
   width: 100%;
@@ -87,6 +94,9 @@ footer {
   padding: 15px, 0px, 15px, 45px;
 }
 
+
+/* HEADER
+====================================== */
 
 #logo {
   color: black;

@@ -1,9 +1,13 @@
-<main>
+
   <h1>Vendors</h1>
-  <ul>
-    <% @vendors.each do |vendor| %>
-    <li> <%= link_to vendor.username, vendor_products_path(vendor.id) %> Contact Me: <%= vendor.email %></li>
-    <%= image_tag vendor.image_url %>
+  <% @vendors.each do |vendor| %>
+  <div class="hero-image vendor-index-images">
+    <%= link_to vendor_products_path(vendor.id) do %>
+      <%= image_tag vendor.image_url %>
     <% end %>
-  </ul>
-</main>
+    <div class="hero-content">
+      <h2><%= vendor.username %></h2>
+    </div>
+  </section>
+</div>
+  <% end %>
