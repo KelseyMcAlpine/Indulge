@@ -187,18 +187,12 @@ a {
   color: gray;
 }
 
-.manage {
-  position: relative;
-  display: block;
-  width: 80%;
-  left: 9%;
-  background-color: white
-
+.manage-buttons {
+  text-align: center;
 }
 
-.manage:hover {
-  background-color: white;
-
+.manage-buttons:first-of-type {
+  padding-top: 30px;
 }
 
 .welcome {

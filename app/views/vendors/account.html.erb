@@ -7,14 +7,13 @@
   <img class="top-image" src="https://unsplash.it/600/400/?random">
 
 
-  <p class="button round manage">
-     <%= link_to "Manage Products", vendor_path%>
-  </p>
+    <p class="manage-buttons">
 
-  <p class="button  manage">
-     <%= link_to "Manage Orders", manage_orders_path %>
-  </p>
-
-  <p class="button  manage">
-     <%= link_to "Create a new Category", new_category_path %>
-  </p>
+      <%= link_to "Manage Products", vendor_path, :class => "button" %>
+    </p>
+    <p class="manage-buttons">
+      <%= link_to "Manage Orders", manage_orders_path, :class => "button" %>
+    </p>
+    <p class="manage-buttons">
+      <%= link_to "Create a new Category", new_category_path, :class => "button" %>
+    </p>
