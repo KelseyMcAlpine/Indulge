@@ -7,6 +7,7 @@
     <th>Price</th>
   </tr>
   <% if @order.status == "pending"%>
+  <% total = [] %>
   <% @order.order_products.each do | order_product | %>
   <tr>
     <td><%= Product.find(order_product.product_id).name %></td>
@@ -17,11 +18,16 @@
       <%= link_to "-", product_remove_from_cart_path(order_product.product_id), method: :post %></td>
     <!-- <td><%= number_with_precision(Product.find(order_product.product_id).price, precision: 2)*order_product.quantity %></td> -->
     <td>$<%= number_with_precision(Product.find(order_product.product_id).price * order_product.quantity, precision: 2) %></td>
-
+    <%p = Product.find(order_product.product_id).price * order_product.quantity %>
+    <% total << p %>
   </tr>
     <% end %>
   <% end %>
 </table>
+
+<p class="float-right">
+  Total: $<%= number_with_precision(total.inject(:+), precision: 2) %>
+</p>
 <% if @order.status != "pending" %>
   <p>"you have not added any items to your cart"</p>
 <% end %>
