@@ -135,9 +135,10 @@ ul.primary li {
   padding: 0px 30px;
 }
 
-li.highlight a {
+li.highlight a, a:hover {
   color: #E24E42;
 }
+
 
 li.highlight a:hover {
   color: gray;
