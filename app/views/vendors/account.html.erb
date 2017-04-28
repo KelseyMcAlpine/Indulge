@@ -2,10 +2,11 @@
 
 <body>
 
+  <section class="hero-image">
+    <%= image_tag @vendor.image_url %>
+    <h1 class="hero-content"> Welcome, <%= @vendor.username%> </h1>
+  </section>
 
-  <img class="top-image" src="https://unsplash.it/600/400/?random">
-
-  <h1 class="welcome"> Welcome, <%= @vendor.username%> </h1>
 
     <p class="manage-buttons">
 
