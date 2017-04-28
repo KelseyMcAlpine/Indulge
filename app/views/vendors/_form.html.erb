@@ -3,6 +3,7 @@
 <%= form_for @vendor do |f| %>
 <%= f.hidden_field :uid, value: @vendor.uid %>
 <%= f.hidden_field :provider, value: @vendor.provider %>
+<%= f.hidden_field :image_url, value: "https://unsplash.it/300/300/?blur" %>
 <%= f.label :username %>
 <%= f.text_field :username %>
 <%= f.label :email %>

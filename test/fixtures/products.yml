@@ -34,3 +34,35 @@ twinkies:
   inventory: 15
   lifecycle: "available"
   categories: healthy, spa
+
+no_stock:
+    vendor: polar_queen
+    price: 1800
+    inventory: 0
+    name: "Dinner"
+    description: "Voluptuous feast"
+    photo_url: "http://i.telegraph.co.uk/multimedia/archive/03339/polar-bear-global-_3339474b.jpg"
+    lifecycle: "unavailable"
+    categories: exotic
+
+# broken fixture, no name
+  # sightseeing:
+  #   vendor: Jim
+  #   name:
+  #   description: "The unforgettable getaway"
+  #   photo_url: "example 123"
+  #   price: 150
+  #   inventory: 15
+  #   lifecycle: "available"
+  #   categories: nature
+
+    # broken fixture, no price
+  # spa:
+  #   vendor: Jim
+  #   name: "The beautiful beaches of the Gulf"
+  #   description: "Oh yea!"
+  #   photo_url: "example 123"
+  #   price: 150
+  #   inventory: 15
+  #   lifecycle: "available"
+  #   categories: healthy, spa

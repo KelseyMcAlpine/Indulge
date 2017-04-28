@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :find_product, only: [:show, :edit, :update, :update_availability]
-  before_action :require_login, except: [:index, :show]#, :find_product]
+  before_action :require_login, except: [:index, :show, :find_product]
 
   def new
     @product = Product.new

@@ -5,9 +5,8 @@
     </section>
     <section class="small-12 medium-8 columns">
       <h2><%= @product.name %></h2>
-      <div class="price">
-        <h3>$<%= @product.price %></h3>
-      </div>
+      <h3>$<%= number_with_precision(@product.price, precision: 2) %></h3>
+      <br/>
       <p><strong>by <%= link_to @product.vendor.username, vendor_products_path(@product.vendor.id) %></strong></p>
       <p><%= @product.description %></p>
       <p><emphasis>
