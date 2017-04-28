@@ -16,10 +16,9 @@
 
  */
 
-img {
-  height: 50px;
-  width: 50px;
-}
+body {
+   padding: 45px;
+ }
 
 .prod-img-list {
   height: 200px;
