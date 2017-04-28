@@ -26,21 +26,21 @@ class ProductsController < ApplicationController
     if params[:category_id]
       category = Category.find_by(id: params[:category_id])
       @products = category.products
-      # @description = category.description
+      @description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam omnis, maxime libero natus qui minus!"
       @header = "Products in #{category.name}"
-      @image = "https://unsplash.it/1500/500/?random"
+      @image = category.image_url
       @products = Product.includes(:categories).where(categories: { id: params{:category_id}} )
     elsif params[:vendor_id]
       vendor = Vendor.find_by(id: params[:vendor_id])
       @products = vendor.products
-      # @description = vendor.description
+      @description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam omnis, maxime libero natus qui minus!"
       @header = "Products from #{vendor.username}"
-      @image = "https://unsplash.it/1500/500/?random"
+      @image = vendor.image_url
 
     else
       @products = Product.all
       @header = "All products"
-      # @description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam omnis, maxime libero natus qui minus!"
+      @description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam omnis, maxime libero natus qui minus!"
       @image = "https://unsplash.it/1500/500/?random"
     end
   end
