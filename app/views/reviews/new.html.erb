@@ -1,19 +1,46 @@
-<h1>Reviews</h1>
-<h3>Please rate this product</h3>
+<main>
+  <article class="review">
+    <div class="row">
 
-<%= form_for @review, method: :post, url: product_reviews_path do |f| %>
-<%= f.label :rating, value: 1 %>
-<%= f.radio_button(:rating, 1)%>
-<%= f.label :rating, value: 2 %>
-<%= f.radio_button(:rating, 2) %>
-<%= f.label :rating, value: 3 %>
-<%= f.radio_button(:rating, 3) %>
-<%= f.label :rating, value: 4 %>
-<%= f.radio_button(:rating, 4) %>
-<%= f.label :rating, value: 5 %>
-<%= f.radio_button(:rating, 5) %>
-<%= f.label :comment, "Review" %>
-<%= f.text_area :comment %>
-<%= f.hidden_field :product_id, value: @product.id %>
-<%= f.submit %>
-<% end %>
+      <%= form_for @review, method: :post, url: product_reviews_path do |f| %>
+        <% if @review.errors.any? %>
+          <div class="row small-6 large-6 end callout alert">
+            <ul>
+              <% @review.errors.each do |col, mess| %>
+                <li>
+                  <%=col%><%=mess%></li>
+                  <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+
+        <!--label for="review_rating_1">1</label-->
+        <!--input type="radio" value="1" name="review[rating]" id="review_rating_1"-->
+        <fieldset class="fieldset">
+          <legend>Reviews</legend>
+          <input id="review_rating_1" type="checkbox" value="1" name="review[rating]">
+          <label for="review_rating_1">1</label>
+          <input id="review_rating_2" type="checkbox" value="2" name="review[rating]">
+          <label for="review_rating_2">2</label>
+          <input id="review_rating_3" type="checkbox" value="3" name="review[rating]">
+          <label for="review_rating_3">3</label>
+          <input id="review_rating_4" type="checkbox" value="4" name="review[rating]">
+          <label for="review_rating_4">4</label>
+          <input id="review_rating_5" type="checkbox" value="5" name="review[rating]">
+          <label for="review_rating_5">5</label>
+          <textarea name="review[comment]" id="review_comment"></textarea>
+          <label for="review_comment"></label>
+          <%# f.label :comment, "Review" %>
+          <%# f.text_area :comment %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+
+          <!-- <button type="submit" class="success button" form="form1" value="Submit">Submit</button> -->
+
+          <input type="submit" class="success button" name="commit" value="Create Review" data-disable-with="Create Review">
+          <%# f.submit class: "success button"%>
+
+        </fieldset>
+        <% end %>
+      </div>
+    </main>

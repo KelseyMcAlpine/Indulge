@@ -184,6 +184,7 @@ class OrdersController < ApplicationController
   end
 
   def current_order
+    
     @order = Order.find_by_id(session[:order_id])
   end
 

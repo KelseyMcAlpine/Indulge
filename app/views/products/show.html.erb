@@ -22,22 +22,26 @@
   <div class="row">
     <div class="small-12 medium-offest-4 columns">
     </div>
-    <section class="small-12 medium-8 columns">
-      <h3>Reviews</h3>
+  <section class="small-12 medium-8 columns">
+    <h3>Reviews</h3>
       <% if @product.reviews.empty? %>
-      <p>There are no reviews yet. <%= link_to "Please be the first to review this product", new_product_review_path(@product.id) %>
-        <% else %>
+        <p>There are no reviews yet. <%= link_to "Please be the first to review this product", new_product_review_path(@product.id) %>
+      <% else %>
         <% @product.reviews.each do |review| %>
-        <h5><strong><%= review.header %></strong></h5>
-        <div id="block-quote"><o>&ldquo;<%= review.comment %>&ldquo;</p></div>
-        <p>
-          <% review.rating.times do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-        </p>
+          <h5><strong><%= review.header %></strong></h5>
+
+          <div id="block-quote"><o>&ldquo;<%= review.comment %>&ldquo;</p></div>
+
+            <p><%= review.comment %></p>
+          <p><% if review.rating != nil %>
+                <% review.rating.times do %>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <% end %>
+                <% end %>
+          </p>
         <% end %>
-        <%= link_to "Review this product!", new_product_review_path(@product.id), :class => "button" %>
-        <% end %>
-      </section>
+  <%= link_to "Review this product!", new_product_review_path(@product.id), :class => "button" %>
+      <% end %>
+        </section>
     </div>
-</main>
+  </main>

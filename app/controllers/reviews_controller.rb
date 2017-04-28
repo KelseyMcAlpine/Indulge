@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    
     @review = Review.new(reviews_params)
     @product = Product.find(params[:product_id])
     @review.product_id = @product.id
@@ -21,7 +22,9 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to product_path(@product.id)
     else
+      flash[:error] = "Something went wrong"
       render :new
+
     end
   end
 
