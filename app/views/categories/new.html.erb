@@ -1,9 +1,14 @@
 <main>
   <h1>Add a New Category</h1>
-  <%= f.hidden_field :image_url, value: "https://unsplash.it/1500/500" %>
-  <%= form_for @category do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-  <% end %>
+
+  <div class="row">
+    <section class="small-12 large-8 columns">
+      <%= form_for @category do |f| %>
+      <%= f.hidden_field :image_url, value: "https://unsplash.it/1500/500" %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.submit :class => "button" %>
+      <% end %>
+    </section>
+  </div>
 </main>
