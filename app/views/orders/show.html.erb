@@ -1,5 +1,7 @@
-<h1>Cart</h1>
-
+<main>
+<h1 class="cart">Cart</h1>
+<div class="row">
+  <section class="small-12 large-8">
 <table>
   <tr>
     <th>Item</th>
@@ -19,10 +21,13 @@
   </tr>
     <% end %>
   <% end %>
+</section>
 </table>
+</div>
 <% if @order.status != "pending" %>
   <p>"you have not added any items to your cart"</p>
 <% end %>
 <% if @order.order_products != nil %>
-<%= link_to "Checkout", order_checkout_path(@order.id) %>
+<div class="success button"><%= link_to "Checkout", order_checkout_path(@order.id) %></div>
 <% end %>
+</main>

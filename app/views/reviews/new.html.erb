@@ -14,9 +14,6 @@
           </div>
         <% end %>
 
-
-        <!--label for="review_rating_1">1</label-->
-        <!--input type="radio" value="1" name="review[rating]" id="review_rating_1"-->
         <fieldset class="fieldset">
           <legend>Reviews</legend>
           <input id="review_rating_1" type="checkbox" value="1" name="review[rating]">
@@ -34,8 +31,6 @@
           <%# f.label :comment, "Review" %>
           <%# f.text_area :comment %>
           <%= f.hidden_field :product_id, value: @product.id %>
-
-          <!-- <button type="submit" class="success button" form="form1" value="Submit">Submit</button> -->
 
           <input type="submit" class="success button" name="commit" value="Create Review" data-disable-with="Create Review">
           <%# f.submit class: "success button"%>
