@@ -1,12 +1,10 @@
-
-  <h1>Vendors</h1>
   <% @vendors.each do |vendor| %>
   <div class="hero-image vendor-index-images">
     <%= link_to vendor_products_path(vendor.id) do %>
       <%= image_tag vendor.image_url %>
     <% end %>
     <div class="hero-content">
-      <h2><%= vendor.username %></h2>
+      <h2><i class="material-icons large-icon" style="font-size:80px">account_circle</i> <%= vendor.username %></h2>
     </div>
   </section>
 </div>
