@@ -15,7 +15,7 @@
       <%= link_to "+", product_add_to_cart_path(order_product.product_id), method: :post %>
       <%= order_product.quantity %>
       <%= link_to "-", product_remove_from_cart_path(order_product.product_id), method: :post %></td>
-    <td><%= Product.find(order_product.product_id).price * order_product.quantity %></td>
+    <td><%= number_with_precision(Product.find(order_product.product_id).price, precision: 2) * order_product.quantity %></td>
   </tr>
     <% end %>
   <% end %>
