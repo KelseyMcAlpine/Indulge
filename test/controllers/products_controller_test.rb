@@ -17,7 +17,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       end
 
       it "index displays all the products for a vendor" do
-        get vendor_path, vendor_id: vendors(:polar_queen).id
+        get vendor_products_path(vendor.id)
         must_respond_with :success
       end
 
