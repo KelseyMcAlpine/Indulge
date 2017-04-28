@@ -154,6 +154,11 @@ a {
 
 }
 
+.manage:hover {
+  background-color: white;
+
+}
+
 .welcome {
   text-align: center;
   color: darkgray;
