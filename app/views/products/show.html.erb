@@ -29,8 +29,8 @@
         <% else %>
         <% @product.reviews.each do |review| %>
         <h5><strong><%= review.header %></strong></h5>
-        <p><%= review.comment %></p>
-        <p>-
+        <div id="block-quote"><o>&ldquo;<%= review.comment %>&ldquo;</p></div>
+        <p>
           <% review.rating.times do %>
           <i class="fa fa-star" aria-hidden="true"></i>
           <% end %>

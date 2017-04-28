@@ -1,7 +1,9 @@
-<h1>Vendors</h1>
+<main>
+  <h1>Vendors</h1>
+  <ul>
+    <% @vendors.each do |vendor| %>
+    <li> <%= link_to vendor.username, vendor_products_path(vendor.id) %> Contact Me: <%= vendor.email %></li>
 
-<ul>
-<% @vendors.each do |vendor| %>
-<li> <%= link_to vendor.username, vendor_products_path(vendor.id) %> Contact Me: <%= vendor.email %></li>
-<% end %>
-</ul>
+    <% end %>
+  </ul>
+</main>
