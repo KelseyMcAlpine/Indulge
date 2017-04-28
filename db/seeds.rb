@@ -212,12 +212,12 @@ vendors = Vendor.create ([
       lifecycle: "available"
     },
     {
-      name: "Another Thing",
+      name: "Composting With My PNW Neighbor",
       vendor: vendors.last,
-      price: 450,
+      price: 10,
       inventory: 25,
-      description: "A full-day excursion to my dad's poorly ventilated garage workshop, where you'll hold wrenches, fetch solvent, and listen to baseball on the radio while deepening your knowledge of the 1965 V8 Convertible.",
-      photo_url: "https://unsplash.it/800/800?image=1050",
+      description: "Full day of filling and aerating my neighbor's composting pile with the sole purpose of nudging it closer and closer to my property. ",
+      photo_url: "https://unsplash.it/800/800?image=1051",
       lifecycle: "available"
     }
     ])
@@ -230,7 +230,9 @@ vendors = Vendor.create ([
       { name: 'Dinner Cruise', image_url: "https://unsplash.it/1500/500?image=1023" },
       { name: 'Shopping Excursion', image_url: "https://unsplash.it/1500/500?image=1024" },
       { name: 'Night at the Museum', image_url: "https://unsplash.it/1500/500?image=1025" },
-      { name: 'Cupcake Night', image_url: "https://unsplash.it/1500/500?image=1026" }
+      { name: 'Cupcake Night', image_url: "https://unsplash.it/1500/500?image=1026" },
+      { name: 'Hipster Fantastic', image_url: "https://unsplash.it/1500/500?image=1027" }
+
       ])
 
       Product.all.each do |product|
