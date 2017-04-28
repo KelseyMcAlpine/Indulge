@@ -1,8 +1,8 @@
-<main>
+<main class="center">
 <article class="order-detail">
     <section class="row">
 <h3>Order Number: <%= @order.id%> </h3>
-<h3>Order Status: <%= @order.status%> </h3>
+<h5>Order Status: <%= @order.status%> </h5>
 <p>Placed On: <%= @order.created_at%> </p>
 <p>Updates will be sent to: <%= @order.cust_email%> </p>
 <p>Shipping Address: <%= @order.cust_address%> </p>
@@ -11,22 +11,28 @@
 <table class="row">
   <thead>
     <tr>
-      <th class="medium-6 columns">Product</th>
-      <th class="medium-6 columns">Quantity</th>
-      <th class="medium-6 columns">Price</th>
-      <th class="medium-6 columns">Subtotal</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Subtotal</th>
     </tr>
   </thead>
-  <% total = [] %>
   <tr>
+    <% total = [] %>
+
     <% @order.order_products.each do |product| %>
     <td><%= Product.find_by_id(product.product_id).name %></td>
     <td><%= product.quantity %></td>
-    <td><%= number_with_precision(Product.find_by_id(product.product_id).price, precision: 2)%></td>
-    <%total << number_with_precision(Product.find_by_id(product.product_id).price, precision: 2) * product.quantity %>
+    <td>$<%= number_with_precision(Product.find_by_id(product.product_id).price, precision: 2)%></td>
+    <% total << Product.find_by_id(product.product_id).price * product.quantity %>
+    <td>$<%=Product.find_by_id(product.product_id).price * product.quantity %>0</td>
   </tr>
   <% end %>
 </table>
-Total: <%= total.inject(:+) %>
+<div class="center">
+  Total: $<%= number_with_precision(total.inject(:+), precision: 2) %>
+
+</div>
 </article>
+
 </main>
