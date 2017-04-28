@@ -160,42 +160,50 @@ vendors = Vendor.create ([
     reviews =  [
       { rating: 1,
         product: Product.all.sample,
-        comment: "A great experience"
+        header: "A great experience",
+        comment: "Lorem ipsum dolor sit amet, sea cu erat rebum utinam, mel ei maiorum invenire, quo an sonet comprehensam signiferumque. Accumsan hendrerit an mel. Id illud accusam consequat vim, est in doctus efficiantur. Usu ne populo audiam scribentur. Pro et insolens similique. An eam verterem intellegat."
       },
       {
         product: Product.all.sample,
         rating: 4,
-        comment: "Highly recommend"
+        header: "Highly recommend",
+        comment: "Eum persius recteque ex, latine tractatos at has, ei usu populo dissentiunt. Vix eu dico verterem, ne stet accusata duo, eam et novum ponderum. Veritus ponderum signiferumque eos et, eu doctus praesent eos. Cu vim novum laudem mnesarchum. Ex admodum nusquam his, vitae soleat intellegebat no duo, pro bonorum labores invenire."
       },
       {
         product: Product.all.sample,
         rating: 5,
-        comment: "A new favorite"
+        header: "A new favorite",
+        comment: "Eum persius recteque ex, latine tractatos at has, ei usu populo dissentiunt. Vix eu dico verterem, ne stet accusata duo, eam et novum ponderum. Veritus ponderum signiferumque eos et, eu doctus praesent eos. Cu vim novum laudem mnesarchum. Ex admodum nusquam his, vitae soleat intellegebat no duo, pro bonorum labores invenire."
       },
       {
         product: Product.all.sample,
         rating: 3,
-        comment: "Wow. Will cherish forever"
+        header: "Wow. Will cherish forever",
+        comment: "Eum persius recteque ex, latine tractatos at has, ei usu populo dissentiunt. Vix eu dico verterem, ne stet accusata duo, eam et novum ponderum. Veritus ponderum signiferumque eos et, eu doctus praesent eos. Cu vim novum laudem mnesarchum. Ex admodum nusquam his, vitae soleat intellegebat no duo, pro bonorum labores invenire."
       },
       {
         product: Product.all.sample,
         rating: 2,
-        comment: "Unforgettable experience"
+        header: "Unforgettable experience",
+        comment: "Commune intellegat usu ei, nam augue ancillae oportere te. At sed epicuri expetendis, ad usu etiam mazim. Ius utamur tractatos ea, verear ceteros deleniti ut has. An nam option nostrud alienum, ad movet percipitur mea."
       },
       {
         product: Product.all.sample,
         rating: 5,
-        comment: "So indulgent"
+        header: "So indulgent",
+        comment: "Eum persius recteque ex, latine tractatos at has, ei usu populo dissentiunt. Vix eu dico verterem, ne stet accusata duo, eam et novum ponderum. Veritus ponderum signiferumque eos et, eu doctus praesent eos. Cu vim novum laudem mnesarchum. Ex admodum nusquam his, vitae soleat intellegebat no duo, pro bonorum labores invenire."
       },
       {
         product: Product.all.sample,
         rating: 4,
-        comment: "Can I go back now"
+        header: "Can I go back now",
+        comment: "Ei aeterno bonorum inciderint eam. Ut est electram accusamus, has cibo audire patrioque an. Lucilius lobortis ei nam, ut tale nonumy concludaturque eum. Nonumes oporteat ius id, est ignota oportere vituperata ad. Eu per prima aeterno urbanitas, et quot facilis usu."
       },
       {
         product: Product.all.sample,
         rating: 2,
-        comment: "Meh"
+        header: "Meh",
+        comment: "Duo an quodsi fabulas mediocrem, ea eos graeci alienum, eum everti voluptatibus ne. Case ancillae referrentur ius ei, id accommodare disputationi nam. Veri phaedrum argumentum quo an, mea cibo reque te. Dicant minimum deseruisse vis ea. Et sapientem gubergren pri, ne suas meis assueverit cum, eu tibique liberavisse vel. Eam duis nominavi concludaturque at, ut his aperiam argumentum."
       }
     ]
 
