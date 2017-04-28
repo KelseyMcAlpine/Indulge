@@ -19,7 +19,7 @@
       <div class="<%= name %>"><%= message %></div>
       <% end %>
     </section>
-    <div class="row float-right">
+    <!-- <div class="row float-right">
       <nav>
         <ul class="secondary">
           <% if session[:vendor_id] %>
@@ -35,18 +35,31 @@
           <li class="highlight"><%= link_to "Cart", order_cart_path(session[:order_id]) %><i class="shopping-cart"></i></li>
         </ul>
       </nav>
-    </div>
-    <div class="row clearfix logo">
-      <h1 id="logo"><%= link_to "Indulge", root_path %></li></h1>
-    </div>
+    </div> -->
     <div class="row">
-      <nav class="clearfix">
-        <ul class="primary">
-          <li><%= link_to "All products", products_path %></li>
-          <li><%= link_to "Browse categories", categories_path %></li>
-          <li><%= link_to "Browse vendors", vendors_path %></li>
-        </ul>
-      </nav>
+      <div class="logo float-left">
+        <h1 id="logo"><%= link_to "Indulge", root_path %></li></h1>
+      </div>
+      <div class="float-right">
+        <nav class="clearfix">
+          <ul class="primary">
+            <li><%= link_to "Products", products_path %></li>
+            <li><%= link_to "Categories", categories_path %></li>
+            <li><%= link_to "Vendors", vendors_path %></li>
+            <% if session[:vendor_id] %>
+            <li><%= link_to "Account", vendor_account_path%></li>
+            <% end %>
+            <li>
+              <% unless session[:vendor_id] %>
+              <%= link_to "Sign in", "/auth/github" %>
+              <% else %>
+              <%= link_to "Sign out", logout_path, method: :delete %>
+              <% end %>
+            </li>
+            <li class="highlight"><%= link_to "Cart", order_cart_path(session[:order_id]) %><i class="shopping-cart"></i></li>
+          </ul>
+        </nav>
+      </div>
     </div>
 </header>
 
