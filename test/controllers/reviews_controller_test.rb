@@ -3,44 +3,30 @@ require "test_helper"
 describe ReviewsController do
 let(:product) {products(:ice_floe)}
 let(:review) {reviews(:first_review)}
-  it "should get new" do
 
-  proc {
-    get new_product_review_path, params:  { review:
-      {product_id: product.id,
-      }
-    }
-  }
+  it "should get new review form" do
+    get new_product_review_path(product.id)
     must_respond_with :success
   end
 
-  it "should get create" do
-    proc {
-      get product_reviews_path, params:  { review:
-        {product_id: product.id,
-        }
-      }
-    }
-      must_respond_with :success
-  end
 
-  it "should save a review to the database" do skip
-     product = products(:ice_floe)
+  it "should affect the model when creating a review" do
+
     proc {
-      get product_reviews_path, params:  { review:
-        { rating: review.rating,
-          comment: review.comment,
+      post product_reviews_path(product.id), params:  { review:
+        { rating: 5,
+          comment: "totally fantastic",
           product_id: product.id
         }
       }
     }.must_change 'Review.count', 1
   end
 
-  it "should not save an invalid review to database" do skip 
+  it "should not save an invalid review to database" do
     proc {
-      get product_reviews_path, params:  { review:
+      post product_reviews_path(product.id), params:  { review:
         { rating: 0,
-          comment: review.comment,
+          comment: "ghastly",
           product_id: product.id
         }
       }
