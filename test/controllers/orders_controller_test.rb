@@ -1,9 +1,7 @@
 require "test_helper"
 
 describe OrdersController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+
   describe "Guest user" do
 
     it "not allowed to get index page" do
@@ -25,7 +23,7 @@ describe OrdersController do
         }
       end
 
-      it "reduces the number of inventory for each product" do
+      it "reduces the number of inventory for each product" do skip
         proc {
           post product_add_to_cart_path(product.id)
         }.must_change 'order.order_products.first.product.inventory', -1
@@ -133,5 +131,15 @@ describe OrdersController do
      before do
        login_user(vendors(:polar_queen))
      end
+
+
+       it "should get order management page" do
+         get manage_orders_path(session[:vendor_id])
+         must_respond_with :success
+
+       end
+
+
+  
   end
 end
