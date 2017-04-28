@@ -11,50 +11,7 @@
   <%= f.text_field :credit_card %>
   <%= f.label :cc_expire %>
   <%= f.text_field :cc_expire %>
-  <div class="button success"><%= f.submit "Place Order" %></div>
+  <%= f.submit class: "button success" "Place Order" %>
 <% end %>
 </article>
 </main>
-
-<form class="large-4 large-offset-4 columns">
-  <div class="row">
-      <div class="large-12 columns">
-        <h2>Submit Payment</h2>
-      </div>
-  </div>
-  <div class="row">
-    <div class="large-12 columns">
-      <label>Name on Card
-        <input type="text" name="cardholder" placeholder="" />
-      </label>
-    </div>
-    <div class="large-12 columns">
-      <label>Card Number
-        <input type="text" name="cardnumber" placeholder="" />
-      </label>
-    </div>
-    <div class="large-12 columns">
-      <label>Billing Address
-        <input type="text" name="address" placeholder="" />
-      </label>
-    </div>
-    <div class="large-4 columns">
-      <label>Exp Month
-        <input type="text" name="expmonth" placeholder="MM" />
-      </label>
-    </div>
-    <div class="large-4 columns">
-      <label>Exp Year
-        <input type="text" name="expyear" placeholder="YYYY" />
-      </label>
-    </div>
-    <div class="large-4 columns">
-      <label>CVC Code
-        <input type="text" name="cvccode" placeholder="ex: 123" />
-      </label>
-    </div>
-    <div class="large-12 columns">
-      <button class="button success">Pay Now</button>
-    </div>
-  </div>
-</form>
