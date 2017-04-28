@@ -18,6 +18,8 @@
 
  @import url('https://fonts.googleapis.com/css?family=Yellowtail');
 
+
+
 main, footer {
    padding: 45px;
  }
@@ -39,12 +41,43 @@ header {
   z-index: 0;
 }
 
+.hero-image::after {
+  display: block;
+  position: relative;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
+  margin-top: -150px;
+  height: 150px;
+  width: 100%;
+}
+
 .hero-content {
+  color: white;
   position: absolute;
   bottom: 45px;
   left: 60px;
   z-index: 10000;
 }
+
+
+
+.fullscreen-image-slider .orbit-image {
+  width: 100%;
+  height: 100vh;
+}
+
+.fullscreen-image-slider .orbit-caption {
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+          transform: translateY(50%);
+  background: none;
+  text-align: center;
+  color: #fefefe;
+  font-weight: bold;
+}
+
+
+
 
 #logo {
   color: black;
