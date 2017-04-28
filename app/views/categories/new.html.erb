@@ -1,5 +1,6 @@
 <main>
   <h1>Add a New Category</h1>
+  <%= f.hidden_field :image_url, value: "https://unsplash.it/1500/500" %>
   <%= form_for @category do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
