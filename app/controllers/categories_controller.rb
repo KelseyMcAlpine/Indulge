@@ -23,6 +23,7 @@ class CategoriesController < ApplicationController
       flash[:success] = "New category successfully added"
       redirect_to categories_path
     else
+      raise
       flash.now[:error] = "Hmm.. something went wrong."
       render "new"
     end
@@ -32,7 +33,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :image_url)
   end
 
 end

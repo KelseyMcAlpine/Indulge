@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
       @description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam omnis, maxime libero natus qui minus!"
       @header = "Products in #{category.name}"
       @image = category.image_url
-      @products = Product.includes(:categories).where(categories: { id: params{:category_id}} )
+      # @products = Product.includes(:categories).where(categories: { id: params{:category_id}} )
     elsif params[:vendor_id]
       vendor = Vendor.find_by(id: params[:vendor_id])
       @products = vendor.products

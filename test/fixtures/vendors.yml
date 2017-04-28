@@ -10,21 +10,27 @@ polar_queen:
   email: "queen@seriouslyfreezing.com"
   uid: "111"
   provider: "github"
+  image_url: "https://unsplash.it/1500/500/?random"
 
 Dwight:
   username: "Dwight Schrute"
   email: "Dwight@schrutefarms.com"
   uid: "222"
   provider: "github"
+  image_url: "https://unsplash.it/1500/500/?random"
+
 
 Jim:
   username: "Jim Halpert"
   email: "jim@athlead.com"
   uid: "333"
   provider: "github"
+  image_url: "https://unsplash.it/1500/500/?random"
+
 
 Michael:
     username: "Michael Scott"
     email: "mscott@greatscottproductions.com"
     uid: "444"
     provider: "github"
+    image_url: "https://unsplash.it/1500/500/?random"
