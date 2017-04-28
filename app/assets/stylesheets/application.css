@@ -29,6 +29,11 @@ header {
   background-color: SmokeGrey;
 }
 
+footer {
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
 .secondary {
   text-align: right;
 }
@@ -76,7 +81,10 @@ header {
   font-weight: bold;
 }
 
-
+.flash {
+  background-color: #f5f5f5;
+  padding: 15px, 0px, 15px, 45px;
+}
 
 
 #logo {
