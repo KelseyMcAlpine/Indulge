@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :current_order, only: [:add_product_order, :remove_product_order, :show, :checkout, :update]
   before_action :find_order_product, only: [:show, :change_cart_quantity]
-  before_action :require_login, only: [:manage_orders, :order_details, :update]
+  before_action :require_login, only: [:manage_orders, :order_details]
 
   def index
     params[:vendor_id]
@@ -88,6 +88,11 @@ class OrdersController < ApplicationController
     @order = Order.find_by_id(params[:id])
   end
 
+  def confirmation
+    @vendor = current_vendor
+    @order = Order.find_by_id(params[:id])
+  end
+
   def create
     @order = Order.create order_params
     unless @order.id == nil
@@ -104,11 +109,13 @@ class OrdersController < ApplicationController
     if @order.order_products.count < 1
 
       flash[:error] = "No items in cart"
+
       redirect_to root_path
     end
   end
 
   def update
+
     @order.purchase_date = purchase_params[:purchase_date]
     @order.status = purchase_params[:status]
     @order.cust_email = purchase_params[:cust_email]
@@ -117,9 +124,11 @@ class OrdersController < ApplicationController
     @order.cc_expire = purchase_params[:cc_expire]
 
     if @order.save
+
       session[:order_id] = nil
       flash[:success] = "Order Placed!"
-      redirect_to root_path
+
+      redirect_to confirmation_path
       # change to confirmation page eventually
     else
       flash.now[:error] = "Something went wrong"
@@ -184,7 +193,7 @@ class OrdersController < ApplicationController
   end
 
   def current_order
-    
+
     @order = Order.find_by_id(session[:order_id])
   end
 

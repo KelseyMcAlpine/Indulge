@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   end
 
     get '/orders/:id', to: "orders#order_details", as: "order_details"
+    get '/orders/:id/confirmation', to: "orders#confirmation", as: "confirmation"
+
 
 
     post '/orders/:id/update', to: "orders#change_ship_status", as: "update_ship"
