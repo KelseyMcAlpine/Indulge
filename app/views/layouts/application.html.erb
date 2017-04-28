@@ -13,28 +13,38 @@
 
 
 <body>
-  <nav>
-    <ul>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "All products", products_path %></li>
-      <li><%= link_to "Browse categories", categories_path %></li>
-      <li><%= link_to "Browse vendors", vendors_path %></li>
+  <header>
+  <div>
 
-      <li>
-        <% unless session[:vendor_id] %>
-        <%= link_to "Sign in", "/auth/github" %>
-        <% else %>
-        <%= link_to "Sign out", logout_path, method: :delete %>
+    <h1 id="title">Indulge</h1>
+    <nav>
+        <ul class="secondary">
+          <% if session[:vendor_id] %>
+                <li><%= link_to "Your account", vendor_account_path%></li>
+          <% end %>
+          <li>
+            <% unless session[:vendor_id] %>
+            <%= link_to "Sign in", "/auth/github" %>
+            <% else %>
+            <%= link_to "Sign out", logout_path, method: :delete %>
+            <% end %>
+          </li>
+          <li class="highlight"><%= link_to "Cart", order_cart_path(session[:order_id]) %></li>
+        </ul>
+      </nav>
+    </div>
 
-        <% end %>
-      </li>
-
-      <li><%= link_to "[Cart]", order_cart_path(session[:order_id]) %></li>
-      <% if session[:vendor_id] %>
-            <li><%= link_to "Your account", vendor_account_path%></li>
-      <% end %>
+  <nav class="clearfix">
+    <ul class="primary">
+      <li class="left"><%= link_to "Home", root_path %></li>
+      <li class="left"><%= link_to "All products", products_path %></li>
+      <li class="left"><%= link_to "Browse categories", categories_path %></li>
+      <li class="left"><%= link_to "Browse vendors", vendors_path %></li>
     </ul>
   </nav>
+
+
+</header>
 
   <section class="flash">
     <% flash.each do |name, message| %>

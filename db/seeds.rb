@@ -68,97 +68,97 @@ vendors = Vendor.create ([
   {
     username: "Polar Queen",
     email: "queen@seriouslyfreezing.com",
-    uid: "444",
+    uid: 444,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1060"
   },
   {
     username: "Ranger Rick",
     email: "rr@raccoonspace.net",
-    uid: "333",
+    uid: 333,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1061"
   },
   { username: "Dwight Schrute",
     email: "schrutefarms@gmail.com",
-    uid: "331",
+    uid: 331,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1062"
   },
   {
     username: "Jim Halpert",
     email: "jim@athlead.com",
-    uid: "3312",
+    uid: 3312,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1063"
   },
   {
     username: "Pam Beasley",
     email: "Pam@prattinstitute.com",
-    uid: "334",
+    uid: 334,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1064"
   },
   {
     username: "Michael Scott",
     email: "mscott@greatscottproductions.com",
-    uid: "335",
+    uid: 335,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1065"
   },
   {
     username: "Kelly Kapoor",
     email: "kkapoor@businessbitch.com",
-    uid: "336",
+    uid: 336,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1066"
   },
   {
     username: "Ryan Howard",
     email: "rhoward@whuf.edu",
-    uid: "337",
+    uid: 337,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1067"
   },
   {
     username: "Andy Bernard",
     email: "narddog@cornell.edu",
-    uid: "338",
+    uid: 338,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1068"
   },
   {
     username: "Kevin Malone",
     email: "bigbog69@fanduel.com",
-    uid: "339",
+    uid: 339,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1069"
   },
   {
     username: "Angela Martin",
     email: "msmartin@lipton4PA.com",
-    uid: "3310",
+    uid: 3310,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1070"
   },
   {
     username: "Toby Flenderson",
     email: "chadflenderson@flendersonfiles.com",
-    uid: "3311",
+    uid: 3311,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1071"
   },
   {
     username: "Creed Bratton",
     email: "notcreedbratton@creedthoughts.gov",
-    uid: "3313",
+    uid: 3313,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1072"
   },
   {
     username: "David Wallace",
     email: "dwallace@suckit.com",
-    uid: "3314",
+    uid: 3314,
     provider: "github",
     image_url: "https://unsplash.it/1500/500?image=1073"
   }

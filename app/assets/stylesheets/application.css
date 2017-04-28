@@ -20,6 +20,31 @@ main, header, footer {
   padding: 45px;
 }
 
+h1#title {
+  padding-bottom: 20px;
+}
+
+h1#title, ul.primary {
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+ul.primary li {
+  display: inline-block;
+  padding: 0px 30px;
+}
+
+li.highlight a {
+  color: #E24E42;
+}
+
+li.highlight a:hover {
+  color: gray;
+}
+
 .prod-img-list {
   height: 200px;
   width: 200px;
@@ -27,12 +52,14 @@ main, header, footer {
 
 
 img.top-image {
-  height: 350px;
-  width: 100%
+  /*margin-left:auto;
+  margin-right:auto;*/
+  display: block;
+  margin: 0 auto;
 }
 
 a {
-  color: gray
+  color: gray;
 }
 
 .manage {
@@ -45,17 +72,14 @@ a {
 }
 
 .welcome {
-  position: absolute;
-  top: 35%;
-  left: 20%;
-  font-size: 100px;
-  color: #E9B000;
-  font-family: 'Pacifico', cursive;
+  text-align: center;
+  color: darkgray;
+  font-family: pacifico
 }
 
 .block {
   /*display: block;*/
-  left: 10%
+  left: 10%;
 }
 
 .center {
@@ -65,7 +89,7 @@ a {
 }
 
 table.center {
-  border: 1px solid gray
+  border: 1px solid gray;
 }
 
 #header {
@@ -76,11 +100,11 @@ table.center {
 
 #center {
   text-align: center;
-  color: #E9B000
+  color: #E9B000;
 }
 
 .addprod {
-  background-color: #E9B000
+  background-color: #E9B000;
 }
 
 .medium-centered {
