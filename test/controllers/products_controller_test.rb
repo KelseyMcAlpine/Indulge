@@ -7,15 +7,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     let(:sample_category) {categories(:exotic)}
 
     let(:vendor) {vendors(:Dwight)}
+    let(:vendor2) {vendors(:polar_queen)}
 
 
     describe "User is not logged in" do
-
-
-      it "index displays all the products for a vendor" do
-        get vendors_path, vendor_id: vendor.id
-        must_respond_with :success
-      end
 
       it "should get index" do
         get products_path
@@ -27,8 +22,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         must_respond_with :success
       end
 
-      it "should filter by vendor" do skip
-        get vendor_products_path(vendor.id)
+      it "should filter by vendor" do
+        get vendor_products_path(vendor2.id)
         must_respond_with :success
       end
 
@@ -155,7 +150,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           }
         }
       }.must_change 'Product.count', 0
-      assert_template :new
       flash.now[:error].must_equal "Hmm.. something went wrong."
 
     end
@@ -172,7 +166,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           }
         }
       }.must_change 'Product.count', 0
-      assert_template :new
       flash.now[:error].must_equal "Hmm.. something went wrong."
 
     end
