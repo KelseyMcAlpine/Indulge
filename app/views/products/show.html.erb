@@ -1,43 +1,43 @@
-<h1>Product Detail Page</h1>
-
-  <ul>
-    <li>
+<main>
+  <div class="row">
+    <section class="small-12 medium-4 columns">
       <%= image_tag @product.photo_url %>
-    </li>
-    <li>
-      <%= @product.name %>
-    </li>
-    <li>
-      <%= @product.description %>
-    </li>
-    <li>
-      <%= @product.price %>
-    </li>
-    <li>
-      quantity available: <%= @product.inventory %>
-    </li>
-      <li>
-        sold by: <%= link_to @product.vendor.username, vendor_products_path(@product.vendor.id) %>
-      </li>
-    </ul>
+    </section>
+    <section class="small-12 medium-8 columns">
+      <h2><%= @product.name %></h2>
+      <h3>$<%= @product.price %></h3>
+      <br/>
+      <p><strong>by <%= link_to @product.vendor.username, vendor_products_path(@product.vendor.id) %></strong></p>
+      <p><%= @product.description %></p>
+      <p><emphasis>
+        <% @product.categories.each do | category | %>
+        <%= link_to category.name, category_products_path(category.id) %>
+        <% end %>
+      </emphasis></p>
+      <%= link_to "Add to Cart", product_add_to_cart_path(params[:id]), method: :post, :class => "button" %>
+      <p>QTY: <%= @product.inventory %></p>
+    </section>
+  </div>
 
-  <h3>Categories:</h3>
-  <ul>
-    <% @product.categories.each do |category| %>
-      <li> <%= category.name %> </li>
-    <% end %>
-  </ul>
-
-  <h3>Reviews:</h3>
-  <% if @product.reviews.empty? %>
-  <p>There are no reviews yet. <%= link_to "Please be the first to review this product", new_product_review_path(@product.id) %>
-    <% else %>
-    <% @product.reviews.each do |review| %>
-    <%= review.rating %>
-    <%= review.comment %>
-    <% end %>
-    <%= link_to "Review this product!", new_product_review_path(@product.id) %>
-    <% end %>
-  </p>
-
-<%= link_to "Add to Cart", product_add_to_cart_path(params[:id]), method: :post%>
+  <div class="row">
+    <div class="small-12 medium-offest-4 columns">
+    </div>
+    <section class="small-12 medium-8 columns">
+      <h3>Reviews</h3>
+      <% if @product.reviews.empty? %>
+      <p>There are no reviews yet. <%= link_to "Please be the first to review this product", new_product_review_path(@product.id) %>
+        <% else %>
+        <% @product.reviews.each do |review| %>
+        <h5><strong><%= review.header %></strong></h5>
+        <p><%= review.comment %></p>
+        <p>-
+          <% review.rating.times do %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+        </p>
+        <% end %>
+        <%= link_to "Review this product!", new_product_review_path(@product.id), :class => "button" %>
+        <% end %>
+      </section>
+    </div>
+</main>

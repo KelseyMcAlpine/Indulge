@@ -65,20 +65,103 @@ Order.create ([
 
 
 vendors = Vendor.create ([
-  { username: "Polar Queen", email: "queen@seriouslyfreezing.com", uid: "444", provider: "github" },
-  { username: "Ranger Rick", email: "rr@raccoonspace.net", uid: "333", provider: "github"},
-  { username: "Dwight Schrute", email: "schrutefarms@gmail.com", uid: "331", provider: "github"},
-  { username: "Jim Halpert", email: "jim@athlead.com", uid: "3312", provider: "github"},
-  { username: "Pam Beasley", email: "Pam@prattinstitute.com", uid: "334", provider: "github"},
-  { username: "Michael Scott", email: "mscott@greatscottproductions.com", uid: "335", provider: "github"},
-  { username: "Kelly Kapoor", email: "kkapoor@businessbitch.com", uid: "336", provider: "github"},
-  { username: "Ryan Howard", email: "rhoward@gwhuf.edu", uid: "337", provider: "github"},
-  { username: "Andy Bernard", email: "narddog@cornell.edu", uid: "338", provider: "github"},
-  { username: "Kevin Malone", email: "bigbog69@fanduel.com", uid: "339", provider: "github"},
-  { username: "Angela Martin", email: "msmartin@lipton4PA.com", uid: "3310", provider: "github"},
-  { username: "Toby Flenderson", email: "chadflenderson@flendersonfiles.com", uid: "3311", provider: "github"},
-  { username: "Creed Bratton", email: "notcreedbratton@creedthoughts.gov", uid: "3313", provider: "github"},
-  { username: "David Wallace", email: "dwallace@suckit.com", uid: "3314", provider: "github"}
+  {
+    username: "Polar Queen",
+    email: "queen@seriouslyfreezing.com",
+    uid: "444",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1060"
+  },
+  {
+    username: "Ranger Rick",
+    email: "rr@raccoonspace.net",
+    uid: "333",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1061"
+  },
+  { username: "Dwight Schrute",
+    email: "schrutefarms@gmail.com",
+    uid: "331",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1062"
+  },
+  {
+    username: "Jim Halpert",
+    email: "jim@athlead.com",
+    uid: "3312",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1063"
+  },
+  {
+    username: "Pam Beasley",
+    email: "Pam@prattinstitute.com",
+    uid: "334",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1064"
+  },
+  {
+    username: "Michael Scott",
+    email: "mscott@greatscottproductions.com",
+    uid: "335",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1065"
+  },
+  {
+    username: "Kelly Kapoor",
+    email: "kkapoor@businessbitch.com",
+    uid: "336",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1066"
+  },
+  {
+    username: "Ryan Howard",
+    email: "rhoward@whuf.edu",
+    uid: "337",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1067"
+  },
+  {
+    username: "Andy Bernard",
+    email: "narddog@cornell.edu",
+    uid: "338",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1068"
+  },
+  {
+    username: "Kevin Malone",
+    email: "bigbog69@fanduel.com",
+    uid: "339",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1069"
+  },
+  {
+    username: "Angela Martin",
+    email: "msmartin@lipton4PA.com",
+    uid: "3310",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1070"
+  },
+  {
+    username: "Toby Flenderson",
+    email: "chadflenderson@flendersonfiles.com",
+    uid: "3311",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1071"
+  },
+  {
+    username: "Creed Bratton",
+    email: "notcreedbratton@creedthoughts.gov",
+    uid: "3313",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1072"
+  },
+  {
+    username: "David Wallace",
+    email: "dwallace@suckit.com",
+    uid: "3314",
+    provider: "github",
+    image_url: "https://unsplash.it/1500/500?image=1073"
+  }
   ])
 
   Product.create ([
@@ -88,8 +171,9 @@ vendors = Vendor.create ([
       price: 1800,
       inventory: 4,
       description: "This voluptuous feast of sea lion flipper with braised lichen will be served with extraordinary company in a sublime setting.",
-      photo_url: "http://i.telegraph.co.uk/multimedia/archive/03339/polar-bear-global-_3339474b.jpg",
+      photo_url: "https://unsplash.it/800/800?image=1045",
       lifecycle: "available"
+
     },
     {
       name: "Hot Air Balloon Ride with Opera Singers",
@@ -97,7 +181,7 @@ vendors = Vendor.create ([
       price: 550,
       inventory: 2,
       description: "Enjoy the sonic assault of high flight in close quarters with some of humankind's most emphatic voices; rose in a can and light cocktail snacks provided.",
-      photo_url: "http://www.printsoldandrare.com/airplanes/043air.jpg",
+      photo_url: "https://unsplash.it/800/800?image=1084",
       lifecycle: "available"
     },
     {
@@ -106,7 +190,7 @@ vendors = Vendor.create ([
       price: 150,
       inventory: 15,
       description: "Puget Sound transformed through the eyes of a short but passionate local.",
-      photo_url: "http://1.bp.blogspot.com/-Yv1hfz7vzeU/VTfT5RCDtII/AAAAAAAAAKw/MtKWJClIntI/s1600/Samish_helo.jpg",
+      photo_url: "https://unsplash.it/800/800?image=1080",
       lifecycle: "available"
     },
     {
@@ -115,7 +199,7 @@ vendors = Vendor.create ([
       price: 250,
       inventory: 6,
       description: "An extravagant yet ethical feast featuring only ingredients sourced from our 25' x 25' back yard.",
-      photo_url: "http://bpc.h-cdn.co/assets/16/20/980x490/landscape-1463681075-green-chef-vegan-meals.jpg",
+      photo_url: "https://unsplash.it/800/800?image=1048",
       lifecycle: "available"
     },
     {
@@ -124,20 +208,29 @@ vendors = Vendor.create ([
       price: 450,
       inventory: 25,
       description: "A full-day excursion to my dad's poorly ventilated garage workshop, where you'll hold wrenches, fetch solvent, and listen to baseball on the radio while deepening your knowledge of the 1965 V8 Convertible.",
-      photo_url: "http://www.onlymustangfords.com/images/1965-mustang-restoration-front.jpg",
+      photo_url: "https://unsplash.it/800/800?image=1049",
+      lifecycle: "available"
+    },
+    {
+      name: "Another Thing",
+      vendor: vendors.last,
+      price: 450,
+      inventory: 25,
+      description: "A full-day excursion to my dad's poorly ventilated garage workshop, where you'll hold wrenches, fetch solvent, and listen to baseball on the radio while deepening your knowledge of the 1965 V8 Convertible.",
+      photo_url: "https://unsplash.it/800/800?image=1050",
       lifecycle: "available"
     }
     ])
 
 
      Category.create ([
-      { name: 'Spa' },
-      { name: 'Romantic Dinner' },
-      { name: 'Rock Climbing' },
-      { name: 'Dinner Cruise' },
-      { name: 'Shopping Excursion' },
-      { name: 'Night at the Museum' },
-      { name: 'Cupcake Night' }
+      { name: 'Spa', image_url: "https://unsplash.it/1500/500?image=1020" },
+      { name: 'Romantic Dinner', image_url: "https://unsplash.it/1500/500?image=1021" },
+      { name: 'Rock Climbing', image_url: "https://unsplash.it/1500/500?image=1022" },
+      { name: 'Dinner Cruise', image_url: "https://unsplash.it/1500/500?image=1023" },
+      { name: 'Shopping Excursion', image_url: "https://unsplash.it/1500/500?image=1024" },
+      { name: 'Night at the Museum', image_url: "https://unsplash.it/1500/500?image=1025" },
+      { name: 'Cupcake Night', image_url: "https://unsplash.it/1500/500?image=1026" }
       ])
 
       Product.all.each do |product|
@@ -151,42 +244,50 @@ vendors = Vendor.create ([
     reviews =  [
       { rating: 1,
         product: Product.all.sample,
-        comment: "A great experience"
+        header: "A great experience",
+        comment: "Lorem ipsum dolor sit amet, sea cu erat rebum utinam, mel ei maiorum invenire, quo an sonet comprehensam signiferumque. Accumsan hendrerit an mel. Id illud accusam consequat vim, est in doctus efficiantur. Usu ne populo audiam scribentur. Pro et insolens similique. An eam verterem intellegat."
       },
       {
         product: Product.all.sample,
         rating: 4,
-        comment: "Highly recommend"
+        header: "Highly recommend",
+        comment: "Eum persius recteque ex, latine tractatos at has, ei usu populo dissentiunt. Vix eu dico verterem, ne stet accusata duo, eam et novum ponderum. Veritus ponderum signiferumque eos et, eu doctus praesent eos. Cu vim novum laudem mnesarchum. Ex admodum nusquam his, vitae soleat intellegebat no duo, pro bonorum labores invenire."
       },
       {
         product: Product.all.sample,
         rating: 5,
-        comment: "A new favorite"
+        header: "A new favorite",
+        comment: "Eum persius recteque ex, latine tractatos at has, ei usu populo dissentiunt. Vix eu dico verterem, ne stet accusata duo, eam et novum ponderum. Veritus ponderum signiferumque eos et, eu doctus praesent eos. Cu vim novum laudem mnesarchum. Ex admodum nusquam his, vitae soleat intellegebat no duo, pro bonorum labores invenire."
       },
       {
         product: Product.all.sample,
         rating: 3,
-        comment: "Wow. Will cherish forever"
+        header: "Wow. Will cherish forever",
+        comment: "Eum persius recteque ex, latine tractatos at has, ei usu populo dissentiunt. Vix eu dico verterem, ne stet accusata duo, eam et novum ponderum. Veritus ponderum signiferumque eos et, eu doctus praesent eos. Cu vim novum laudem mnesarchum. Ex admodum nusquam his, vitae soleat intellegebat no duo, pro bonorum labores invenire."
       },
       {
         product: Product.all.sample,
         rating: 2,
-        comment: "Unforgettable experience"
+        header: "Unforgettable experience",
+        comment: "Commune intellegat usu ei, nam augue ancillae oportere te. At sed epicuri expetendis, ad usu etiam mazim. Ius utamur tractatos ea, verear ceteros deleniti ut has. An nam option nostrud alienum, ad movet percipitur mea."
       },
       {
         product: Product.all.sample,
         rating: 5,
-        comment: "So indulgent"
+        header: "So indulgent",
+        comment: "Eum persius recteque ex, latine tractatos at has, ei usu populo dissentiunt. Vix eu dico verterem, ne stet accusata duo, eam et novum ponderum. Veritus ponderum signiferumque eos et, eu doctus praesent eos. Cu vim novum laudem mnesarchum. Ex admodum nusquam his, vitae soleat intellegebat no duo, pro bonorum labores invenire."
       },
       {
         product: Product.all.sample,
         rating: 4,
-        comment: "Can I go back now"
+        header: "Can I go back now",
+        comment: "Ei aeterno bonorum inciderint eam. Ut est electram accusamus, has cibo audire patrioque an. Lucilius lobortis ei nam, ut tale nonumy concludaturque eum. Nonumes oporteat ius id, est ignota oportere vituperata ad. Eu per prima aeterno urbanitas, et quot facilis usu."
       },
       {
         product: Product.all.sample,
         rating: 2,
-        comment: "Meh"
+        header: "Meh",
+        comment: "Duo an quodsi fabulas mediocrem, ea eos graeci alienum, eum everti voluptatibus ne. Case ancillae referrentur ius ei, id accommodare disputationi nam. Veri phaedrum argumentum quo an, mea cibo reque te. Dicant minimum deseruisse vis ea. Et sapientem gubergren pri, ne suas meis assueverit cum, eu tibique liberavisse vel. Eam duis nominavi concludaturque at, ut his aperiam argumentum."
       }
     ]
 

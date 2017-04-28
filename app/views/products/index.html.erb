@@ -1,24 +1,22 @@
-
-
-<h1><%= @header %></h1>
-
-<ul>
-  <% @products.each do |product| %>
-
-    <% if product.lifecycle != "unavailable" %>
-      <%= image_tag product.photo_url %>
-      <li>
-         <%= link_to product.name, product_path(product.id) %>
-      </li>
-      <li>
-        <%= product.price %>
-      </li>
-      <li>
-        <% product.categories.each do | category |  %>
-          <%= category.name %>
-        <% end %>
-      </li>
-
+<div class="hero-image">
+  <%= image_tag @image %>
+  <div class="hero-content">
+    <h2><h2><%= @header %></h2></h2>
+    <h4><%= @description %></h4>
+    <% if params[:vendor_id] %>
+      <a href="#" class="button">Contact</a>
     <% end %>
-  <% end %>
-</ul>
+  </div>
+</div>
+
+<main>
+  <div class="row">
+    <% @products.each do | product | %>
+      <section class="small-12 medium-4 columns">
+        <%= image_tag product.photo_url %>
+        <h4><%= link_to product.name, product_path(product.id) %> </h4>
+        <h5><strong>$<%= product.price %></strong></h5>
+      </section>
+    <% end %>
+  </div>
+</main>

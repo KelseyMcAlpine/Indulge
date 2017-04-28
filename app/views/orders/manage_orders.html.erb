@@ -1,10 +1,12 @@
 <!-- <h1>Welcome, <%= Vendor.find_by_id(session[:vendor_id])%>! </h1> -->
-<h1>Welcome, <%= @vendor.username%>! </h1>
-<h3>Total Revenue: <%= @vendor.total_rev %> </h3>
+<div id="header">
+  <h3><%= @vendor.username%>: Order Management Page</h3>
+  <h3>Total Revenue: $<%= @vendor.total_rev %>0 </h3>
+</div>
 
-<h3>All Orders</h3>
-  <table>
+<h5 id="center">All Orders</h5>
 
+  <table class="center">
     <tr>
       <th>Order</th>
       <th>Date</th>
@@ -24,9 +26,9 @@
       <td><%= link_to order_product.order_id, order_details_path(order_product.order_id)%></td>
       <td><%= order_product.created_at%></td>
       <td><%= link_to Product.find_by_id(order_product.product_id).name, product_path(order_product.product_id)%></td>
-      <td><%= Product.find_by_id(order_product.product_id).price%></td>
+      <td>$<%= Product.find_by_id(order_product.product_id).price%>0</td>
       <td><%= order_product.quantity%></td>
-      <td><%= order_product.quantity * Product.find_by_id(order_product.product_id).price %></td>
+      <td>$<%= order_product.quantity * Product.find_by_id(order_product.product_id).price %>0</td>
       <td><%= Order.find_by_id(order_product.order_id).status%></td>
       <td><%= order_product.ship_status %></td>
       <td><%= link_to "Update Status", update_ship_path(order_product.id), method: :post %></td>
@@ -35,9 +37,9 @@
   <% end %>
   </table>
 
-  <h3>Completed Orders</h3>
+  <h5 id="center">Completed Orders</h5>
 
-    <table>
+    <table class="center">
       <tr>
         <th>Order</th>
         <th>Date</th>
@@ -57,9 +59,9 @@
         <td><%= link_to order_product.order_id, order_details_path(order_product.order_id)%></td>
         <td><%= order_product.created_at%></td>
         <td><%= link_to Product.find_by_id(order_product.product_id).name, product_path(order_product.product_id)%></td>
-        <td><%= Product.find_by_id(order_product.product_id).price%></td>
+        <td>$<%= Product.find_by_id(order_product.product_id).price%>0</td>
         <td><%= order_product.quantity%></td>
-        <td><%= order_product.quantity * Product.find_by_id(order_product.product_id).price %></td>
+        <td>$<%= order_product.quantity * Product.find_by_id(order_product.product_id).price %>0</td>
         <td><%= Order.find_by_id(order_product.order_id).status%></td>
         <td><%= order_product.ship_status %></td>
         <td><%= link_to "Update Status", update_ship_path(order_product.id), method: :post %></td>
@@ -69,9 +71,9 @@
     <% end %>
     </table>
 
-    <h3>Cancelled Orders</h3>
+    <h5 id="center">Cancelled Orders</h5>
 
-      <table>
+      <table class="center">
         <tr>
           <th>Order</th>
           <th>Date</th>
@@ -91,9 +93,9 @@
           <td><%= link_to order_product.order_id, order_details_path(order_product.order_id)%></td>
           <td><%= order_product.created_at%></td>
           <td><%= link_to Product.find_by_id(order_product.product_id).name, product_path(order_product.product_id)%></td>
-          <td><%= Product.find_by_id(order_product.product_id).price%></td>
+          <td>$<%= Product.find_by_id(order_product.product_id).price%>0</td>
           <td><%= order_product.quantity%></td>
-          <td><%= order_product.quantity * Product.find_by_id(order_product.product_id).price %></td>
+          <td>$<%= order_product.quantity * Product.find_by_id(order_product.product_id).price %>0</td>
           <td><%= Order.find_by_id(order_product.order_id).status%></td>
           <td><%= order_product.ship_status %></td>
           <td><%= link_to "Update Status", update_ship_path(order_product.id), method: :post %></td>

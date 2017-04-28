@@ -91,7 +91,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.create order_params
     unless @order.id == nil
-      flash[:sucess] = "Your order has been succesfully submitted"
+      flash[:success] = "Your order has been succesfully submitted"
       redirect_to root_path
     else
       flash.now[:error] = "Error occured, try again".

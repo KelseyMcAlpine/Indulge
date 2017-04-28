@@ -16,7 +16,69 @@
 
  */
 
-img {
-  height: 50px;
-  width: 50px;
+main, header, footer {
+   padding: 45px;
+ }
+
+.prod-img-list {
+  height: 200px;
+  width: 200px;
+}
+
+
+img.top-image {
+  height: 350px;
+  width: 100%
+}
+
+a {
+  color: gray
+}
+
+.manage {
+  position: relative;
+  display: block;
+  width: 80%;
+  left: 9%;
+  background-color: white
+
+}
+
+.welcome {
+  position: absolute;
+  top: 35%;
+  left: 20%;
+  font-size: 100px;
+  color: #E9B000;
+  font-family: 'Pacifico', cursive;
+}
+
+.block {
+  /*display: block;*/
+  left: 10%
+}
+
+.center {
+  margin-left:auto;
+  margin-right:auto;
+  width: 80%;
+}
+
+table.center {
+  border: 1px solid gray
+}
+
+#header {
+  margin-left:auto;
+  margin-right:auto;
+  width: 80%;
+}
+
+#center {
+  text-align: center;
+  color: #E9B000
+}
+
+.addprod {
+  background-color: #E9B000
 }

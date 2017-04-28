@@ -1,10 +1,20 @@
-<h1> Welcome! <%= @vendor.username %> </h1>
-<p>
-   <%= link_to "Manage Products", vendor_path%>
-</p>
-<p>
-   <%= link_to "Manage Orders", manage_orders_path %>
-</p>
-<p>
-   <%= link_to "Create a new Category", new_category_path %>
-</p>
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+<body>
+
+  <h1 class="welcome"> Welcome, <%= @vendor.username%>! </h1>
+
+  <img class="top-image" src="https://c1.staticflickr.com/9/8035/28777885720_6781742f00_b.jpg">
+
+
+  <p class="button round manage">
+     <%= link_to "Manage Products", vendor_path%>
+  </p>
+
+  <p class="button  manage">
+     <%= link_to "Manage Orders", manage_orders_path %>
+  </p>
+
+  <p class="button  manage">
+     <%= link_to "Create a new Category", new_category_path %>
+  </p>
