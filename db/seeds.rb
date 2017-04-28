@@ -88,7 +88,7 @@ vendors = Vendor.create ([
       price: 1800,
       inventory: 4,
       description: "This voluptuous feast of sea lion flipper with braised lichen will be served with extraordinary company in a sublime setting.",
-      photo_url: "https://unsplash.it/800/800/image=1045",
+      photo_url: "https://unsplash.it/800/800?image=1045",
       lifecycle: "available"
     },
     {
@@ -97,7 +97,7 @@ vendors = Vendor.create ([
       price: 550,
       inventory: 2,
       description: "Enjoy the sonic assault of high flight in close quarters with some of humankind's most emphatic voices; rose in a can and light cocktail snacks provided.",
-      photo_url: "https://unsplash.it/800/800/image=1046",
+      photo_url: "https://unsplash.it/800/800?image=1084",
       lifecycle: "available"
     },
     {
@@ -106,7 +106,7 @@ vendors = Vendor.create ([
       price: 150,
       inventory: 15,
       description: "Puget Sound transformed through the eyes of a short but passionate local.",
-      photo_url: "https://unsplash.it/800/800/image=1047",
+      photo_url: "https://unsplash.it/800/800?image=1080",
       lifecycle: "available"
     },
     {
@@ -115,7 +115,7 @@ vendors = Vendor.create ([
       price: 250,
       inventory: 6,
       description: "An extravagant yet ethical feast featuring only ingredients sourced from our 25' x 25' back yard.",
-      photo_url: "https://unsplash.it/800/800/image=1048",
+      photo_url: "https://unsplash.it/800/800?image=1048",
       lifecycle: "available"
     },
     {
@@ -124,7 +124,7 @@ vendors = Vendor.create ([
       price: 450,
       inventory: 25,
       description: "A full-day excursion to my dad's poorly ventilated garage workshop, where you'll hold wrenches, fetch solvent, and listen to baseball on the radio while deepening your knowledge of the 1965 V8 Convertible.",
-      photo_url: "https://unsplash.it/800/800/image=1049",
+      photo_url: "https://unsplash.it/800/800?image=1049",
       lifecycle: "available"
     },
     {
@@ -133,7 +133,7 @@ vendors = Vendor.create ([
       price: 450,
       inventory: 25,
       description: "A full-day excursion to my dad's poorly ventilated garage workshop, where you'll hold wrenches, fetch solvent, and listen to baseball on the radio while deepening your knowledge of the 1965 V8 Convertible.",
-      photo_url: "https://unsplash.it/800/800/image=1050",
+      photo_url: "https://unsplash.it/800/800?image=1050",
       lifecycle: "available"
     }
     ])
