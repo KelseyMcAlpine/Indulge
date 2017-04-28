@@ -20,6 +20,10 @@ main, header, footer {
    padding: 45px;
  }
 
+h1#title {
+  padding-bottom: 20px;
+}
+
 h1#title, ul.primary {
   text-align: center;
 }
