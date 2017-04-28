@@ -1,4 +1,6 @@
 describe OrdersController do
+  let (:order) {orders(:order1)}
+
 
   describe "Guest user" do
 
@@ -94,30 +96,33 @@ describe OrdersController do
     end
 
 
-    describe "clear_cart" do
-
-      it "must remove all order_products associated with the current order (cart)" do skip
-
-      end
-
-      it "must change the number of order_products" do skip
-
-      end
-
-      it "must render a new view of the current cart" do skip
-
-      end
-
-    end
+    # describe "clear_cart" do
+    #
+    #   it "must remove all order_products associated with the current order (cart)" do skip
+    #
+    #   end
+    #
+    #   it "must change the number of order_products" do skip
+    #
+    #   end
+    #
+    #   it "must render a new view of the current cart" do skip
+    #
+    #   end
+    #
+    # end
 
 
     describe "checkout" do
 
-      it "will get the checkout form if you have more than one order_products associated with the current cart" do skip
+      it "will get the checkout form if you have more than one order_products associated with the current cart" do
+        get order_checkout_path(order.id)
+        must_respond_with :success
 
       end
 
       it "will redirect to the homepage if you have no order_products associated with the current cart" do skip
+
 
       end
 
