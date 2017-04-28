@@ -15,7 +15,7 @@ class Vendor < ApplicationRecord
     vendor.provider = auth_hash["provider"]
     vendor.username = auth_hash["info"]["name"]
     vendor.email = auth_hash["info"]["email"]
-    vendor.image_url = "https://unsplash.it/300/300/?blur"
+    vendor.image_url = "https://unsplash.it/1500/500"
 
     # if name not supplied by github, create unique username
     if vendor.username == nil || vendor.username == ""
