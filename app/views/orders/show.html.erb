@@ -46,7 +46,7 @@
 
 <% if @order.order_products != nil %>
 
-<div class="success button"><%= link_to "Checkout", order_checkout_path(@order.id) %></div>
+<div><%= link_to "Checkout", order_checkout_path(@order.id), :class => "button" %></div>
 <% end %>
 </main>
 

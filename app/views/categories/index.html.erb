@@ -1,7 +1,3 @@
-
-<main>
-    <h2 id="prod">Categories</h2>
-
   <% @categories.each do |category| %>
   <div class="hero-image category-index-images">
     <%= link_to category_products_path(category.id) do %>
@@ -13,4 +9,3 @@
   </section>
 </div>
   <% end %>
-</main>

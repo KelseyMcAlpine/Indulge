@@ -19,6 +19,15 @@
 
  @import url('https://fonts.googleapis.com/css?family=Yellowtail');
 
+.flash .success {
+  background-color: palegreen;
+  padding: 20px;
+}
+
+.flash .error {
+  background-color: #F75D59;
+  padding: 20px;
+}
 
 main, footer {
    padding: 45px;
