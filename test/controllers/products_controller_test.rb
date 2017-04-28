@@ -162,9 +162,17 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     end
 
-    it "Vendor cannot update attributes of another vendor's products" do skip
-
-
+    it "Vendor cannot update attributes of another vendor's products" do
+      product = products(:my_product)
+      vendor = vendors(:polar_queen)
+      proc {
+        get edit_product_path, params:  { product:
+          {id: product.id,
+            vendor_id: vendor.id
+          }
+        }
+      }
+      must_respond_with :redirect
     end
 
     it "Retire will afffect product as unavailable from product list" do skip
