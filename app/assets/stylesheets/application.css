@@ -140,6 +140,10 @@ li.highlight a, a:hover {
   color: #E24E42;
 }
 
+.button {
+  background-color: #E24E42;
+}
+
 
 li.highlight a:hover {
   color: gray;
