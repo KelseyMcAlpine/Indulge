@@ -1,7 +1,4 @@
 class ReviewsController < ApplicationController
-  def index
-    @reviews = Review.all
-  end
 
   def new
     @product = Product.find(params[:product_id])
@@ -19,7 +16,10 @@ class ReviewsController < ApplicationController
     @product = Product.find(params[:product_id])
     @review.product_id = @product.id
 
-    if @review.save
+    if session[:vendor_id] == @product.vendor_id
+      flash[:error] = "You cannot review your own product"
+      redirect_to product_path(@product.id)
+    elsif @review.save
       redirect_to product_path(@product.id)
     else
       flash[:error] = "Something went wrong"

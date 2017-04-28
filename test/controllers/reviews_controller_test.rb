@@ -34,6 +34,16 @@ let(:review) {reviews(:first_review)}
   end
 
   it "vendor should not be able to review own product" do
+    login_user(vendors(:polar_queen))
+    proc {
+      post product_reviews_path(product.id), params:  { review:
+        { rating: 5,
+          comment: "totally fantastic",
+          product_id: product.id
+        }
+      }
+    }.must_change 'Review.count', 0
+
 
   end
 
