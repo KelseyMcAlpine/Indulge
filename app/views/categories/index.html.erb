@@ -1,7 +1,8 @@
 <main>
 <ul>
   <% @categories.each do |category| %>
+  <%= image_tag category.image_url %>
   <li><%= link_to category.name, category_products_path(category.id) %></li>
-  <% end %>
 </ul>
+  <% end %>
 </main>
