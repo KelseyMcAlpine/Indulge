@@ -14,6 +14,11 @@
 
 <body>
   <header>
+    <section class="flash">
+      <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+      <% end %>
+    </section>
     <div class="row float-right">
       <nav>
         <ul class="secondary">
@@ -44,12 +49,6 @@
       </nav>
     </div>
 </header>
-
-  <section class="flash">
-    <% flash.each do |name, message| %>
-    <div class="<%= name %>"><%= message %></div>
-    <% end %>
-  </section>
 
   <%= yield %>
 </body>
