@@ -126,6 +126,15 @@ vendors = Vendor.create ([
       description: "A full-day excursion to my dad's poorly ventilated garage workshop, where you'll hold wrenches, fetch solvent, and listen to baseball on the radio while deepening your knowledge of the 1965 V8 Convertible.",
       photo_url: "http://www.onlymustangfords.com/images/1965-mustang-restoration-front.jpg",
       lifecycle: "available"
+    },
+    {
+      name: "Another Thing",
+      vendor: vendors.last,
+      price: 450,
+      inventory: 25,
+      description: "A full-day excursion to my dad's poorly ventilated garage workshop, where you'll hold wrenches, fetch solvent, and listen to baseball on the radio while deepening your knowledge of the 1965 V8 Convertible.",
+      photo_url: "http://www.onlymustangfords.com/images/1965-mustang-restoration-front.jpg",
+      lifecycle: "available"
     }
     ])
 
