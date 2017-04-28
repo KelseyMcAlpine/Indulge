@@ -1,10 +1,16 @@
-<h1>Reviews</h1>
+<!-- <div class="row">
+<section class="medium-12 columns"> -->
+<form>
+  <fieldset>
+<legend><h1>Reviews</h1></legend>
+
 <h3>Please rate this product</h3>
+<!-- </section></div> -->
 
 <%= form_for @review, method: :post, url: product_reviews_path do |f| %>
-<%= f.label :rating, value: 1 %>
-<%= f.radio_button(:rating, 1)%>
-<%= f.label :rating, value: 2 %>
+<label><%= f.label :rating, value: 1 %></label>
+<label><%= f.radio_button(:rating, 1)%></label>
+<label><%= f.label :rating, value: 2 %></label>
 <%= f.radio_button(:rating, 2) %>
 <%= f.label :rating, value: 3 %>
 <%= f.radio_button(:rating, 3) %>
@@ -17,3 +23,5 @@
 <%= f.hidden_field :product_id, value: @product.id %>
 <%= f.submit %>
 <% end %>
+</fieldset>
+</form>
