@@ -27,6 +27,11 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         must_respond_with :success
       end
 
+      it "should filter by vendor" do
+        get vendor_products_path(vendor.id)
+        must_respond_with :success
+      end
+
       it "should fail to update a product when vendor not logged in" do
         put product_path(products(:my_product).id), params: {product: {name: "nature break", description: "Relaxing", price: 5
         }
@@ -94,6 +99,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     before do
       login_user(vendors(:polar_queen))
     end
+      let(:product) {products(:ice_floe)}
 
     it "should affect the model when creating a product" do
       proc {
@@ -111,6 +117,30 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       must_redirect_to vendor_path
       flash.now[:success].must_equal "New product successfully added"
     end
+
+    it "should update a product when vendor is logged in" do
+      product = products(:ice_floe)
+      vendor = vendors(:polar_queen)
+    proc {
+       put product_path(product.id), params: {product: {id: product.id, vendor_id: vendor, name: "nature break", description: "Relaxing", price: 5
+      }
+    }
+  }
+    puts "#{product.vendor.username}"
+
+
+    updated_product = Product.find(product.id)
+    puts "#{updated_product.errors.messages}"
+
+    updated_product.name.must_equal "nature break"
+    updated_product.description.must_equal "Relaxing"
+    updated_product.price.must_equal 5
+
+    must_respond_with :redirect
+    must_redirect_to product_path(@product.id)
+    flash[:success].must_equal "Successfully updated #{@product.name}"
+  end
+
 
     it "product with no name should not affect the model" do
       proc {
@@ -175,12 +205,62 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       must_respond_with :redirect
     end
 
-    it "Retire will afffect product as unavailable from product list" do skip
+    it "Retire will affect product as unavailable from product list" do skip
+      product = products(:ice_floe)
+      vendor = vendors(:polar_queen)
+      puts "#{product.lifecycle}"
+      puts "#{product.vendor.username}"
+       proc {
+         post update_availability_path, params:  { product:
+          {id: product.id,
+             vendor_id: vendor.id,
+             lifecycle: product.lifecycle
+          }
+        }
+      }
+      #     puts "#{product.lifecycle}"
+      product.lifecycle.must_equal "unavailable"
+      # proc {
+      #   post update_availability_path, params:  { product:
+      #     { name: products(:ice_floe).name,
+      #       inventory: products(:ice_floe).inventory,
+      #       description: products(:ice_floe).description,
+      #       photo_url: products(:ice_floe).photo_url,
+      #       lifecycle: products(:ice_floe).lifecycle,
+      #       vendor_id: products(:ice_floe).vendor_id
+      #     }
+      #   }
+      # }
+      # puts "#{product.id}"
+
 
     end
 
     it "Relist will restore product as available" do skip
+      product = products(:ice_floe)
+      vendor = vendors(:polar_queen)
+      puts "#{product.lifecycle}"
+      puts "#{product.vendor.username}"
+       proc {
+         post update_availability_path, params:  { product:
+          {id: product.id,
+             vendor_id: vendor.id,
+             lifecycle: product.lifecycle
+          }
+        }
+      }
+      #     puts "#{product.lifecycle}"
+      product.lifecycle.must_equal "unavailable"
 
+      proc {
+        post update_availability_path, params:  { product:
+         {id: product.id,
+            vendor_id: vendor.id,
+            lifecycle: product.lifecycle
+         }
+       }
+     }
+         product.lifecycle.must_equal "available"
     end
 
     it "should show the new form" do
