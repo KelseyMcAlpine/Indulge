@@ -11,18 +11,22 @@ class SessionsController < ApplicationController
 
       if vendor.nil?
         flash[:error] = "Could not log in."
+        redirect_to root_path
       else
         session[:vendor_id] = vendor.id
         flash[:success] = "Created new vendor account for #{vendor.username}"
+        redirect_to vendor_account_path
+      end
     else
-    session[:vendor_id] = vendor.id
-    flash[:success] = "Logged in successfully!"
+      session[:vendor_id] = vendor.id
+      flash[:success] = "Logged in successfully!"
+      redirect_to vendor_account_path
     end
 
-    redirect_to vendor_account_path
-  end
 
   end
+
+
 
   def logout
     session[:vendor_id] = nil

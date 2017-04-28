@@ -13,12 +13,12 @@ class Vendor < ApplicationRecord
 
     vendor.uid = auth_hash["uid"]
     vendor.provider = auth_hash["provider"]
-    vendor.name = auth_hash["info"]["name"]
+    vendor.username = auth_hash["info"]["username"]
     vendor.email = auth_hash["info"]["email"]
 
-    #if name not supplied by github, create unique username
-    if vendor.name == nil || vendor.name == ""
-      vendor.name = generate_username
+    # if name not supplied by github, create unique username
+    if vendor.username == nil || vendor.username == ""
+      vendor.username = self.generate_username
     end
 
     vendor.save ? vendor : nil
@@ -36,7 +36,7 @@ class Vendor < ApplicationRecord
     return rev.reduce(:+)
   end
 
-  def generate_username
+  def self.generate_username
     chars = ['A'..'Z', 'a'..'z', '0'..'9'].map{|r|r.to_a}.flatten
     return "vendor#{Array.new(6).map{chars[rand(chars.size)]}.join}"
   end
