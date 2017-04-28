@@ -16,16 +16,57 @@
 
  */
 
-main, header, footer {
+ @import url('https://fonts.googleapis.com/css?family=Yellowtail');
+
+main, footer {
    padding: 45px;
  }
 
-h1#title {
-  padding-bottom: 20px;
+header {
+  padding: 30px, 45px, 15px, 45px;
+  background-color: SmokeGrey;
 }
 
-h1#title, ul.primary {
+.secondary {
+  text-align: right;
+}
+
+.hero-image {
+  background: linear-gradient(#004092, #020202, transparent);
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 0;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 45px;
+  left: 60px;
+  z-index: 10000;
+}
+
+#logo {
+  color: black;
+  font-family: 'Yellowtail', cursive;
+  font-size: 72px;
+  -ms-transform: rotate(-3deg); /* IE 9 */
+  -webkit-transform: rotate(-3deg); /* Chrome, Safari, Opera */
+  transform: rotate(-3deg);
+  padding-bottom: 15px;
+  padding-top: 30px;
+}
+
+h1#logo, ul.primary {
   text-align: center;
+}
+
+div .price {
+  padding: 45px, 0px, 45px, 0px;
+}
+
+#block-quote p {
+  hanging-punctuation: first;
 }
 
 nav ul {

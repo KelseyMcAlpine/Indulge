@@ -5,8 +5,9 @@
     </section>
     <section class="small-12 medium-8 columns">
       <h2><%= @product.name %></h2>
-      <h3>$<%= @product.price %></h3>
-      <br/>
+      <div class="price">
+        <h3>$<%= @product.price %></h3>
+      </div>
       <p><strong>by <%= link_to @product.vendor.username, vendor_products_path(@product.vendor.id) %></strong></p>
       <p><%= @product.description %></p>
       <p><emphasis>
@@ -29,8 +30,8 @@
         <% else %>
         <% @product.reviews.each do |review| %>
         <h5><strong><%= review.header %></strong></h5>
-        <p><%= review.comment %></p>
-        <p>-
+        <div id="block-quote"><o>&ldquo;<%= review.comment %>&ldquo;</p></div>
+        <p>
           <% review.rating.times do %>
           <i class="fa fa-star" aria-hidden="true"></i>
           <% end %>
