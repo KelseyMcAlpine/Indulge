@@ -29,7 +29,7 @@
             <% unless session[:vendor_id] %>
             <%= link_to "Sign in", "/auth/github" %>
             <% else %>
-            <%= link_to "Sign out", logout_path, method: :delete %>
+            <%= link_to "Sign out", logout_path, method: :delete %>g
             <% end %>
           </li>
           <li class="highlight"><%= link_to "Cart", order_cart_path(session[:order_id]) %><i class="icon-shopping-cart"></i></li>
