@@ -17,30 +17,32 @@
       </ul>
     </div>
     <% end %>
-    <fieldset class="fieldset">
-      <legend>Reviews</legend>
-      <input id="checkbox12" type="checkbox"><label for="checkbox12"><%= f.label :rating, value: 1 %>
-        <%# f.radio_button(:rating, 1)%></label>
-        <input id="checkbox22" type="checkbox">
-        <label for="checkbox22">
-          <%= f.label :rating, value: 2 %></label>
-        <input id="checkbox32" type="checkbox">
-        <label for="checkbox32">
-          <%= f.label :rating, value: 3 %></label>
-        <input id="checkbox42" type="checkbox">
-        <label for="checkbox42">
-          <%= f.label :rating, value: 4 %></label>
-        <input id="checkbox52" type="checkbox">
-        <label for="checkbox52">
-          <%= f.label :rating, value: 5 %></label>
-        <label>
-          <%= f.label :comment, "Review" %>
-          <%= f.text_area :comment %> </label>
-        </fieldset>
 
-        <%= f.hidden_field :product_id, value: @product.id %></p>
-      <%= f.submit class:"button success" %>
-        <% end %>
-      </div>
-    </section>
-  </article>
+    <div class="row">
+      <p class="small-8 medium-centered columns">
+        <form>
+        <fieldset>
+          <legend>Review</legend>
+        <%= f.label :rating, value: 1 %>
+        <%= f.radio_button :rating, 1%>
+        <%= f.label :rating, value: 2 %>
+        <%= f.radio_button(:rating, 2) %>
+        <%= f.label :rating, value: 3 %>
+        <%= f.radio_button(:rating, 3) %>
+        <%= f.label :rating, value: 4 %>
+        <%= f.radio_button(:rating, 4) %>
+        <%= f.label :rating, value: 5 %>
+        <%= f.radio_button(:rating, 5) %></p></div>
+        <div class="row"><p class="medium-4 columns"><%= f.label :comment, "Review" %>
+          <%= f.text_area :comment %></div>
+          <%= f.hidden_field :product_id, value: @product.id %></p>
+          <%= f.submit class: "button submit" %>
+          <% end %>
+        </div>
+      </fieldset>
+    </form>
+      </section>
+    </article>
+
+    <!--label for="review_rating_1">1</label-->
+    <!--input type="radio" value="1" name="review[rating]" id="review_rating_1"-->
