@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 first_review:
-  product_id: 1
+  product: ice_floe
   rating: 1
   comment: "The best time"
   #
