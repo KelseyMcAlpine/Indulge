@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if vendor.nil?
       vendor = Vendor.create_from_github(auth_hash)
-
+      
       if vendor.nil?
         flash[:error] = "Could not log in."
         redirect_to root_path

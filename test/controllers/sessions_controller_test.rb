@@ -17,7 +17,7 @@ describe SessionsController do
       proc {
         login_user(fred)
         must_redirect_to vendor_account_path
-        session[:vendor_id].must_equal Vendor.find_by(username: "Fred").id
+        session[:vendor_id].must_equal Vendor.find_by(uid: "888").id
       }.must_change 'Vendor.count', 1
     end
 
