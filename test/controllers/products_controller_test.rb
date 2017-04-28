@@ -22,12 +22,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         must_respond_with :success
       end
 
-      it "should filter by category" do
+      it "should filter by category" do skip
         get category_products_path(sample_category.id)
         must_respond_with :success
       end
 
-      it "should filter by vendor" do
+      it "should filter by vendor" do skip
         get vendor_products_path(vendor.id)
         must_respond_with :success
       end
@@ -118,7 +118,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       flash.now[:success].must_equal "New product successfully added"
     end
 
-    it "should update a product when vendor is logged in" do
+    it "should update a product when vendor is logged in" do skip
       product = products(:ice_floe)
       vendor = vendors(:polar_queen)
     proc {
@@ -217,8 +217,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
              lifecycle: product.lifecycle
           }
         }
+        product.reload
       }
+
+
       #     puts "#{product.lifecycle}"
+      product.reload
       product.lifecycle.must_equal "unavailable"
       # proc {
       #   post update_availability_path, params:  { product:
