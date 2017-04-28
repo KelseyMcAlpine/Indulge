@@ -1,6 +1,6 @@
 <h1>Cart</h1>
 
-<table>
+<table class="center">
   <tr>
     <th>Item</th>
     <th>Quantity</th>
@@ -25,6 +25,7 @@
   <% end %>
 </table>
 
+<div class="center">
 <p class="float-right">
   Total: $<%= number_with_precision(total.inject(:+), precision: 2) %>
 </p>
@@ -36,4 +37,5 @@
 <div class="button">
 <%= link_to "Checkout", order_checkout_path(@order.id) %>
 <% end %>
+</div>
 </div>
