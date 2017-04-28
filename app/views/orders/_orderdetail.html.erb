@@ -1,16 +1,19 @@
+<article class="order-detail">
+    <section class="row">
 <h3>Order Number: <%= @order.id%> </h3>
 <h3>Order Status: <%= @order.status%> </h3>
 <p>Placed On: <%= @order.created_at%> </p>
 <p>Updates will be sent to: <%= @order.cust_email%> </p>
 <p>Shipping Address: <%= @order.cust_address%> </p>
+</section>
 
-<table>
+<table class="row">
   <thead>
     <tr>
-      <th>Product</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th>Subtotal</th>
+      <th class="medium-6 columns">Product</th>
+      <th class="medium-6 columns">Quantity</th>
+      <th class="medium-6 columns">Price</th>
+      <th class="medium-6 columns">Subtotal</th>
     </tr>
   </thead>
   <% total = [] %>
@@ -25,3 +28,4 @@
   <% end %>
 </table>
 Total: <%= total.inject(:+) %>
+</article>
