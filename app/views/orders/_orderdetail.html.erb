@@ -18,9 +18,8 @@
     <% @order.order_products.each do |product| %>
     <td><%= Product.find_by_id(product.product_id).name %></td>
     <td><%= product.quantity %></td>
-    <td><%= Product.find_by_id(product.product_id).price%></td>
-    <td><%= Product.find_by_id(product.product_id).price * product.quantity %></td>
-    <%total << Product.find_by_id(product.product_id).price * product.quantity %>
+    <td><%= number_with_precision(Product.find_by_id(product.product_id).price, precision: 2)%></td>
+    <%total << number_with_precision(Product.find_by_id(product.product_id).price, precision: 2) * product.quantity %>
   </tr>
   <% end %>
 </table>
