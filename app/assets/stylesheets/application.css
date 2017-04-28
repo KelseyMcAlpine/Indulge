@@ -234,8 +234,25 @@ table.center {
   margin-left: auto;
   margin-right: auto;
 }
-.review {
-  width: 95%;
+
+/*#checkout {
+  padding: 40px;
+  border: dashed;
+  border-width: thin;
+  border-color: darkgray;
+  border: 20px;
+}*/
+
+.cart {
+  padding: 0px 5px;
+  color: darkgray;
+  font-family: helvetica
+}
+
+#prod {
+  padding: 0px 5px;
+  color: darkgray;
+  font-family: helvetica
 }
 /*#checkout {
   padding: 40px;

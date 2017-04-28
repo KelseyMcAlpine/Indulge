@@ -1,5 +1,6 @@
+
 <main>
-  <h1>Add a New Category</h1>
+<main><h2 id="prod">Add a New Category</h2>
 
   <div class="row">
     <section class="small-12 large-8 columns">
@@ -11,4 +12,12 @@
       <% end %>
     </section>
   </div>
+
+
+<%= form_for @category do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.submit class: "button" %>
+<% end %>
+
 </main>
