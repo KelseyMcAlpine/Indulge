@@ -14,13 +14,16 @@
 
 <body>
   <header>
-  <div>
-
-    <h1 id="title">Indulge</h1>
-    <nav>
+    <section class="flash">
+      <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+      <% end %>
+    </section>
+    <div class="row float-right">
+      <nav>
         <ul class="secondary">
           <% if session[:vendor_id] %>
-                <li><%= link_to "Your account", vendor_account_path%></li>
+          <li><%= link_to "Your account", vendor_account_path%></li>
           <% end %>
           <li>
             <% unless session[:vendor_id] %>
@@ -29,29 +32,31 @@
             <%= link_to "Sign out", logout_path, method: :delete %>
             <% end %>
           </li>
-          <li class="highlight"><%= link_to "Cart", order_cart_path(session[:order_id]) %></li>
+          <li class="highlight"><%= link_to "Cart", order_cart_path(session[:order_id]) %><i class="icon-shopping-cart"></i></li>
         </ul>
       </nav>
     </div>
-
-  <nav class="clearfix">
-    <ul class="primary">
-      <li class="left"><%= link_to "Home", root_path %></li>
-      <li class="left"><%= link_to "All products", products_path %></li>
-      <li class="left"><%= link_to "Browse categories", categories_path %></li>
-      <li class="left"><%= link_to "Browse vendors", vendors_path %></li>
-    </ul>
-  </nav>
-
-
+    <div class="row clearfix logo">
+      <h1 id="logo"><%= link_to "Indulge", root_path %></li></h1>
+    </div>
+    <div class="row">
+      <nav class="clearfix">
+        <ul class="primary">
+          <li><%= link_to "All products", products_path %></li>
+          <li><%= link_to "Browse categories", categories_path %></li>
+          <li><%= link_to "Browse vendors", vendors_path %></li>
+        </ul>
+      </nav>
+    </div>
 </header>
 
-  <section class="flash">
-    <% flash.each do |name, message| %>
-    <div class="<%= name %>"><%= message %></div>
-    <% end %>
-  </section>
-
   <%= yield %>
+<footer>
+  <p><strong>Foodalicious Four &copy; 2017 </strong></p>
+  <p>1215 4th Ave #1050</p>
+  <p>Seattle, WA 98161</p>
+  <p>224.225.5235</p>
+  <p><%= link_to "foodiliciousfour.herokuapp.com", root_path %></p>
+</footer>
 </body>
 </html>

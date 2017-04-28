@@ -1,7 +1,11 @@
 <main>
 <ul>
   <% @categories.each do |category| %>
-  <li><%= link_to category.name, category_products_path(category.id) %></li>
-  <% end %>
+
+  <h5 class="welcome"><%= link_to category.name, category_products_path(category.id) %></h5>
 </ul>
+<div class="center">
+  <%= image_tag category.image_url %>
+</div>
+  <% end %>
 </main>
