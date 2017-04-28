@@ -1,27 +1,46 @@
-<!-- <div class="row">
-<section class="medium-12 columns"> -->
-<form>
-  <fieldset>
-<legend><h1>Reviews</h1></legend>
+<article class="review">
+  <div class="row">
+    <section class="medium-8 columns">
+      <h1>Reviews</h1>
+      <h3>Please rate this product</h3>
+    </section>
+  </div>
 
-<h3>Please rate this product</h3>
-<!-- </section></div> -->
+  <%= form_for @review, method: :post, url: product_reviews_path do |f| %>
+  <% if @review.errors.any? %>
+  <div class="row small-6 large-6 end callout alert">
+    <ul>
+      <% @review.errors.each do |col, mess| %>
+      <li>
+        <%=col%><%=mess%></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <fieldset class="fieldset">
+      <legend>Reviews</legend>
+      <input id="checkbox12" type="checkbox"><label for="checkbox12"><%= f.label :rating, value: 1 %>
+        <%# f.radio_button(:rating, 1)%></label>
+        <input id="checkbox22" type="checkbox">
+        <label for="checkbox22">
+          <%= f.label :rating, value: 2 %></label>
+        <input id="checkbox32" type="checkbox">
+        <label for="checkbox32">
+          <%= f.label :rating, value: 3 %></label>
+        <input id="checkbox42" type="checkbox">
+        <label for="checkbox42">
+          <%= f.label :rating, value: 4 %></label>
+        <input id="checkbox52" type="checkbox">
+        <label for="checkbox52">
+          <%= f.label :rating, value: 5 %></label>
+        <label>
+          <%= f.label :comment, "Review" %>
+          <%= f.text_area :comment %> </label>
+        </fieldset>
 
-<%= form_for @review, method: :post, url: product_reviews_path do |f| %>
-<label><%= f.label :rating, value: 1 %></label>
-<label><%= f.radio_button(:rating, 1)%></label>
-<label><%= f.label :rating, value: 2 %></label>
-<%= f.radio_button(:rating, 2) %>
-<%= f.label :rating, value: 3 %>
-<%= f.radio_button(:rating, 3) %>
-<%= f.label :rating, value: 4 %>
-<%= f.radio_button(:rating, 4) %>
-<%= f.label :rating, value: 5 %>
-<%= f.radio_button(:rating, 5) %>
-<%= f.label :comment, "Review" %>
-<%= f.text_area :comment %>
-<%= f.hidden_field :product_id, value: @product.id %>
-<%= f.submit %>
-<% end %>
-</fieldset>
-</form>
+        <%= f.hidden_field :product_id, value: @product.id %></p>
+        <div class="button success"><%= f.submit %></div>
+        <% end %>
+      </div>
+    </section>
+  </article>
