@@ -9,3 +9,9 @@ first_review:
   rating: 1
   comment: "The best time"
   #
+
+#invalid review, no rating
+# bad_review:
+#   product: ice_floe
+#   rating:
+#   comment: "invalid"
