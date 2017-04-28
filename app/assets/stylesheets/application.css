@@ -90,8 +90,8 @@ footer {
   font-weight: bold;
 }
 
-.flash {
-  background-color: #f5f5f5;
+.flash .success p {
+  background-color: green;
   padding: 15px, 0px, 15px, 45px;
 }
 
@@ -140,6 +140,31 @@ li.highlight a, a:hover {
   color: #E24E42;
 }
 
+.button {
+  background-color: #ffffff;
+  color: #E24E42;
+  border: 2px solid #E24E42;
+  border-radius: 500px;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  color: #ffffff;
+  background-color: #E24E42;
+}
+
+.white-button {
+  background-color: Transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 500px;
+  text-transform: uppercase;
+}
+
+.white-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
 
 li.highlight a:hover {
   color: gray;
