@@ -6,12 +6,15 @@
 #
 spa:
  name: spa
+ image_url: "https://unsplash.it/1500/500/?random"
  products: twinkies
 #
 exotic:
   name: exotic
+  image_url: "https://unsplash.it/1500/500/?random"
   products: ice_floe
 
 healthy:
   name: healthy
+  image_url: "https://unsplash.it/1500/500/?random"
   products: my_product, twinkies

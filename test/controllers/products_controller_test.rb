@@ -17,7 +17,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         must_respond_with :success
       end
 
-      it "should filter by category" do skip
+      it "should filter by category" do
         get category_products_path(sample_category.id)
         must_respond_with :success
       end
@@ -28,18 +28,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       end
 
       it "should fail to update a product when vendor not logged in" do
-        put product_path(products(:my_product).id), params: {product: {name: "nature break", description: "Relaxing", price: 5
-        }
-      }
-
-      updated_product = Product.find_by_id(products(:my_product).id)
-
-      updated_product.name.must_equal "squatty potty"
-      updated_product.description.must_equal "helps you poop like a cave man"
-      updated_product.price.must_equal 25
-
-      must_respond_with :redirect
-      must_redirect_to root_path
+          put product_path(products(:my_product).id), params: {product: {name: "nature break", description: "Relaxing", price: 5}}
+        updated_product = Product.find_by_id(products(:my_product).id)
+        updated_product.name.must_equal "squatty potty"
+        updated_product.description.must_equal "helps you poop like a cave man"
+        updated_product.price.must_equal 25
+        must_respond_with :redirect
+        must_redirect_to root_path
     end
 
     it "should show 404 when product not found" do
@@ -94,7 +89,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     before do
       login_user(vendors(:polar_queen))
     end
-      let(:product) {products(:ice_floe)}
+    let(:product) {products(:ice_floe)}
 
     it "should affect the model when creating a product" do
       proc {
@@ -114,26 +109,35 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     end
 
     it "should update a product when vendor is logged in" do skip
-      product = products(:ice_floe)
-      vendor = vendors(:polar_queen)
-    proc {
-       put product_path(product.id), params: {product: {id: product.id, vendor_id: vendor, name: "nature break", description: "Relaxing", price: 5
+      updating_product = Product.last
+
+      product_data = {
+        product: {
+          name: updating_product.name + " addition"
+        }
       }
-    }
-  }
-    puts "#{product.vendor.username}"
+      put product_path(updating_product.id), params: product_data
+      must_redirect_to product_path(updating_product.id)
+      # Product.find(product.id).name.must_equal product_data[:work][:name]
 
-
-    updated_product = Product.find(product.id)
-    puts "#{updated_product.errors.messages}"
-
-    updated_product.name.must_equal "nature break"
-    updated_product.description.must_equal "Relaxing"
-    updated_product.price.must_equal 5
-
-    must_respond_with :redirect
-    must_redirect_to product_path(@product.id)
-    flash[:success].must_equal "Successfully updated #{@product.name}"
+  #     product = products(:ice_floe)
+  #     vendor = vendors(:polar_queen)
+  #   proc {
+  #      put product_path(product.id), params: {product: {id: product.id, vendor_id: vendor, name: "nature break", description: "Relaxing", price: 5}}
+  # }
+  #   puts "#{product.vendor.username}"
+  #
+  #
+  #   updated_product = Product.find(product.id)
+  #   puts "#{updated_product.errors.messages}"
+  #
+  #   updated_product.name.must_equal "nature break"
+  #   updated_product.description.must_equal "Relaxing"
+  #   updated_product.price.must_equal 5
+  #
+  #   must_respond_with :redirect
+  #   must_redirect_to product_path(@product.id)
+  #   flash[:success].must_equal "Successfully updated #{@product.name}"
   end
 
 
