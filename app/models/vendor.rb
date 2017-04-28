@@ -13,13 +13,13 @@ class Vendor < ApplicationRecord
 
     vendor.uid = auth_hash["uid"]
     vendor.provider = auth_hash["provider"]
-    vendor.username = auth_hash["info"]["username"]
+    vendor.username = auth_hash["info"]["name"]
     vendor.email = auth_hash["info"]["email"]
 
     # if name not supplied by github, create unique username
-    # if vendor.username == nil || vendor.username == ""
-    #   vendor.username = self.generate_username
-    # end
+    if vendor.username == nil || vendor.username == ""
+      vendor.username = self.generate_username
+    end
 
     vendor.save ? vendor : nil
   end
