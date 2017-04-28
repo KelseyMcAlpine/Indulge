@@ -1,7 +1,8 @@
-<h1>Add a New Category</h1>
+<main><h2 id="prod">Add a New Category</h2>
 
 <%= form_for @category do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
-<%= f.submit %>
+<%= f.submit class: "button" %>
 <% end %>
+</main>

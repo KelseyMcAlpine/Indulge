@@ -1,3 +1,4 @@
+<main>
 <% @product.errors.each do |field, msg| %>
   <li>
     <%= field %>: <%= msg %>
@@ -27,5 +28,6 @@
   <%= f.label :categories %>
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
 
-  <%= f.submit %>
+  <%= f.submit class:"button" %>
 <% end %>
+</main>
