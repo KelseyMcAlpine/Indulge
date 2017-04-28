@@ -14,13 +14,13 @@ class VendorsController < ApplicationController
     @vendor = current_vendor
   end
 
-  
+
 
 
   private
 
   def vendor_params
-    params.require(:vendor).permit(:username, :email, :uid, :provider)
+    params.require(:vendor).permit(:username, :email, :uid, :provider, :image_url)
   end
 
 
