@@ -30,11 +30,13 @@
         <% @product.reviews.each do |review| %>
         <h5><strong><%= review.header %></strong></h5>
         <p><%= review.comment %></p>
-        <p>-
-          <%# review.rating.times do %>
-          <%= review.rating %>
-          <!-- < <i class="fa fa-star" aria-hidden="true"></i> -->
-          <%# end %>
+        <p>
+          <% if review.rating != nil %>
+          <% review.rating.times do %>
+          <%#review.rating %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+          <% end %> 
         </p>
         <% end %>
         <%= link_to "Review this product!", new_product_review_path(@product.id), :class => "button" %>
