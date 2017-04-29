@@ -54,18 +54,20 @@ class ProductsController < ApplicationController
   def edit; end
 
   def update
+    puts params.inspect
     @product.price = product_params[:price]
     @product.inventory = product_params[:inventory]
     @product.name = product_params[:name]
     @product.description = product_params[:description]
     @product.photo_url = product_params[:photo_url]
     @product.category_ids = product_params[:category_ids]
-
+    puts @product.inspect 
 
     if @product.save
       flash[:success] = "Successfully updated #{@product.name}."
       redirect_to product_path(@product.id) #this is the show page
     else
+      puts @product.errors.inspect
       render "edit"
     end
   end
@@ -76,6 +78,9 @@ class ProductsController < ApplicationController
   end
 
   def update_availability
+    puts params.inspect
+    # puts @product.lifecycle
+
     if @product.lifecycle == "available"
       @product.lifecycle = "unavailable"
       if @product.save

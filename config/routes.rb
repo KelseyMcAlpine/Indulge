@@ -10,9 +10,12 @@ Rails.application.routes.draw do
     resources :orders, only: [:index]
     post "/add", to: "orders#add_product_order", as: "add_to_cart"
     post "/remove", to: "orders#remove_product_order", as: "remove_from_cart"
+    member do
+      post :update_availability
+    end 
   end
 
-  post "/products/:id", to: "products#update_availability", as: "update_availability"
+
 
 
   resources :vendors, only: [:index] do
