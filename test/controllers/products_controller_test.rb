@@ -215,36 +215,32 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         }
         product.reload
         puts product.lifecycle
-          product.lifecycle.must_equal "unavailable"
+        product.lifecycle.must_equal "unavailable"
 
 
 
       end
 
-      it "Relist will restore product as available" do skip
+      it "Relist will restore product as available" do
         product = products(:ice_floe)
         vendor = vendors(:polar_queen)
-        puts "#{product.lifecycle}"
-        puts "#{product.vendor.username}"
-        proc {
-          post update_availability_path, params:  { product:
-            {id: product.id,
-              vendor_id: vendor.id,
-              lifecycle: product.lifecycle
-            }
-          }
+        # puts "#{product.lifecycle}"
+        # puts "#{product.vendor.username}"
+
+        post update_availability_product_path(product.id), params:  {
+          id: product.id,
+          vendor_id: vendor.id,
+          lifecycle: product.lifecycle
         }
-        #     puts "#{product.lifecycle}"
+        product.reload
         product.lifecycle.must_equal "unavailable"
 
-        proc {
-          post update_availability_path, params:  { product:
-            {id: product.id,
-              vendor_id: vendor.id,
-              lifecycle: product.lifecycle
-            }
-          }
+        post update_availability_product_path(product.id), params:  {
+          id: product.id,
+          vendor_id: vendor.id,
+          lifecycle: product.lifecycle
         }
+        product.reload
         product.lifecycle.must_equal "available"
       end
 
