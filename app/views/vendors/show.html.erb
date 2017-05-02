@@ -28,9 +28,9 @@
     <td> <%= product.lifecycle %> </td>
     <td>
       <% if product.lifecycle == "available" %>
-        <%= link_to "Retire", update_availability_path(product.id), data: { confirm: "Are you sure you want to retire this product?" }, method: :update_availability %>
+        <%= link_to "Retire", update_availability_product_path(product.id), data: { confirm: "Are you sure you want to retire this product?" }, method: :update_availability %>
       <% else %>
-        <%= link_to "ReList", update_availability_path(product.id), data: { confirm: "Are you sure you want to re-list this product?" }, method: :update_availability %>
+        <%= link_to "ReList", update_availability_product_path(product.id), data: { confirm: "Are you sure you want to re-list this product?" }, method: :update_availability %>
       <% end %>
     </td>
     <td> <%= link_to "Edit", edit_product_path(product.id)%> </td>
@@ -49,9 +49,9 @@
 
           <p class="button small ">
             <% if product.lifecycle == "available" %>
-              <%= link_to "Retire", update_availability_path(product.id), data: { confirm: "Are you sure you want to retire this product?" }, method: :update_availability %>
+              <%= link_to "Retire", update_availability_product_path(product.id), data: { confirm: "Are you sure you want to retire this product?" }, method: :update_availability %>
             <% else %>
-              <%= link_to "ReList", update_availability_path(product.id), data: { confirm: "Are you sure you want to re-list this product?" }, method: :update_availability %>
+              <%= link_to "ReList", update_availability_product_path(product.id), data: { confirm: "Are you sure you want to re-list this product?" }, method: :update_availability %>
             <% end %>
           </p>
 
