@@ -61,12 +61,13 @@ class ProductsController < ApplicationController
     @product.description = product_params[:description]
     @product.photo_url = product_params[:photo_url]
     @product.category_ids = product_params[:category_ids]
-    puts @product.inspect
+    # puts @product.inspect
 
     if @product.save
       flash[:success] = "Successfully updated #{@product.name}."
       redirect_to product_path(@product.id) #this is the show page
     else
+      flash[:failure] = "An error has occurred"
       puts @product.errors.inspect
       render "edit"
     end

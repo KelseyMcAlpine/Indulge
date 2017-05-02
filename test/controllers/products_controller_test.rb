@@ -113,33 +113,29 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
         product_data = {
           product: {
-            name: updating_product.name + " addition"
+            name: updating_product.name + " addition",
+            price: updating_product.price
           }
         }
         put product_path(updating_product.id), params: product_data
         must_redirect_to product_path(updating_product.id)
-        # Product.find(product.id).name.must_equal product_data[:work][:name]
 
-        #     product = products(:ice_floe)
-        #     vendor = vendors(:polar_queen)
-        #   proc {
-        #      put product_path(product.id), params: {product: {id: product.id, vendor_id: vendor, name: "nature break", description: "Relaxing", price: 5}}
-        # }
-        #   puts "#{product.vendor.username}"
-        #
-        #
-        #   updated_product = Product.find(product.id)
-        #   puts "#{updated_product.errors.messages}"
-        #
-        #   updated_product.name.must_equal "nature break"
-        #   updated_product.description.must_equal "Relaxing"
-        #   updated_product.price.must_equal 5
-        #
-        #   must_respond_with :redirect
-        #   must_redirect_to product_path(@product.id)
-        #   flash[:success].must_equal "Successfully updated #{@product.name}"
       end
 
+      it "should not update a product when vendor is logged in with invalid validations" do skip 
+        updating_product = Product.last
+
+        product_data = {
+          product: {
+            name: updating_product.name + " addition"
+          }
+        }
+        put product_path(updating_product.id), params: product_data
+
+      flash[:failure].must_equal "An error has occurred"
+      #assert_template :edit
+
+      end
 
       it "product with no name should not affect the model" do
         proc {
@@ -217,6 +213,38 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         puts product.lifecycle
         product.lifecycle.must_equal "unavailable"
 
+
+
+      end
+
+      it "Retire will not affect product with invalid parameters" do
+
+        updating_product = Product.last
+        puts updating_product.lifecycle
+
+        product_data = {
+          product: {
+            name: updating_product.name + " addition"
+          }
+        }
+        put product_path(updating_product.id), params: product_data
+
+      flash[:failure].must_equal "An error has occurred"
+
+
+        #
+        # product = products(:ice_floe)
+        # # vendor = vendors(:polar_queen)
+        # puts product.lifecycle
+        # puts product.vendor.username
+        #
+        # post update_availability_product_path(product.id),  params: {
+        #   id: product.id,
+        #   price: 0
+        # }
+        # product.reload
+        # puts product.lifecycle
+        # product.lifecycle.must_equal "available"
 
 
       end
