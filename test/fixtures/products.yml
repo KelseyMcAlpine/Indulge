@@ -57,12 +57,12 @@ no_stock:
   #   categories: nature
 
     # broken fixture, no price
-  # spa:
+  #  spa:
   #   vendor: Jim
   #   name: "The beautiful beaches of the Gulf"
   #   description: "Oh yea!"
   #   photo_url: "example 123"
-  #   price: 150
+  #   price: 0
   #   inventory: 15
   #   lifecycle: "available"
   #   categories: healthy, spa
